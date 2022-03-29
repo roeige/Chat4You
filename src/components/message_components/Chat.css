@@ -1,0 +1,47 @@
+.chat-background{
+    width : 70%;
+    height: 75%;
+    
+}
+.grid-background{
+    padding: 1%;
+}
+.text{
+    font-size: 15px;
+    line-height: 3.5;
+}
+.chats{
+    height: 100%;
+    width: 35%;
+
+
+}
+.background-app{
+    background-color: #f7f8f9;
+}
+.person-icon{
+    padding-top: 10px;
+    margin: 15px;
+}
+.add-person-icon{
+    padding-top: 10px;
+    margin : 15px;
+}
+.time-ago-text{
+    line-height: 3.5;
+    font-size: 13px;    
+}
+.text-message-sender{
+    font-size: 15px;
+    font-weight: bold;  
+    margin-top: 5px;
+}
+.text-bar-message{
+    font-size: 13px;
+    line-height: 0px;
+}
+.message-bar{
+    margin : 1px;
+    padding: 1%;
+    background-color: white;
+}
