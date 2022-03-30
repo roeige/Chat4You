@@ -1,47 +1,102 @@
-.chat-background{
-    width : 70%;
+.chat-background {
+    width: 70%;
     height: 75%;
-    
-}
-.grid-background{
+  }
+  .grid-background {
+    position: relative;
     padding: 1%;
-}
-.text{
+    background-color: #f7f8f9;
+  }
+  .text {
     font-size: 15px;
     line-height: 3.5;
-}
-.chats{
+  }
+  .chats {
     height: 100%;
-    width: 35%;
-
-
-}
-.background-app{
-    background-color: #f7f8f9;
-}
-.person-icon{
+    
+  }
+  
+  .person-icon {
     padding-top: 10px;
     margin: 15px;
-}
-.add-person-icon{
+  }
+  .add-person-icon {
     padding-top: 10px;
-    margin : 15px;
-}
-.time-ago-text{
+    margin: 15px;
+  }
+  .time-ago-text {
     line-height: 3.5;
-    font-size: 13px;    
-}
-.text-message-sender{
+    font-size: 13px;
+  }
+  .text-message-sender {
     font-size: 15px;
-    font-weight: bold;  
-    margin-top: 5px;
-}
-.text-bar-message{
+    font-weight: bold;
+    padding: 10px;
+    margin: 6px;
+  }
+  .text-bar-message {
     font-size: 13px;
     line-height: 0px;
-}
-.message-bar{
-    margin : 1px;
+  }
+  .message-bar {
+    margin: 1px;
     padding: 1%;
     background-color: white;
+  }
+  .chat-label-form {
+    bottom: 0px;
+    padding: 2%;
+  }
+  .main-chat-background {
+    height: 100%;
+    width: 65%;
+    background-color: bisque;
+  }
+  .attach-icon {
+    padding-top: 5px;
+    margin-left: 5px;
+  }
+  .chat-members {
+    margin-bottom: 10px;
+    max-height: 80%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  .contact-list {
+    left: 0px;
+    max-height: 300px;
+   
+    overflow-y: scroll;
+    overflow-x:hidden;
+  
+  }
+
+.message-scroll{
+  
+  overflow-y: scroll;
+  overflow-x:hidden;
+  flex-direction: column-reverse !important;
+  display: flex;
+}
+.contact-list {
+  left: 0px;
+  max-height: 400px;
+  overflow-y: scroll;
+  overflow-x:hidden;
+}
+
+
+
+.container-end{
+  height: 100%;
+  width: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+}
+
+.end{
+  position: absolute;
+  bottom: 0px;
 }
