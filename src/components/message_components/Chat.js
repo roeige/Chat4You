@@ -94,7 +94,7 @@ const Chat = (props) => {
             </svg>
           </div>
         </div>
-        <ol className="flex-col d-flex list-group ">
+        <ol className="flex-col d-flex list-group contact-list">
           {chats.map(chat => {
             return <ContactList name={chat.name} lastMessage={chat.lastMessage} timeAgo={chat.timeAgo} picture={chat.picture} />
           })}

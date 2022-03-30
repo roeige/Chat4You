@@ -1,6 +1,6 @@
 const ContactList = (props) => {
     return (
-        <li className="p-2 list-group-item d-flex justify-content-between align-items-start">
+        <li className="p-2 list-group-item d-flex justify-content-between align-items-start hover-shadow">
             <div> {props.picture} </div>
             <div className="ms-2 me-auto">
                 <div className="fw-bold"> {props.name} </div>

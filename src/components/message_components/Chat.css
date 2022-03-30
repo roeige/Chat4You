@@ -4,7 +4,6 @@
 }
 .grid-background {
   position: relative;
-  padding: 1%;
   background-color: #f7f8f9;
 }
 .text {
@@ -39,15 +38,15 @@
   line-height: 0px;
 }
 .message-bar {
-  margin: 1px;
-  padding: 1%;
-  background-color: white;
+  position: absolute;
+  bottom:0;
 }
 .chat-label-form {
   bottom: 0px;
   padding: 2%;
 }
 .main-chat-background {
+  position: relative;
   height: 100%;
   width: 65%;
   background-color: bisque;
@@ -56,6 +55,10 @@
   padding-top: 5px;
   margin-left: 5px;
 }
+.attach-icon:hover{
+    background-color: lightgray;
+    cursor:pointer;
+}
 .chat-members {
   margin-bottom: 10px;
   max-height: 80%;
@@ -63,10 +66,15 @@
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
-.contact-list {
+.contact-list{
   left: 0px;
   max-height: 400px;
+  left:0px;
   overflow-y: scroll;
   overflow-x:hidden;
 
+}
+.list-group-item:hover{
+    background-color: lightgray;
+    cursor: pointer;
 }
