@@ -5,6 +5,7 @@ import "./Chat.css";
 import "../Connect.css";
 import ContactList from "./ContactList";
 import MessagesBox from "./BubbleMessage/MessagesBox";
+import MessageSender from "./MessageSender";
 
 const defaultPicture = (
   <svg
@@ -103,7 +104,8 @@ const Chat = (props) => {
           })}
         </ol>
       </div>
-      <Col xs={8}><MessagesBox /></Col>
+      <Col xs={8} className = "container-relative"><MessagesBox />
+      <Row><MessageSender /></Row></Col>
     </div>
   );
 };

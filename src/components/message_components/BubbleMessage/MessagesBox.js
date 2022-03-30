@@ -9,6 +9,7 @@ import ChatMessage from '../ChatMessage'
 import MessageSender from '../MessageSender'
 
 
+
 const arr = [
   
     { type: "text", from: "you", time: "10:00", content: "Hello" },
@@ -65,7 +66,7 @@ const MessagesBox = props => {
                     );
             })}
         </div>
-        <MessageSender />
+        
     </div>);
 }
 
