@@ -1,3 +1,13 @@
+
+import "./Chat.css";
+import france1 from "../../pictures/france1.jpg";
+import TextMessage from "./TextMessage";
+import ImageMessage from "./ImageMessage";
+import waterfall from "../../videos/waterfall.mp4";
+import VideoMessage from "./VideoMessage";
+import audio from "../../audio/audio.mp3"
+import VoiceMessage from "./VoiceMessage";
+import { Row } from "react-bootstrap";
 import MessageSender from "./MessageSender";
 const ChatMessage = (props) => {
     return (<div class="container"

@@ -11,9 +11,9 @@
   line-height: 3.5;
 }
 .chats {
-  height: 100%;
-  width: 35%;
-}
+    height: 100%;
+    
+  }
 
 .person-icon {
   padding-top: 10px;
@@ -72,8 +72,27 @@
   left:0px;
   overflow-y: scroll;
   overflow-x:hidden;
-
 }
+
+.container-end{
+    height: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+  }
+  
+  .end{
+    position: absolute;
+    bottom: 0px;
+  }
+.message-scroll{
+  
+    overflow-y: scroll;
+    overflow-x:hidden;
+    flex-direction: column-reverse !important;
+    display: flex;
+  }
 .list-group-item:hover{
     background-color: lightgray;
     cursor: pointer;

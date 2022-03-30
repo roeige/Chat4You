@@ -1,3 +1,6 @@
+
+import { Row, Container, Col } from "react-bootstrap";
+import ChatMessage from "./ChatMessage";
 import "./Chat.css";
 import "../Connect.css";
 import ContactList from "./ContactList";
@@ -100,8 +103,7 @@ const Chat = (props) => {
           })}
         </ol>
       </div>
-      <ChatMessage />
+      <Col xs={8}><ChatMessage /></Col>
     </div>
   );
 };
-export default Chat;
