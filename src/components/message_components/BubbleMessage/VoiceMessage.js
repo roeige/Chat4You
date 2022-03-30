@@ -1,4 +1,4 @@
-import "./SingleMessage.css";
+import "../SingleMessage.css";
 
 const VoiceMessage = (props) => {
 
