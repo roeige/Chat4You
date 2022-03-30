@@ -21,7 +21,6 @@ const Login = (props) => {
                 <p class="text-center fs-3">Login</p>
             </div>
             <form>
-       
                 <div class="row g-3 align-items-center">
                 <div class= "col padding">
                     <label for="inputusername" class="col-form-label">User Name</label>
