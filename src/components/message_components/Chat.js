@@ -1,6 +1,6 @@
 import "./Chat.css";
 import "../Connect.css";
-import ChatBar from "./ChatBar";
+import ContactList from "./ContactList";
 import ChatMessage from "./ChatMessage";
 
 const defaultPicture = (
@@ -9,7 +9,7 @@ const defaultPicture = (
     width="25"
     height="25"
     fill="currentColor"
-    class="bi bi-person-circle"
+    className="bi bi-person-circle"
     viewBox="0 0 16 16"
   >
     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -51,32 +51,20 @@ const chats = [
     timeAgo: 1,
     picture: defaultPicture,
   },
-  {
-    name: "Charlie Baz",
-    lastMessage: "Have you seen the news?",
-    timeAgo: 1,
-    picture: defaultPicture,
-  },
-  {
-    name: "Charlie Baz",
-    lastMessage: "Have you seen the news?",
-    timeAgo: 1,
-    picture: defaultPicture,
-  },
 ];
 
 const Chat = (props) => {
   return (
-    <div class="container " className="grid grid-background chat-background background-app">
-      <div class="container" className="chats">
-        <div class="row">
-          <div class="col-1 person-icon">
+    <div className="container grid grid-background chat-background">
+      <div className="container grid-background">
+        <div className="row">
+          <div className="col-1 person-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="25"
               height="25"
               fill="currentColor"
-              class="bi bi-person-circle"
+              className="bi bi-person-circle"
               viewBox="0 0 16 16"
             >
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -86,16 +74,16 @@ const Chat = (props) => {
               />
             </svg>
           </div>
-          <div class="col">
+          <div className="col">
             <p className="text"> Alice </p>
           </div>
-          <div class="col-1 add-person-icon">
+          <div className="col-1 add-person-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
               fill="currentColor"
-              class="bi bi-person-plus-fill"
+              className="bi bi-person-plus-fill"
               viewBox="0 0 16 16"
             >
               <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
@@ -106,9 +94,11 @@ const Chat = (props) => {
             </svg>
           </div>
         </div>
-        {chats.map(chat =>{
-            return <ChatBar name = {chat.name} lastMessage = {chat.lastMessage} timeAgo = {chat.timeAgo} picture = {chat.picture}/>
-        })}
+        <ol className="flex-col d-flex list-group ">
+          {chats.map(chat => {
+            return <ContactList name={chat.name} lastMessage={chat.lastMessage} timeAgo={chat.timeAgo} picture={chat.picture} />
+          })}
+        </ol>
       </div>
       <ChatMessage />
     </div>

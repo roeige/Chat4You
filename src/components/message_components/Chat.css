@@ -1,47 +1,73 @@
-.chat-background{
-    width : 70%;
-    height: 75%;
-    
+.chat-background {
+  width: 70%;
+  height: 75%;
 }
-.grid-background{
-    padding: 1%;
+.grid-background {
+  position: relative;
+  padding: 1%;
+  background-color: #f7f8f9;
 }
-.text{
-    font-size: 15px;
-    line-height: 3.5;
+.text {
+  font-size: 15px;
+  line-height: 3.5;
 }
-.chats{
-    height: 100%;
-    width: 35%;
+.chats {
+  height: 100%;
+  width: 35%;
+}
 
+.person-icon {
+  padding-top: 10px;
+  margin: 15px;
+}
+.add-person-icon {
+  padding-top: 10px;
+  margin: 15px;
+}
+.time-ago-text {
+  line-height: 3.5;
+  font-size: 13px;
+}
+.text-message-sender {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+  margin: 6px;
+}
+.text-bar-message {
+  font-size: 13px;
+  line-height: 0px;
+}
+.message-bar {
+  margin: 1px;
+  padding: 1%;
+  background-color: white;
+}
+.chat-label-form {
+  bottom: 0px;
+  padding: 2%;
+}
+.main-chat-background {
+  height: 100%;
+  width: 65%;
+  background-color: bisque;
+}
+.attach-icon {
+  padding-top: 5px;
+  margin-left: 5px;
+}
+.chat-members {
+  margin-bottom: 10px;
+  max-height: 80%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+.contact-list {
+  left: 0px;
+  max-height: 300px;
+ 
+  overflow-y: scroll;
+  overflow-x:hidden;
 
-}
-.background-app{
-    background-color: #f7f8f9;
-}
-.person-icon{
-    padding-top: 10px;
-    margin: 15px;
-}
-.add-person-icon{
-    padding-top: 10px;
-    margin : 15px;
-}
-.time-ago-text{
-    line-height: 3.5;
-    font-size: 13px;    
-}
-.text-message-sender{
-    font-size: 15px;
-    font-weight: bold;  
-    margin-top: 5px;
-}
-.text-bar-message{
-    font-size: 13px;
-    line-height: 0px;
-}
-.message-bar{
-    margin : 1px;
-    padding: 1%;
-    background-color: white;
 }
