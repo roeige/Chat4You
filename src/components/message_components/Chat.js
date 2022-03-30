@@ -1,9 +1,8 @@
-import Chat from "./Chat";
+
 import { Row,Container,Col } from "react-bootstrap";
 import ChatMessage from "./ChatMessage";
 import "./Chat.css";
 import "../Connect.css";
-import ChatBar from "./ChatBar";
 import ContactList from './ContactList.js'
 
 const defaultPicture = (
@@ -68,7 +67,7 @@ const defaultPicture = (
     },
   ];
 
-const ChatTest = props => {
+const Chat = props => {
     return (
         <div class="container " className="grid grid-background chat-background background-app">
         <Container>
@@ -124,4 +123,4 @@ const ChatTest = props => {
     );
 }
 
-export default ChatTest
+export default Chat;
