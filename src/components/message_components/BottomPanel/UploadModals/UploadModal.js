@@ -3,6 +3,10 @@ import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 
 const UploadModal = props => {
+    const handleClick = () =>{
+        props.handleSubmission();
+        props.onHide();
+    }
     const [modalType, setModalType] = useState(null);
     return (
         <Modal
@@ -23,7 +27,7 @@ const UploadModal = props => {
                 {props.modalContent}
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.handleSubmission}>Upload</Button>
+                <Button onClick={handleClick}>Upload</Button>
             </Modal.Footer>
         </Modal>
 

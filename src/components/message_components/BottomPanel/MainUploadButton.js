@@ -9,7 +9,7 @@ import PhotoVidModal from './UploadModals/UploadModal';
 import ChooseFile from './UploadModals/ChooseFile';
 import LocationUpload from './UploadModals/LocationUpload';
 import { useState } from 'react';
-import { messages } from '../BubbleMessage/messages_data';
+import { messages } from '../BubbleMessage/chat_data';
 
 const MainUploadButton = props => {
 

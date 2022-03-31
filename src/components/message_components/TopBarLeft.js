@@ -47,7 +47,7 @@ const TopBarLeft = (props) => {
           </svg>
         </Button>
       </div>
-      <AddNewContact show={showNewContact} handleClose={handleClose} />
+      <AddNewContact show={showNewContact} handleClose={handleClose} handleAddingContact = {props.handleAddingContact}/>
     </Fragment>
   );
 };
