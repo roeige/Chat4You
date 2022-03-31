@@ -20,10 +20,8 @@ const RecordModal = props => {
             if (recorder.state === "inactive") {
               const blob = new Blob(chunks, { type: "audio/webm" });
               console.log(blob)
-              let testAudioRecord = URL.createObjectURL(blob);
-              console.log(testAudioRecord);
               props.setFileType("voice");
-              props.changeHandler(testAudioRecord)
+              props.changeHandler(blob)
             }
           };
           recorder.start(1000);

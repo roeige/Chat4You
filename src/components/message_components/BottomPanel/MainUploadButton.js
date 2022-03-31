@@ -39,7 +39,7 @@ const MainUploadButton = props => {
 
     const createMessage = () => {
         {/**It will create a message according to the data it gets from upload choice */ }
-        const newMessage = { type: fileType, from: "me", time: "10:00", content: selectedFile };
+        const newMessage = { type: fileType, from: "me", time: "10:00", content: URL.createObjectURL(selectedFile) };
         props.setMessagesData([...props.messagesData, newMessage]);
         console.log(props.messagesData)
         {/**for now we support only in 3 type of messages from special share option. */ }
