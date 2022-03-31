@@ -2,3 +2,9 @@
     position:absolute;
     bottom:0;
 }
+#uploadPanel{
+    display:flexbox!important;
+}
+.dropdown-menu.show{
+    display:flex;
+}

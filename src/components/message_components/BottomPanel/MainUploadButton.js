@@ -8,18 +8,19 @@ import RecordUpload from './UploadModals/RecordUpload';
 import PhotoVidModal from './UploadModals/UploadModal';
 import ChooseFile from './UploadModals/ChooseFile';
 import LocationUpload from './UploadModals/LocationUpload';
-const MainUploadButton = props =>{
-    return(
+const MainUploadButton = props => {
+    return (
         <DropdownButton
-        title= {<i class="bi bi-paperclip"></i>}
-        drop="up"
-        variant="" className="col-1 p-0" onClick={() => { console.log("Hi") }}>
-        {/**Enter each modal buttons one by one, using components */}
-        <PhotoUpload />
-        <VideoUpload />
-        <RecordUpload />
-        <LocationUpload/>
-    </DropdownButton>
+            title={<i class="bi bi-paperclip"></i>}
+            drop="up"
+            variant="" className="col-1 p-0" onClick={() => { console.log("Hi") }}>
+            {/**Need to change display to fles, the dropdown buttons display */}
+            {/**Enter each modal buttons one by one, using components */}
+            <PhotoUpload />
+            <VideoUpload />
+            <RecordUpload />
+            <LocationUpload />
+        </DropdownButton>
     );
 };
 export default MainUploadButton;
