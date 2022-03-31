@@ -5,7 +5,7 @@ import "./Chat.css";
 import "../Connect.css";
 import ContactList from "./ContactList";
 import MessagesBox from "./BubbleMessage/MessagesBox";
-import MessageSender from "./MessageSender";
+import MessageSender from "./BottomPanel/MessageSender";
 import { Button } from "react-bootstrap";
 import { Fragment, useState } from "react";
 import AddNewContact from "./AddNewContact";
