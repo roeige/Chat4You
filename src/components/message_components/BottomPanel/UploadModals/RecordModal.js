@@ -22,6 +22,7 @@ const RecordModal = props => {
               console.log(blob)
               let testAudioRecord = URL.createObjectURL(blob);
               console.log(testAudioRecord);
+              props.setFileType("voice");
               props.changeHandler(testAudioRecord)
             }
           };
