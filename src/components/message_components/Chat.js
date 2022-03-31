@@ -12,6 +12,7 @@ import AddNewContact from "./AddNewContact";
 import TopBarMessage from "./TopBarRight";
 import TopBarLeft from "./TopBarLeft";
 import TopBarRight from "./TopBarRight";
+import { messages } from "./BubbleMessage/messages_data";
 
 const defaultPicture = (
   <svg
@@ -115,6 +116,7 @@ const chats = [
 ];
 
 const Chat = (props) => {
+  const [messagesData, setMessagesData] = useState(messages);
 
 
   return (
@@ -145,9 +147,9 @@ const Chat = (props) => {
         </Col>
         <Col xs={8} className="container-relative">
         {/*<TopBarRight />*/}
-          <MessagesBox />
+          <MessagesBox messagesData = {messagesData}/>
           <Row>
-            <MessageSender />
+            <MessageSender messagesData = {messagesData} setMessagesData = {setMessagesData}/>
           </Row>
           
         </Col>

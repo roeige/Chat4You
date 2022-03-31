@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 const ChooseFile = props => {
-    const [selectedFile, setSelectedFile] = useState();
-    const [isPhoto, setIsPhoto] = useState(false);
+
+    const fileUploadHandler = (event) => {
+        console.log(props.type)
+        props.setFileType(props.type);
+        props.changeHandler(event);
+    }
+    
     return (
         <Form.Group controlId="formFile" className="mb-3">
-            <Form.Control type="file" />
+            <Form.Control type="file" onChange={fileUploadHandler}/>
         </Form.Group>
     );
 };
