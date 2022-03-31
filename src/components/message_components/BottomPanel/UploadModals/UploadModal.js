@@ -3,7 +3,6 @@ import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 
 const UploadModal = props => {
-    const [modalType, setModalType] = useState(null);
     return (
         <Modal
             size="md"

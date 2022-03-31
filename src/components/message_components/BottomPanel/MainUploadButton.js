@@ -14,37 +14,33 @@ import { messages } from '../BubbleMessage/messages_data';
 const MainUploadButton = props => {
 
     const [selectedFile, setSelectedFile] = useState();
-    const [fileType,setFileType] = useState(null);
+    const [fileType, setFileType] = useState(null);
 
-	const changeHandler = (event) => {
-        
-		setSelectedFile(event.target.files[0]);
+    const audioRecord = (event) => {
+        {/**The event we get is actually an audio file */ }
+        console.log("In Record event");
+        console.log(event);
+        setSelectedFile(event);
+    }
+
+    const changeHandler = (event) => {
+
+        setSelectedFile(event.target.files[0]);
         console.log("select");
-	};
+    };
 
-	const handleSubmission = () => {
+    const handleSubmission = () => {
         console.log(selectedFile);
         createMessage();
-	};
+    };
 
     const createMessage = () => {
-        if (fileType === 'image') {
-            {/**Create new photo message, and on click will send it */}
-            let newMessagesData = props.messagesData;
-            
-            
-            newMessagesData.push({type : fileType, from : "me", time : "10:00", content : selectedFile});
-            props.setMessagesData(newMessagesData)
-            console.log(props.messagesData)
-
-        }
-        else if(fileType==='video'){
-            {/**Create new Video.... */}
-        }
-        else if(fileType==='record'){
-            {/**... */}
-        }
-        {/**for now we support only in 3 type of messages from special share option. */}
+        {/**It will create a message according to the data it gets from upload choice */}
+        let newMessagesData = props.messagesData;
+        newMessagesData.push({ type: fileType, from: "me", time: "10:00", content: selectedFile });
+        props.setMessagesData(newMessagesData)
+        console.log(props.messagesData)
+        {/**for now we support only in 3 type of messages from special share option. */ }
     }
 
     return (
@@ -54,9 +50,9 @@ const MainUploadButton = props => {
             variant="" className="col-1 p-0" onClick={() => { console.log("Hi") }}>
             {/**Need to change display to fles, the dropdown buttons display */}
             {/**Enter each modal buttons one by one, using components */}
-            <PhotoUpload changeHandler = {changeHandler} handleSubmission = {handleSubmission} setFileType = {setFileType}/>
-            <VideoUpload changeHandler = {changeHandler} handleSubmission = {handleSubmission} setFileType = {setFileType}/>
-            <RecordUpload />
+            <PhotoUpload changeHandler={changeHandler} handleSubmission={handleSubmission} setFileType={setFileType} />
+            <VideoUpload changeHandler={changeHandler} handleSubmission={handleSubmission} setFileType={setFileType} />
+            <RecordUpload changeHandler={audioRecord} handleSubmission={handleSubmission} setFileType={setFileType} />
             <LocationUpload />
         </DropdownButton>
     );

@@ -11,7 +11,7 @@ const LocationUpload = props =>{
     return(
             <Fragment>
                 <Dropdown.Item onClick={handleShow} eventKey="4" className="col"><i class="bi bi-geo-alt"></i></Dropdown.Item>
-                {/**RecordModal Here */}
+                {/**Location Here */}
                 <UploadModal
                     modalContent = {<RecordModal/>}
                     name={"Send Location"}
