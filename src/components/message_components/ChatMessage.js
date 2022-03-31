@@ -1,6 +1,6 @@
 
 
-import MessageSender from "./MessageSender";
+import MessageSender from "./BottomPanel/MessageSender";
 const ChatMessage = (props) => {
     return (<div class="container"
         className="main-chat-background chats col-8" >

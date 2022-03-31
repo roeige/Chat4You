@@ -6,7 +6,7 @@ import france1 from '../../../pictures/france1.jpg'
 import audio from '../../../audio/audio.mp3'
 import waterfall from '../../../videos/waterfall.mp4'
 import ChatMessage from '../ChatMessage'
-import MessageSender from '../MessageSender'
+import MessageSender from '../BottomPanel/MessageSender'
 
 
 

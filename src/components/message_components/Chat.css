@@ -40,10 +40,11 @@
 .message-bar {
   position: absolute;
   bottom:0;
+  margin-left:0.5%;
 }
 .chat-label-form {
   bottom: 0px;
-  padding: 2%;
+  margin: 0.5%;
 }
 .main-chat-background {
   position: relative;
@@ -120,4 +121,12 @@
   flex-wrap: nowrap !important;
 }
 
+btn-outline-secondary::after{
+  padding:0;
 
+}
+.send-icon{
+  font-size:30px;
+  color:darkgray;
+
+}
