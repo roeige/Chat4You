@@ -28,18 +28,12 @@ const MainUploadButton = props => {
 	};
 
     const createMessage = () => {
-        if (fileType === 'image') {
+        if (fileType === 'image' || fileType=== 'video') {
             {/**Create new photo message, and on click will send it */}
-            let newMessagesData = props.messagesData;
-            
-            
-            newMessagesData.push({type : fileType, from : "me", time : "10:00", content : selectedFile});
-            props.setMessagesData(newMessagesData)
+            const newMessage = {type : fileType, from : "me", time : "10:00", content : URL.createObjectURL(selectedFile)};
+            props.setMessagesData([...props.messagesData, newMessage]);
             console.log(props.messagesData)
 
-        }
-        else if(fileType==='video'){
-            {/**Create new Video.... */}
         }
         else if(fileType==='record'){
             {/**... */}
