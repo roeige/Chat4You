@@ -13,10 +13,12 @@ const RecordUpload= props => {
             <Dropdown.Item onClick={handleShow} eventKey="3" className="col"><i class="bi bi-mic"></i></Dropdown.Item>
             {/**RecordModal Here */}
             <UploadModal
-                modalContent = {<RecordModal/>}
-                name={"Upload a Record"}
+                modalContent = {<RecordModal changeHandler={props.changeHandler} setFileType={props.setFileType} type={"record"}/>}
+                name={"Upload Record"}
                 show={showModal}
                 onHide={handleClose}
+                handleSubmission={props.handleSubmission}
+                
             />
         </Fragment>
     );

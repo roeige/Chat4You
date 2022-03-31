@@ -7,7 +7,6 @@ const UploadModal = props => {
         props.handleSubmission();
         props.onHide();
     }
-    const [modalType, setModalType] = useState(null);
     return (
         <Modal
             size="md"
