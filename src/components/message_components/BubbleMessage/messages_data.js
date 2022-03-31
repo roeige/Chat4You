@@ -3,7 +3,7 @@ import audio from '../../../audio/audio.mp3'
 import france1 from '../../../pictures/france1.jpg'
 
 
-export let messages = [
+export const messages = [
   
     { type: "text", from: "you", time: "10:00", content: "Hello" },
     { type: "text", from: "me", time: "10:01", content: "Hello" },
