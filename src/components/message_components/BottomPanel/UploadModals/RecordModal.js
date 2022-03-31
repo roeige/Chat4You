@@ -3,32 +3,34 @@ import RecordUpload from "./RecordUpload";
 import { Modal, Button } from "react-bootstrap";
 import './Upload.css';
 const RecordModal = props => {
-    const Recording = () => {
-        console.log("type of record is:" + props.type);
-        props.setFileType(props.type);
-        navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-            const mediaRecorder = new MediaRecorder(stream);
-            mediaRecorder.start();
-            {/**Create stop button and add option to stop. */ }
-            {/**<Button className="recordButton" onClick={()=>{mediaRecorder.stop}} type="submit center"><i class="bi bi-stop-circle-fill"></i></Button>
-        */}
-            const audioChunks = [];
-            mediaRecorder.addEventListener("dataavalibale", event => {
-                audioChunks.push(event.data);
-            });
-            mediaRecorder.addEventListener("stop", () => {
-                const audioBlob = new Blob(audioChunks);
-                console.log("audioBlob is: " + audioBlob);
-                const audioUrl = URL.createObjectURL(audioBlob);
-                {/**audio is what we return as file */ }
-                const audio = new Audio(audioUrl);
-                props.changeHandler(audio);
-            });
-            setTimeout(() => {
-                mediaRecorder.stop();
-            }, 300);
-        });
-    };
+
+    const Recording = async () => {
+        let chunks = [];
+        let recorder;
+    
+        try {
+          //wait for the stream promise to resolve
+          let stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          recorder = new MediaRecorder(stream);
+          recorder.ondataavailable = (e) => {
+            chunks.push(e.data);
+            if (recorder.state === "inactive") {
+              const blob = new Blob(chunks, { type: "audio/webm" });
+              console.log(blob)
+              let testAudioRecord = URL.createObjectURL(blob);
+              console.log(testAudioRecord);
+              props.changeHandler(testAudioRecord)
+            }
+          };
+          recorder.start(1000);
+    
+          setTimeout(() => {
+            recorder.stop();
+          }, 2000);
+        } catch (e) {
+          console.log("error getting stream", e);
+        }
+      };
     return (
         <Button className="recordButton" onClick={Recording} type="submit center"><i class="bi bi-record-circle"></i></Button>
     );
