@@ -1,13 +1,14 @@
 .chat-background {
   width: 70%;
-  height: 75%;
+  height: 80%;
 }
 .grid-background {
   background-color: #f7f8f9;
 }
 .text {
-  font-size: 15px;
-  line-height: 3.5;
+  
+  position: relative;
+  top: 22%;
 }
 .chats {
     height: 100%;
@@ -15,12 +16,12 @@
   }
 
 .person-icon {
-  padding-top: 10px;
-  margin: 15px;
+  
+  padding: 1%;
+  
 }
 .add-person-icon {
-  padding-top: 10px;
-  margin: 15px;
+  top : 18%;
 }
 .time-ago-text {
   line-height: 3.5;
@@ -67,7 +68,6 @@
 }
 .contact-list{
   left: 0px;
-  max-height: 400px;
   left:0px;
   overflow-y: scroll;
   overflow-x:hidden;
@@ -79,8 +79,8 @@
     display: flex;
     flex-direction: column-reverse;
     position: absolute;
-    padding-bottom: 10%;
-    padding-top: 5%;
+    padding-bottom: 7%;
+    padding-right : 3%;
   }
   
   .end{
@@ -88,11 +88,12 @@
     bottom: 0px;
   }
 .message-scroll{
-  
+  background-image: url(../../pictures/chat_background.jpg);
     overflow-y: scroll;
     overflow-x:hidden;
     flex-direction: column-reverse !important;
     display: flex;
+    margin-bottom: 2%;
   }
 .list-group-item:hover{
     background-color: lightgray;
@@ -101,4 +102,22 @@
 
 .container-relative{
   position: relative;
+  
 }
+
+.upper-bar{
+  background-color: #f0f2f5;
+  padding : 1%;
+}
+
+.upper-bar-btn{
+  background-color: #f0f2f5 !important;
+  border-color: #f0f2f5 !important;
+}
+
+.lower-row{
+  height: 80%;
+  flex-wrap: nowrap !important;
+}
+
+

@@ -15,15 +15,15 @@ const arr = [
     { type: "text", from: "you", time: "10:00", content: "Hello" },
     { type: "text", from: "me", time: "10:01", content: "Hello" },
     { type: "text", from: "me", time: "10:02", content: "Hellodsadasdasdas" },
-    { type: "image", from: "you", time: "10:00", content: france1 },
-    { type: "voice", from: "you", time: "10:00", content: audio },
-    { type: "video", from: "you", time: "10:00", content: waterfall },
+    { type: "image", from: "you", time: "10:03", content: france1 },
+    { type: "voice", from: "you", time: "10:04", content: audio },
+    { type: "video", from: "you", time: "10:05", content: waterfall },
   ];
 
 const MessagesBox = props => {
-    return (<div class="container-end">
+    return (<div class="col-12 container-end">
         <div class="col message-scroll ">
-            {arr.map((message) => {
+            {arr.slice(0).reverse().map((message) => {
                 if (message.type == "text")
                     return (
                         <div class="row">
