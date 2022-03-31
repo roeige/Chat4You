@@ -2,28 +2,19 @@ import TextMessage from './TextMessage'
 import VoiceMessage from './VoiceMessage'
 import ImageMessage from './ImageMessage'
 import VideoMessage from './VideoMessage'
-import france1 from '../../../pictures/france1.jpg'
-import audio from '../../../audio/audio.mp3'
-import waterfall from '../../../videos/waterfall.mp4'
 import ChatMessage from '../ChatMessage'
 import MessageSender from '../BottomPanel/MessageSender'
 
 
 
-const arr = [
-  
-    { type: "text", from: "you", time: "10:00", content: "Hello" },
-    { type: "text", from: "me", time: "10:01", content: "Hello" },
-    { type: "text", from: "me", time: "10:02", content: "Hellodsadasdasdas" },
-    { type: "image", from: "you", time: "10:03", content: france1 },
-    { type: "voice", from: "you", time: "10:04", content: audio },
-    { type: "video", from: "you", time: "10:05", content: waterfall },
-  ];
-
 const MessagesBox = props => {
+
+    const messages = props.messagesData;
+    console.log(messages)
+    
     return (<div class="col-12 container-end">
         <div class="col message-scroll ">
-            {arr.slice(0).reverse().map((message) => {
+            {props.messagesData.slice(0).reverse().map((message) => {
                 if (message.type == "text")
                     return (
                         <div class="row">
@@ -70,4 +61,4 @@ const MessagesBox = props => {
     </div>);
 }
 
-export default MessagesBox
+export default MessagesBox;
