@@ -1,11 +1,12 @@
 
-import { Row, Container, Col } from "react-bootstrap";
+
+import  { Row, Container, Col } from "react-bootstrap";
 import ChatMessage from "./ChatMessage";
 import "./Chat.css";
 import "../Connect.css";
 import ContactList from "./ContactList";
 import MessagesBox from "./BubbleMessage/MessagesBox";
-import MessageSender from "./MessageSender";
+import MessageSender from "./BottomPanel/MessageSender";
 
 const defaultPicture = (
   <svg
