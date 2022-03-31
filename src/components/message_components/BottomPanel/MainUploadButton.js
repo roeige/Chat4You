@@ -20,11 +20,14 @@ const MainUploadButton = props => {
         {/**The event we get is actually an audio file */ }
         console.log("In Record event");
         console.log(event);
-        setSelectedFile(event);
+        //setSelectedFile(event);
+    }
+
+    const changeHandlerAudio = audio =>{
+        setSelectedFile(audio);
     }
 
     const changeHandler = (event) => {
-
         setSelectedFile(event.target.files[0]);
         console.log("select");
     };
@@ -36,7 +39,7 @@ const MainUploadButton = props => {
 
     const createMessage = () => {
         {/**It will create a message according to the data it gets from upload choice */ }
-        const newMessage = { type: fileType, from: "me", time: "10:00", content: URL.createObjectURL(selectedFile) };
+        const newMessage = { type: fileType, from: "me", time: "10:00", content: selectedFile };
         props.setMessagesData([...props.messagesData, newMessage]);
         console.log(props.messagesData)
         {/**for now we support only in 3 type of messages from special share option. */ }
@@ -51,7 +54,7 @@ const MainUploadButton = props => {
             {/**Enter each modal buttons one by one, using components */}
             <PhotoUpload changeHandler={changeHandler} handleSubmission={handleSubmission} setFileType={setFileType} />
             <VideoUpload changeHandler={changeHandler} handleSubmission={handleSubmission} setFileType={setFileType} />
-            <RecordUpload changeHandler={audioRecord} handleSubmission={handleSubmission} setFileType={setFileType} />
+            <RecordUpload changeHandler={changeHandlerAudio} handleSubmission={handleSubmission} setFileType={setFileType} />
             <LocationUpload />
         </DropdownButton>
     );

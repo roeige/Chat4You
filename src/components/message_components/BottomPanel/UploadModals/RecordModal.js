@@ -21,8 +21,8 @@ const RecordModal = props => {
               const blob = new Blob(chunks, { type: "audio/webm" });
               console.log(blob)
               let testAudioRecord = URL.createObjectURL(blob);
-              props.changeHandler(testAudioRecord);
-              console.log("URL BLOBL:"+testAudioRecord);
+              console.log(testAudioRecord);
+              props.changeHandler(testAudioRecord)
             }
           };
           recorder.start(1000);
@@ -34,7 +34,6 @@ const RecordModal = props => {
           console.log("error getting stream", e);
         }
       };
-
     return (
         <Fragment>
             {showButton && <Button className="recordButton" show={showButton} onClick={()=>{handleStop();Recording();}} type="submit center"><i class="bi bi-record-circle"></i></Button>}
