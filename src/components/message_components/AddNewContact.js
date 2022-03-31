@@ -4,7 +4,7 @@ import { FloatingLabel,Form } from "react-bootstrap";
 
 const AddNewContact = props =>{
     return (
-        <Modal size="lg"
+        <Modal size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered show={props.show} onHide={props.handleClose}>
         <Modal.Header closeButton>
