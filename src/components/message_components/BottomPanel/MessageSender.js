@@ -13,7 +13,7 @@ const shareIcon = <svg xmlns="http://www.w3.org/2000/svg"
 const MessageSender = (props) => {
     return (
         <InputGroup id="bottomPanel" className="mb-3">
-        <MainUploadButton messagesData = {props.messagesData} setMessagesData = {props.setMessagesData}/>
+        <MainUploadButton index = {props.index} messagesData = {props.messagesData} setMessagesData = {props.setMessagesData} contactsChats = {props.contactsChats} setContactsChats = {props.setContactsChats} setActiveContactIndex={props.setActiveContactIndex}/>
         <FormControl
           placeholder="New message here..."
           aria-label="Recipient's username"

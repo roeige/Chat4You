@@ -29,19 +29,26 @@ const MainUploadButton = props => {
 
     const changeHandler = (event) => {
         setSelectedFile(event.target.files[0]);
-        console.log("select");
+    
     };
 
     const handleSubmission = () => {
-        console.log(selectedFile);
         createMessage();
     };
 
     const createMessage = () => {
         {/**It will create a message according to the data it gets from upload choice */ }
         const newMessage = { type: fileType, from: "me", time: "10:00", content: URL.createObjectURL(selectedFile) };
-        props.setMessagesData([...props.messagesData, newMessage]);
-        console.log(props.messagesData)
+        
+        console.log(props.contactsChats[0],props.contactsChats[1],props.index)
+        const newMessagesData = [...props.contactsChats[props.index].messagesData, newMessage];
+        const newContact = {...props.contactsChats[props.index],messagesData : newMessagesData};
+        let contactsChatsCopy = [...props.contactsChats];
+        contactsChatsCopy.splice(props.index,1);
+        console.log(contactsChatsCopy)
+        contactsChatsCopy.push(newContact);
+        props.setContactsChats(contactsChatsCopy)
+        props.setActiveContactIndex(contactsChatsCopy.length-1)
         {/**for now we support only in 3 type of messages from special share option. */ }
     }
 

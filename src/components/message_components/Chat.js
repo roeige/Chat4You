@@ -90,6 +90,10 @@ const Chat = (props) => {
               <MessageSender
                 messagesData={messagesData}
                 setMessagesData={setMessagesData}
+                contactsChats = {contactsChats}
+                setContactsChats = {setContactsChats}
+                index = {activeContactIndex}
+                setActiveContactIndex={setActiveContactIndex}
               />
             </Row>
           </Col>
