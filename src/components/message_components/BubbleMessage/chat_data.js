@@ -30,7 +30,7 @@ export const messages = [
     </svg>
   );
 
-  const getLastMessage = data => {
+  export const getLastMessage = data => {
     if(data.length === 0) return "";
     const lastMessage = data[data.length-1];
     if(lastMessage.type === "image") return "Photo";

@@ -6,11 +6,14 @@ const RecordModal = props => {
     const [showButton, setShowButton] = useState(true);
     const handleStart = () => setShowButton(true);
     const handleStop = () => setShowButton(false);
+
+    const stopRecording = recorder => {
+      recorder.stop();
+    }
     
     const Recording = async () => {
         let chunks = [];
         let recorder;
-    
         try {
           //wait for the stream promise to resolve
           let stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -29,6 +32,7 @@ const RecordModal = props => {
           setTimeout(() => {
             recorder.stop();
           }, 2000);
+
         } catch (e) {
           console.log("error getting stream", e);
         }

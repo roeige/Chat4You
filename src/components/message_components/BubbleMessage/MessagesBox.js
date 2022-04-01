@@ -4,18 +4,18 @@ import ImageMessage from './ImageMessage'
 import VideoMessage from './VideoMessage'
 import ChatMessage from '../ChatMessage'
 import MessageSender from '../BottomPanel/MessageSender'
+import '../Chat.css'
 
 
 
 const MessagesBox = props => {
 
     const messages = props.messagesData;
-    console.log(messages)
     
     return (<div class="col-12 container-end">
         <div class="col message-scroll ">
             {props.messagesData.slice(0).reverse().map((message,index) => {
-                if (message.type == "text")
+                if (message.type === "text")
                     return (
                         <div class="row" key = {index}>
                             <TextMessage
@@ -25,7 +25,7 @@ const MessagesBox = props => {
                             />
                         </div>
                     );
-                else if (message.type == "image")
+                else if (message.type === "image")
                     return (
                         <div class="row" key = {index}>
                             <ImageMessage
@@ -36,7 +36,7 @@ const MessagesBox = props => {
                             />
                         </div>
                     );
-                else if (message.type == "video")
+                else if (message.type === "video")
                     return (
                         <div class="row" key = {index}>
                             <VideoMessage
@@ -47,7 +47,7 @@ const MessagesBox = props => {
                             />
                         </div>
                     );
-                else if (message.type == "voice")
+                else if (message.type === "voice")
                     return (
                         <div class="row" key = {index}>
                             <VoiceMessage

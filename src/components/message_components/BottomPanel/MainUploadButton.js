@@ -49,7 +49,7 @@ const MainUploadButton = props => {
         <DropdownButton
             title={<i class="bi bi-paperclip"></i>}
             drop="up"
-            variant="" className="col-1 p-0" onClick={() => { console.log("Hi") }}>
+            variant="outline-secondary" className="col-1 p-0" onClick={() => { console.log("Hi") }}>
             {/**Need to change display to fles, the dropdown buttons display */}
             {/**Enter each modal buttons one by one, using components */}
             <PhotoUpload changeHandler={changeHandler} handleSubmission={handleSubmission} setFileType={setFileType} />
