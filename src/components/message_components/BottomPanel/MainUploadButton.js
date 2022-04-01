@@ -24,6 +24,7 @@ const MainUploadButton = props => {
     }
 
     const changeHandlerAudio = audio =>{
+        console.log("Success file audio")
         setSelectedFile(audio);
     }
 
@@ -38,7 +39,9 @@ const MainUploadButton = props => {
 
     const createMessage = () => {
         {/**It will create a message according to the data it gets from upload choice */ }
-        const newMessage = { type: fileType, from: "me", time: "10:00", content: URL.createObjectURL(selectedFile) };
+        const date = new Date;
+        const time = date.getHours() + ":" + date.getMinutes();
+        const newMessage = { type: fileType, from: "me", time, content: URL.createObjectURL(selectedFile) };
         
         console.log(props.contactsChats[0],props.contactsChats[1],props.index)
         const newMessagesData = [...props.contactsChats[props.index].messagesData, newMessage];
@@ -53,7 +56,7 @@ const MainUploadButton = props => {
     }
 
     return (
-        <DropdownButton
+        <DropdownButton 
             title={<i class="bi bi-paperclip"></i>}
             drop="up"
             variant="outline-secondary" className="col-1 p-0" onClick={() => { console.log("Hi") }}>

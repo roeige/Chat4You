@@ -19,7 +19,7 @@ const Chat = (props) => {
   const [messagesData, setMessagesData] = useState([]);
   const [contactsChats, setContactsChats] = useState(contacts);
   const [activeContactIndex, setActiveContactIndex] = useState(null);
-  console.log(contactsChats)
+  const showContactChat = (activeContactIndex===null) ? false : true
 
   useEffect(() => {
     console.log(contactsChats[activeContactIndex])
@@ -85,7 +85,7 @@ const Chat = (props) => {
             </div>
           </Col>
           <Col xs={8} className="container-relative">
-            <MessagesBox messagesData={messagesData} />
+            {showContactChat && <Fragment><MessagesBox messagesData={messagesData} />
             <Row>
               <MessageSender
                 messagesData={messagesData}
@@ -95,7 +95,7 @@ const Chat = (props) => {
                 index = {activeContactIndex}
                 setActiveContactIndex={setActiveContactIndex}
               />
-            </Row>
+            </Row></Fragment>}
           </Col>
         </Row>
       </div>
