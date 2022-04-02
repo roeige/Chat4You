@@ -11,8 +11,8 @@ const RecordModal = (props) => {
   const stopRecording = () => {
     console.log(window.recorder);
     window.recorder.stop();
+    handleStart();
     props.handleSubmission();
-    props.onHide();
   };
 
   const Recording = async () => {
@@ -47,7 +47,6 @@ const RecordModal = (props) => {
       {showButton && (
         <Button
           className="recordButton"
-          show={showButton}
           onClick={() => {
             handleStop();
             Recording();

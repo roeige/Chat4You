@@ -70,11 +70,7 @@ export const getTimeAgo = (data) => {
   diff = Math.round(diff % 60);
   if (day && day > 1 && day < 7) return day + " days ago";
   if (day && day > 1 && day >= 7) {
-    const month = date.getUTCMonth() + 1; //months from 1-12
-    const day = date.getUTCDate();
-    const year = date.getUTCFullYear();
-
-    return day + "/" + month + "/" + year;
+    return dateToString(date);
   }
   if (day === 1) return day + " day ago";
   if (hour && hour > 1) return hour + " hours ago";
@@ -87,6 +83,14 @@ export const getTimeAgo = (data) => {
 export const dateToTime = date =>{
   return date.getHours() + ":" + date.getMinutes();
 };
+
+export const dateToString = date => {
+  const month = date.getUTCMonth() + 1; //months from 1-12
+    const day = date.getUTCDate();
+    const year = date.getUTCFullYear();
+
+    return day + "/" + month + "/" + year;
+}
 
 export const contacts = [
   {

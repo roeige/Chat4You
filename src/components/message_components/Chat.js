@@ -23,6 +23,7 @@ const Chat = (props) => {
   const [activeContactIndex, setActiveContactIndex] = useState(null);
   const showContactChat = activeContactIndex === null ? false : true;
 
+
   useEffect(() => {
     console.log(contactsChats);
     if (activeContactIndex != null) {
@@ -50,7 +51,7 @@ const Chat = (props) => {
   useEffect(() => {
     setTimeout(() => {
       setFakeCurrentDate(new Date());
-    }, 60000);
+    }, 30000);
   }, [fakeCurrentDate]);
 
   return (
