@@ -12,26 +12,25 @@ import {
   contacts,
   defaultPicture,
   getLastMessage,
+  getTimeAgo,
 } from "./BubbleMessage/chat_data";
 import { useEffect } from "react";
 
 const Chat = (props) => {
+  console.log("Refreshed");
   const [messagesData, setMessagesData] = useState([]);
   const [contactsChats, setContactsChats] = useState(contacts);
   const [activeContactIndex, setActiveContactIndex] = useState(null);
-  const showContactChat = (activeContactIndex===null) ? false : true
+  const showContactChat = activeContactIndex === null ? false : true;
 
   useEffect(() => {
-    console.log(contactsChats[activeContactIndex])
+    console.log(contactsChats);
     if (activeContactIndex != null) {
-      setMessagesData(
-        contactsChats[activeContactIndex].messagesData
-      );
+      setMessagesData(contactsChats[activeContactIndex].messagesData);
     }
-  }, [activeContactIndex,contactsChats]);
+  }, [activeContactIndex, contactsChats]);
 
   const handleAddingContact = (contactName) => {
-    console.log(contactName);
     const newContact = {
       name: contactName,
       messagesData: [],
@@ -42,8 +41,17 @@ const Chat = (props) => {
       picture: defaultPicture,
     };
     setContactsChats([...contactsChats, newContact]);
-    setActiveContactIndex(contactsChats.length)
+    setActiveContactIndex(contactsChats.length);
   };
+
+  //refresh contactsChats (right side) every 1 minute
+  const [fakeCurrentDate, setFakeCurrentDate] = useState(new Date()); // default value can be anything you want
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFakeCurrentDate(new Date());
+    }, 60000);
+  }, [fakeCurrentDate]);
 
   return (
     <Fragment>
@@ -68,14 +76,15 @@ const Chat = (props) => {
                   .slice(0)
                   .reverse()
                   .map((chat, index) => {
+                    console.log("Checking this dates mate");
                     return (
                       <ContactList
                         name={chat.name}
-                        lastMessage={chat.lastMessage}
-                        timeAgo={chat.timeAgo}
+                        lastMessage={getLastMessage(chat.messagesData)}
+                        timeAgo={getTimeAgo(chat.messagesData)}
                         picture={chat.picture}
                         key={index}
-                        id = {contactsChats.length-1-index}
+                        id={contactsChats.length - 1 - index}
                         activeContactIndex={activeContactIndex}
                         setActiveContactIndex={setActiveContactIndex}
                       />
@@ -85,17 +94,21 @@ const Chat = (props) => {
             </div>
           </Col>
           <Col xs={8} className="container-relative">
-            {showContactChat && <Fragment><MessagesBox messagesData={messagesData} />
-            <Row>
-              <MessageSender
-                messagesData={messagesData}
-                setMessagesData={setMessagesData}
-                contactsChats = {contactsChats}
-                setContactsChats = {setContactsChats}
-                index = {activeContactIndex}
-                setActiveContactIndex={setActiveContactIndex}
-              />
-            </Row></Fragment>}
+            {showContactChat && (
+              <Fragment>
+                <MessagesBox messagesData={messagesData} />
+                <Row>
+                  <MessageSender
+                    messagesData={messagesData}
+                    setMessagesData={setMessagesData}
+                    contactsChats={contactsChats}
+                    setContactsChats={setContactsChats}
+                    index={activeContactIndex}
+                    setActiveContactIndex={setActiveContactIndex}
+                  />
+                </Row>
+              </Fragment>
+            )}
           </Col>
         </Row>
       </div>

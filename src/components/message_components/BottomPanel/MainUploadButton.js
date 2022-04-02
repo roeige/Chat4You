@@ -10,6 +10,7 @@ import ChooseFile from './UploadModals/ChooseFile';
 import LocationUpload from './UploadModals/LocationUpload';
 import { useState } from 'react';
 import { messages } from '../BubbleMessage/chat_data';
+import { getLastMessage } from '../BubbleMessage/chat_data';
 
 const MainUploadButton = props => {
 
@@ -39,17 +40,18 @@ const MainUploadButton = props => {
 
     const createMessage = () => {
         {/**It will create a message according to the data it gets from upload choice */ }
-        const date = new Date;
-        const time = date.getHours() + ":" + date.getMinutes();
-        const newMessage = { type: fileType, from: "me", time, content: URL.createObjectURL(selectedFile) };
+        const date = new Date();
+        const newMessage = { type: fileType, from: "me", date, content: URL.createObjectURL(selectedFile) };
         
         console.log(props.contactsChats[0],props.contactsChats[1],props.index)
         const newMessagesData = [...props.contactsChats[props.index].messagesData, newMessage];
-        const newContact = {...props.contactsChats[props.index],messagesData : newMessagesData};
+        let newContact = {...props.contactsChats[props.index],messagesData : newMessagesData};
+        newContact = {...newContact,getLastMessage};
         let contactsChatsCopy = [...props.contactsChats];
         contactsChatsCopy.splice(props.index,1);
         console.log(contactsChatsCopy)
         contactsChatsCopy.push(newContact);
+        console.log(contactsChatsCopy)
         props.setContactsChats(contactsChatsCopy)
         props.setActiveContactIndex(contactsChatsCopy.length-1)
         {/**for now we support only in 3 type of messages from special share option. */ }

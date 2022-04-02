@@ -28,9 +28,9 @@ const RecordModal = (props) => {
         chunks.push(e.data);
         if (recorder.state === "inactive") {
           const blob = new Blob(chunks, { type: "audio/webm" });
-          console.log(blob);
           props.setFileType("voice");
           props.changeHandler(blob);
+          stream.getTracks().forEach(t => t.stop());
         }
       };
       recorder.start(1000);

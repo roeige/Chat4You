@@ -13,6 +13,8 @@ const ContactList = (props) => {
     props.setActiveContactIndex(props.id);
   };
 
+  
+
   return (
     <li
       className={
@@ -28,7 +30,7 @@ const ContactList = (props) => {
       </div>
       <span className="badge bg-dark rounded-pill">
         {" "}
-        {props.timeAgo + " minute ago"}{" "}
+        {props.timeAgo}
       </span>
     </li>
   );

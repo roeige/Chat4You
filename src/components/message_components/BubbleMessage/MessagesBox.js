@@ -5,6 +5,7 @@ import VideoMessage from './VideoMessage'
 import ChatMessage from '../ChatMessage'
 import MessageSender from '../BottomPanel/MessageSender'
 import '../Chat.css'
+import { dateToTime } from './chat_data'
 
 
 
@@ -20,7 +21,7 @@ const MessagesBox = props => {
                         <div class="row" key = {index}>
                             <TextMessage
                                 from={message.from}
-                                time={message.time}
+                                time={dateToTime(message.date)}
                                 text={message.content}
                             />
                         </div>
@@ -30,9 +31,9 @@ const MessagesBox = props => {
                         <div class="row" key = {index}>
                             <ImageMessage
                                 from={message.from}
-                                time={message.time}
+                                time={dateToTime(message.date)}
                                 image={message.content}
-                                key = {Math.random()}
+                                key = {index}
                             />
                         </div>
                     );
@@ -41,9 +42,9 @@ const MessagesBox = props => {
                         <div class="row" key = {index}>
                             <VideoMessage
                                 from={message.from}
-                                time={message.time}
+                                time={dateToTime(message.date)}
                                 video={message.content}
-                                key = {Math.random()}
+                                key = {index}
                             />
                         </div>
                     );
@@ -52,9 +53,9 @@ const MessagesBox = props => {
                         <div class="row" key = {index}>
                             <VoiceMessage
                                 from={message.from}
-                                time={message.time}
+                                time={dateToTime(message.date)}
                                 audio={message.content}
-                                key = {Math.random()}
+                                key = {index}
                             />
                         </div>
                     );
