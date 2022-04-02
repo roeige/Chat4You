@@ -77,7 +77,6 @@ const Chat = (props) => {
                   .slice(0)
                   .reverse()
                   .map((chat, index) => {
-                    console.log("Checking this dates mate");
                     return (
                       <ContactList
                         name={chat.name}
