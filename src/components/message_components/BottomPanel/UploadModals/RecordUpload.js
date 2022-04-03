@@ -10,7 +10,7 @@ const RecordUpload= props => {
     const handleShow = () => setModalShow(true);
     return (
         <Fragment>
-            <Dropdown.Item onClick={handleShow} eventKey="3" className="col"><i class="bi bi-mic"></i></Dropdown.Item>
+            <Dropdown.Item onClick={handleShow} eventKey="3" className="col"><i class="bi bi-mic"></i>  Voice</Dropdown.Item>
             {/**RecordModal Here */}
             <UploadModal
                 modalContent = {<RecordModal changeHandler={props.changeHandler} setFileType={props.setFileType} type={"voice"}/>}

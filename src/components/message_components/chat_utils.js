@@ -1,6 +1,6 @@
-import waterfall from "../../../videos/waterfall.mp4";
-import audio from "../../../audio/audio.mp3";
-import france1 from "../../../pictures/france1.jpg";
+import waterfall from "../../videos/waterfall.mp4";
+import audio from "../../audio/audio.mp3";
+import france1 from "../../pictures/france1.jpg";
 import { Fragment } from "react";
 
 export const messages = [
@@ -35,19 +35,19 @@ export const getLastMessage = (data) => {
   if (lastMessage.type === "image")
     return (
       <Fragment>
-        <i class="bi bi-image"> Photo</i>
+        <i class="bi bi-image"/> Photo
       </Fragment>
     );
   if (lastMessage.type === "voice")
     return (
       <Fragment>
-        <i class="bi bi-mic-fill"> Voice</i>
+        <i class="bi bi-mic-fill"></i> Voice
       </Fragment>
     );
   if (lastMessage.type === "video")
     return (
       <Fragment>
-        <i class="bi bi-play-fill"> Video</i>
+        <i class="bi bi-play-fill"></i> Video
       </Fragment>
     );
   if (lastMessage.type === "text") return lastMessage.content;
@@ -81,7 +81,7 @@ export const getTimeAgo = (data) => {
 };
 
 export const dateToTime = date =>{
-  return date.getHours() + ":" + date.getMinutes();
+  return String(date.getHours()).padStart(2,'0') + ":" + String(date.getMinutes()).padStart(2,'0')
 };
 
 export const dateToString = date => {
@@ -89,7 +89,7 @@ export const dateToString = date => {
     const day = date.getUTCDate();
     const year = date.getUTCFullYear();
 
-    return day + "/" + month + "/" + year;
+    return String(day).padStart(2,'0') + "/" + String(month).padStart(2,'0') + "/" + year;
 }
 
 export const contacts = [

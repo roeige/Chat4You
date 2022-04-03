@@ -10,7 +10,7 @@ const LocationUpload = props =>{
         const handleShow = () => setModalShow(true);
     return(
             <Fragment>
-                <Dropdown.Item onClick={handleShow} eventKey="4" className="col"><i class="bi bi-geo-alt"></i></Dropdown.Item>
+                <Dropdown.Item onClick={handleShow} eventKey="4" className="col"><i class="bi bi-geo-alt"></i>  Location</Dropdown.Item>
                 {/**Location Here */}
                 <UploadModal
                     modalContent = {<RecordModal/>}

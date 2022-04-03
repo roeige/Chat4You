@@ -9,7 +9,7 @@ const VideoUpload = props => {
     const handleShow = () => setModalShow(true);
     return (
         <Fragment>
-            <Dropdown.Item onClick={handleShow} eventKey="2" className="col"><i class="bi bi-camera-reels"></i></Dropdown.Item>
+            <Dropdown.Item onClick={handleShow} eventKey="2" className="col"><i class="bi bi-camera-reels"></i>  Video</Dropdown.Item>
             {/**VideoModal Here */}
             <PhotoVidModal
                 modalContent = {<ChooseFile changeHandler = {props.changeHandler} setFileType = {props.setFileType} type = {"video"}/>}

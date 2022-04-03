@@ -9,8 +9,7 @@ import PhotoVidModal from './UploadModals/UploadModal';
 import ChooseFile from './UploadModals/ChooseFile';
 import LocationUpload from './UploadModals/LocationUpload';
 import { useState } from 'react';
-import { messages } from '../BubbleMessage/chat_data';
-import { getLastMessage } from '../BubbleMessage/chat_data';
+import { getLastMessage } from '../chat_utils'
 
 const MainUploadButton = props => {
 
@@ -18,7 +17,7 @@ const MainUploadButton = props => {
     const [fileType, setFileType] = useState(null);
 
     const audioRecord = (event) => {
-        {/**The event we get is actually an audio file */ }
+        //The event we get is actually an audio file
         console.log("In Record event");
         console.log(event);
         //setSelectedFile(event);

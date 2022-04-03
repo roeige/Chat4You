@@ -13,7 +13,7 @@ import {
   defaultPicture,
   getLastMessage,
   getTimeAgo,
-} from "./BubbleMessage/chat_data";
+} from "./chat_utils";
 import { useEffect } from "react";
 
 const Chat = (props) => {
