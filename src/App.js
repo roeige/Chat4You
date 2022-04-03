@@ -8,7 +8,7 @@ import Chat from './components/message_components/Chat';
 import { useState } from 'react';
 
 function App() {
-  const [user, setUser] = useState("oriel");
+  const [user, setUser] = useState("roeigh");
   return (
     <Background>
     <Chat user = {user}/>

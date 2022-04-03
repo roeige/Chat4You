@@ -24,13 +24,10 @@ const Chat = (props) => {
   const [contacts, setContacts] = useState(app_data[user].contacts);
   const [activeContactIndex, setActiveContactIndex] = useState(null);
   const showContactChat = activeContactIndex === null ? false : true;
-  console.log(app_data)
 
 
   useEffect(() => {
-    console.log(contacts);
     if (activeContactIndex != null) {
-      console.log(activeContactIndex)
       setMessages(contacts[activeContactIndex].messages);
     }
   }, [activeContactIndex, contacts]);
@@ -55,7 +52,6 @@ const Chat = (props) => {
       messages: []};
     app_data[username].contacts.push(me);
     app_data["oriel"].contacts.push(newContact);
-    console.log(app_data);
     setContacts([...app_data["oriel"].contacts]);
     setActiveContactIndex(app_data["oriel"].contacts.length-1);
   };

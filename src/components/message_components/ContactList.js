@@ -3,7 +3,6 @@ import './Chat.css'
 const ContactList = (props) => {
   const[activeState,setActiveState] = useState("")
   useEffect(() => {
-      console.log(props.activeContactIndex === props.id)
     if (props.activeContactIndex === props.id) {
       setActiveState(" active")
     }

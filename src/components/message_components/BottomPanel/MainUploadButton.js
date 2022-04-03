@@ -42,9 +42,16 @@ const MainUploadButton = props => {
         const date = new Date();
         const newMessage = { type: fileType, from: "me", date, content: URL.createObjectURL(selectedFile) };
         app_data[user].contacts[props.index].messages.push(newMessage);
-        const contact = app_data[user].contacts[props.index];
-        app_data[user].contacts.sort((x,y) => {return x==contact ? 1 : y==contact ? -1 : 0;})
+        const targetContact = app_data[user].contacts[props.index];
+        app_data[user].contacts.sort((x,y) => {return x==targetContact ? 1 : y==targetContact ? -1 : 0;})
         console.log(app_data[user].contacts)
+        const otherUser = app_data[user].contacts[app_data[user].contacts.length-1].username;
+        app_data[otherUser].contacts.forEach((contact,index) => {
+            if(contact.username===user){
+                contact.messages.push({...newMessage,from : "you"});
+                app_data[otherUser].contacts.sort((x,y) => {return x==contact ? 1 : y==contact ? -1 : 0;})
+            }
+        })
         props.setActiveContactIndex(app_data[user].contacts.length-1)
         props.setContacts([...app_data[user].contacts]);
         {/**for now we support only in 3 type of messages from special share option. */ }
