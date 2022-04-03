@@ -9,10 +9,10 @@ import PhotoVidModal from './UploadModals/UploadModal';
 import ChooseFile from './UploadModals/ChooseFile';
 import LocationUpload from './UploadModals/LocationUpload';
 import { useState } from 'react';
-import { getLastMessage } from '../chat_utils'
+import { getLastMessage,app_data } from '../chat_utils'
 
 const MainUploadButton = props => {
-
+    const user = props.user;
     const [selectedFile, setSelectedFile] = useState();
     const [fileType, setFileType] = useState(null);
 
@@ -41,18 +41,12 @@ const MainUploadButton = props => {
         {/**It will create a message according to the data it gets from upload choice */ }
         const date = new Date();
         const newMessage = { type: fileType, from: "me", date, content: URL.createObjectURL(selectedFile) };
-        
-        console.log(props.contactsChats[0],props.contactsChats[1],props.index)
-        const newMessagesData = [...props.contactsChats[props.index].messagesData, newMessage];
-        let newContact = {...props.contactsChats[props.index],messagesData : newMessagesData};
-        newContact = {...newContact,getLastMessage};
-        let contactsChatsCopy = [...props.contactsChats];
-        contactsChatsCopy.splice(props.index,1);
-        console.log(contactsChatsCopy)
-        contactsChatsCopy.push(newContact);
-        console.log(contactsChatsCopy)
-        props.setContactsChats(contactsChatsCopy)
-        props.setActiveContactIndex(contactsChatsCopy.length-1)
+        app_data[user].contacts[props.index].messages.push(newMessage);
+        const contact = app_data[user].contacts[props.index];
+        app_data[user].contacts.sort((x,y) => {return x==contact ? 1 : y==contact ? -1 : 0;})
+        console.log(app_data[user].contacts)
+        props.setActiveContactIndex(app_data[user].contacts.length-1)
+        props.setContacts([...app_data[user].contacts]);
         {/**for now we support only in 3 type of messages from special share option. */ }
     }
 

@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import './Connect.css'
 import { users } from '../user_details';
+import { app_data } from './message_components/chat_utils';
+import avatar from '../pictures/avatar.png';
 
 const Register = (props) => {
     const usernameRef = useRef();
@@ -8,8 +10,23 @@ const Register = (props) => {
     const passwordRef = useRef();
     const submitHandler = (event) => {
         event.preventDefault();
-        users.push({ username: usernameRef.current.value, password: passwordRef.current.value, displayName: displayNameRef.current.value });
-        console.log(users);
+        const username = usernameRef.current.value;
+        const password = passwordRef.current.value;
+        const displayName = displayNameRef.current.value;
+        if(app_data && app_data[username]){
+            console.log("Username already in use")
+        }
+        else{
+            app_data[username]= {
+                password,
+                displayName,
+                picture : avatar,
+                contacts : {
+                  
+                }
+              };
+            console.log(app_data);
+        }
     }
 
     return (<div class="grid" className='grid'>

@@ -1,4 +1,5 @@
 import { useEffect,useState } from "react";
+import './Chat.css'
 const ContactList = (props) => {
   const[activeState,setActiveState] = useState("")
   useEffect(() => {
@@ -23,7 +24,7 @@ const ContactList = (props) => {
       }
       onClick={clickHandler}
     >
-      <div> {props.picture} </div>
+      <div class = "contact-img"><img src={props.picture} class="img-fluid rounded"/></div>
       <div className="ms-2 me-auto">
         <div className="fw-bold"> {props.name} </div>
         {props.lastMessage}

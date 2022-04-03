@@ -11,14 +11,15 @@ import './MessagesBox.css'
 import { Row } from "react-bootstrap";
 
 const MessagesBox = (props) => {
-  const messages = props.messagesData;
+  const messages = props.messages;
+  console.log(messages)
   const len = messages.length;
-  console.log(len)
+  
 
   return (
     <div class="col-12 container-end">
       <div class="col message-scroll ">
-        {props.messagesData
+        {props.messages
           .slice(0)
           .reverse()
           .map((message, index, reversedArr) => {
@@ -41,6 +42,7 @@ const MessagesBox = (props) => {
                       from={message.from}
                       time={dateToTime(message.date)}
                       text={message.content}
+                      key={index}
                     />
                   </div>
                   {divider}

@@ -1,13 +1,19 @@
 import { useRef } from 'react';
 import './Connect.css'
 import { users } from '../user_details';
+import { app_data } from './message_components/chat_utils';
 
 const Login = (props) => {
     const usernameRef = useRef();
     const passwordRef = useRef();
     const submitHandler = (event) => {
         event.preventDefault();
-        
+        const username = usernameRef.current.value;
+        const password = passwordRef.current.value;
+        if(app_data && app_data[username] && app_data[username].password===password){
+            console.log("Logged in");
+        }
+        else console.log("Invalid username or password")
     }
 
     return (<div class="grid" className='grid'>

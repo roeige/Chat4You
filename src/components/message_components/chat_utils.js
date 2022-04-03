@@ -2,6 +2,7 @@ import waterfall from "../../videos/waterfall.mp4";
 import audio from "../../audio/audio.mp3";
 import france1 from "../../pictures/france1.jpg";
 import { Fragment } from "react";
+import avatar from "../../pictures/avatar.png";
 
 export const messages = [
   { type: "text", from: "you", time: "10:00", content: "Hello" },
@@ -35,7 +36,7 @@ export const getLastMessage = (data) => {
   if (lastMessage.type === "image")
     return (
       <Fragment>
-        <i class="bi bi-image"/> Photo
+        <i class="bi bi-image" /> Photo
       </Fragment>
     );
   if (lastMessage.type === "voice")
@@ -75,22 +76,32 @@ export const getTimeAgo = (data) => {
   if (day === 1) return day + " day ago";
   if (hour && hour > 1) return hour + " hours ago";
   if (hour === 1) return hour + " hour ago";
-  if(minutes && minutes>1) return minutes + " minutes ago"
-  if(minutes===1) return minutes + " minute ago"; 
+  if (minutes && minutes > 1) return minutes + " minutes ago";
+  if (minutes === 1) return minutes + " minute ago";
   return "now";
 };
 
-export const dateToTime = date =>{
-  return String(date.getHours()).padStart(2,'0') + ":" + String(date.getMinutes()).padStart(2,'0')
+export const dateToTime = (date) => {
+  return (
+    String(date.getHours()).padStart(2, "0") +
+    ":" +
+    String(date.getMinutes()).padStart(2, "0")
+  );
 };
 
-export const dateToString = date => {
+export const dateToString = (date) => {
   const month = date.getUTCMonth() + 1; //months from 1-12
-    const day = date.getUTCDate();
-    const year = date.getUTCFullYear();
+  const day = date.getUTCDate();
+  const year = date.getUTCFullYear();
 
-    return String(day).padStart(2,'0') + "/" + String(month).padStart(2,'0') + "/" + year;
-}
+  return (
+    String(day).padStart(2, "0") +
+    "/" +
+    String(month).padStart(2, "0") +
+    "/" +
+    year
+  );
+};
 
 export const contacts = [
   {
@@ -160,3 +171,78 @@ export const contacts = [
     picture: defaultPicture,
   },
 ];
+
+export const app_data = {
+  oriel: {
+    password: "orielgg",
+    displayName: "Oriel Zehavi",
+    picture: avatar,
+    contacts: [
+      {
+        username: "roeigh",
+        displayName: "Roei Gehasi",
+        picture : avatar,
+        messages: [
+          {
+            type: "text",
+            from: "you",
+            date: new Date(2022, 2, 4, 5, 50),
+            content: "Bye",
+          },
+          {
+            type: "text",
+            from: "me",
+            date: new Date(2022, 2, 4, 5, 50),
+            content: "Hi",
+          },
+          {
+            type: "text",
+            from: "me",
+            date: new Date(2022, 2, 4, 5, 50),
+            content: "Sup",
+          },
+        ],
+      },
+    ],
+  },
+  roeigh: {
+    password: "roeigg",
+    displayName: "Roei Gehasi",
+    picture: avatar,
+    contacts: [
+      {
+        username: "oriel",
+        displayName: "Oriel Zehavi",
+        picture : avatar,
+        messages: [
+          {
+            type: "text",
+            from: "me",
+            date: new Date(2022, 2, 4, 5, 50),
+            content: "Bye",
+          },
+          {
+            type: "text",
+            from: "you",
+            date: new Date(2022, 2, 4, 5, 50),
+            content: "Hi",
+          },
+          {
+            type: "text",
+            from: "you",
+            date: new Date(2022, 2, 4, 5, 50),
+            content: "Sup",
+          },
+        ],
+      },
+    ],
+  },
+  "test":{
+    password: "roeigg",
+    displayName: "Test User",
+    picture: avatar,
+    contacts: [
+      
+      ]
+    }
+};

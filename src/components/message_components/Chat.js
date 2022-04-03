@@ -13,39 +13,54 @@ import {
   defaultPicture,
   getLastMessage,
   getTimeAgo,
+  app_data
 } from "./chat_utils";
 import { useEffect } from "react";
+import avatar from '../../pictures/avatar.png';
 
 const Chat = (props) => {
-  console.log("Refreshed");
-  const [messagesData, setMessagesData] = useState([]);
-  const [contactsChats, setContactsChats] = useState(contacts);
+  const user = props.user;
+  const [messages, setMessages] = useState([]);
+  const [contacts, setContacts] = useState(app_data[user].contacts);
   const [activeContactIndex, setActiveContactIndex] = useState(null);
   const showContactChat = activeContactIndex === null ? false : true;
+  console.log(app_data)
 
 
   useEffect(() => {
-    console.log(contactsChats);
+    console.log(contacts);
     if (activeContactIndex != null) {
-      setMessagesData(contactsChats[activeContactIndex].messagesData);
+      console.log(activeContactIndex)
+      setMessages(contacts[activeContactIndex].messages);
     }
-  }, [activeContactIndex, contactsChats]);
+  }, [activeContactIndex, contacts]);
 
-  const handleAddingContact = (contactName) => {
+
+  const handleAddingContact = (username) => {
+    // displayName or username?
+    // if username does not exist?
+    // if trying to add username already on contacts
+    // is adding username to my contacts list means adding my username to his contacts list?
+    if(app_data && !app_data[username]){ alert("There is no user with that user name, please enter a valid username to add"); return;}
     const newContact = {
-      name: contactName,
-      messagesData: [],
-      get lastMessage() {
-        return getLastMessage(this.messagesData);
-      },
-      timeAgo: 60,
-      picture: defaultPicture,
+      username,
+      displayName : app_data[username].displayName,
+      messages: [],
+      picture: avatar,
     };
-    setContactsChats([...contactsChats, newContact]);
-    setActiveContactIndex(contactsChats.length);
+    const me = {
+      username: "oriel",
+      displayName: "Oriel Zehavi",
+      picture : avatar,
+      messages: []};
+    app_data[username].contacts.push(me);
+    app_data["oriel"].contacts.push(newContact);
+    console.log(app_data);
+    setContacts([...app_data["oriel"].contacts]);
+    setActiveContactIndex(app_data["oriel"].contacts.length-1);
   };
 
-  //refresh contactsChats (right side) every 1 minute
+  //refresh contacts (right side) every 30 seconds
   const [fakeCurrentDate, setFakeCurrentDate] = useState(new Date()); // default value can be anything you want
 
   useEffect(() => {
@@ -73,18 +88,18 @@ const Chat = (props) => {
           <Col>
             <div className="col grid-background">
               <ol className="flex-col d-flex list-group contact-list">
-                {contactsChats
+                {contacts
                   .slice(0)
                   .reverse()
                   .map((chat, index) => {
                     return (
                       <ContactList
-                        name={chat.name}
-                        lastMessage={getLastMessage(chat.messagesData)}
-                        timeAgo={getTimeAgo(chat.messagesData)}
+                        name={chat.displayName}
+                        lastMessage={getLastMessage(chat.messages)}
+                        timeAgo={getTimeAgo(chat.messages)}
                         picture={chat.picture}
                         key={index}
-                        id={contactsChats.length - 1 - index}
+                        id={contacts.length - 1 - index}
                         activeContactIndex={activeContactIndex}
                         setActiveContactIndex={setActiveContactIndex}
                       />
@@ -96,15 +111,16 @@ const Chat = (props) => {
           <Col xs={8} className="container-relative">
             {showContactChat && (
               <Fragment>
-                <MessagesBox messagesData={messagesData} />
+                <MessagesBox messages={messages} />
                 <Row>
                   <MessageSender
-                    messagesData={messagesData}
-                    setMessagesData={setMessagesData}
-                    contactsChats={contactsChats}
-                    setContactsChats={setContactsChats}
+                    messages={messages}
+                    setMessages={setMessages}
+                    contacts={contacts}
+                    setContacts={setContacts}
                     index={activeContactIndex}
                     setActiveContactIndex={setActiveContactIndex}
+                    user = {user}
                   />
                 </Row>
               </Fragment>
