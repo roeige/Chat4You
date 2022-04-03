@@ -112,6 +112,8 @@
 .upper-bar{
   background-color: #f0f2f5;
   padding : 1%;
+  padding-bottom: 0;
+  padding-top: 0;
 }
 
 .upper-bar-btn{

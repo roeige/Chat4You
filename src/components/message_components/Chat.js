@@ -38,7 +38,7 @@ const Chat = (props) => {
     // if username does not exist?
     // if trying to add username already on contacts
     // is adding username to my contacts list means adding my username to his contacts list?
-    if(app_data && !app_data[username]){ alert("There is no user with that user name, please enter a valid username to add"); return;}
+    if(app_data && !app_data[username]){ alert("There is no user with that user name, please enter a valid username to add"); return false;}
     const newContact = {
       username,
       displayName : app_data[username].displayName,

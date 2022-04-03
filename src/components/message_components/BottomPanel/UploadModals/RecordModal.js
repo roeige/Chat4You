@@ -1,6 +1,5 @@
 import { Fragment, useState } from "react";
-import RecordUpload from "./RecordUpload";
-import { Modal, Button } from "react-bootstrap";
+import {Button } from "react-bootstrap";
 import "./Upload.css";
 const RecordModal = (props) => {
   const [showButton, setShowButton] = useState(true);
