@@ -103,7 +103,6 @@ export const dateToString = (date) => {
   );
 };
 
-
 export const app_data = {
   oriel: {
     password: "orielgg",
@@ -113,7 +112,7 @@ export const app_data = {
       {
         username: "roeigh",
         displayName: "Roei Gehasi",
-        picture : avatar,
+        picture: avatar,
         messages: [
           {
             type: "text",
@@ -145,7 +144,7 @@ export const app_data = {
       {
         username: "oriel",
         displayName: "Oriel Zehavi",
-        picture : avatar,
+        picture: avatar,
         messages: [
           {
             type: "text",
@@ -169,12 +168,31 @@ export const app_data = {
       },
     ],
   },
-  "test":{
+  test: {
     password: "roeigg",
     displayName: "Test User",
     picture: avatar,
-    contacts: [
-      
-      ]
+    contacts: [],
+  },
+};
+
+export const addNewMessage = ({newMessage,user, index,setActiveContactIndex,setContacts}) => {
+  app_data[user].contacts[index].messages.push(newMessage);
+  const targetContact = app_data[user].contacts[index];
+  app_data[user].contacts.sort((x, y) => {
+    return x == targetContact ? 1 : y == targetContact ? -1 : 0;
+  });
+  console.log(app_data[user].contacts);
+  const otherUser =
+    app_data[user].contacts[app_data[user].contacts.length - 1].username;
+  app_data[otherUser].contacts.forEach((contact, index) => {
+    if (contact.username === user) {
+      contact.messages.push({ ...newMessage, from: "you" });
+      app_data[otherUser].contacts.sort((x, y) => {
+        return x == contact ? 1 : y == contact ? -1 : 0;
+      });
     }
+  });
+  setActiveContactIndex(app_data[user].contacts.length - 1);
+  setContacts([...app_data[user].contacts]);
 };

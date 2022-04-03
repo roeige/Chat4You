@@ -3,7 +3,7 @@ import { InputGroup, FormControl, Button } from 'react-bootstrap';
 import MainUploadButton from './MainUploadButton';
 import './BottomPanel.css';
 import TextMessage from '../BubbleMessage/TextMessage';
-import { app_data } from '../chat_utils';
+import { app_data,addNewMessage } from '../chat_utils';
 const shareIcon = <svg xmlns="http://www.w3.org/2000/svg"
   width="16"
   height="16"
@@ -18,7 +18,7 @@ const MessageSender = (props) => {
     console.log("Value is :" + textValue);
     const date = new Date();
     const newMessage = { type: "text", from: "me", date, content: textValue }
-    app_data[props.user].contacts[props.index].messages.push(newMessage);
+    addNewMessage({newMessage,user : props.user,index : props.index, setActiveContactIndex : props.setActiveContactIndex, setContacts : props.setContacts});
     setValue("");
   }
   return (
