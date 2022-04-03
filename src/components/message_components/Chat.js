@@ -69,19 +69,19 @@ const Chat = (props) => {
     <Fragment>
       <div className="container grid grid-background chat-background">
         <div class="row row-eq-height upper-bar">
-          <Col xs={4}>
+          <Col xs={4} className = "padding-left-right-0">
             <Row>
-              <TopBarLeft handleAddingContact={handleAddingContact} />
+              <TopBarLeft user = {user} picture = {app_data[user].picture} displayName = {app_data[user].displayName} handleAddingContact={handleAddingContact} />
             </Row>
           </Col>
           <Col xs={8}>
             <Row>
-              <TopBarRight />
+              <TopBarRight picture = {activeContactIndex!== null ? contacts[activeContactIndex].picture : ""} displayName = {activeContactIndex!==null ? contacts[activeContactIndex].displayName : ""} />
             </Row>
           </Col>
         </div>
         <Row className="lower-row">
-          <Col>
+          <Col className = "padding-left-right-0">
             <div className="col grid-background">
               <ol className="flex-col d-flex list-group contact-list">
                 {contacts

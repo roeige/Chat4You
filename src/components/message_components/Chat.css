@@ -82,7 +82,7 @@
     flex-direction: column-reverse;
     position: absolute;
     padding-bottom: 7%;
-    padding-right : 3%;
+    padding-right : 0;
   }
   
   .end{
@@ -90,7 +90,8 @@
     bottom: 0px;
   }
 .message-scroll{
-  background-image: url(../../pictures/chat_background.jpg);
+  background-color: #fceec4;
+
     overflow-y: scroll;
     overflow-x:hidden;
     flex-direction: column-reverse !important;
@@ -104,7 +105,8 @@
 
 .container-relative{
   position: relative;
-  
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .upper-bar{
@@ -132,7 +134,15 @@ btn-outline-secondary::after{
 
 }
 
-.contact-img{
+.left-contact-img{
   max-width: 15%;
   height: auto;
 }
+
+.padding-left-right-0{
+  padding-left : 0 !important;
+  padding-right : 0 !important;
+}
+
+
+
