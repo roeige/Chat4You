@@ -7,7 +7,10 @@ const AddNewContact = props =>{
   const contactRef = useRef('');
 
   const handleClick = () => {
-    props.handleAddingContact(contactRef.current.value);
+    if(props.handleAddingContact(contactRef.current.value)==false){
+      contactRef.current.value = "";
+      return;
+    };
     props.handleClose();
   }
     return (
