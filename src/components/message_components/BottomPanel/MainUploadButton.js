@@ -1,15 +1,15 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import SplitButton from 'react-bootstrap/SplitButton'
 import DropdownButton from 'react-bootstrap/DropdownButton'
-import PhotoModal from '../../message_components/BottomPanel/UploadModals/UploadModal';
-import VideoUpload from '../../message_components/BottomPanel/UploadModals/VideoUpload';
-import PhotoUpload from '../message_components/BottomPanel/UploadModals/PhotoUpload';
-import RecordUpload from '../../message_components/BottomPanel/UploadModals/RecordUpload';
-import PhotoVidModal from '../../message_components/BottomPanel/UploadModals/UploadModal';
-import ChooseFile from './ChooseFile';
-import LocationUpload from '../message_components/BottomPanel/UploadModals/LocationUpload';
+import PhotoModal from './UploadModals/UploadModal';
+import VideoUpload from './UploadModals/VideoUpload';
+import PhotoUpload from './UploadModals/PhotoUpload';
+import RecordUpload from './UploadModals/RecordUpload';
+import PhotoVidModal from './UploadModals/UploadModal';
+import ChooseFile from './UploadModals/ChooseFile';
+import LocationUpload from './UploadModals/LocationUpload';
 import { useState } from 'react';
-import { getLastMessage,app_data, addNewMessage } from '../../message_components/chat_utils'
+import { getLastMessage,app_data, addNewMessage } from '../chat_utils'
 
 const MainUploadButton = props => {
     const user = props.user;
