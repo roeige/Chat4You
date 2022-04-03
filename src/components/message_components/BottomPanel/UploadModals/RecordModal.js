@@ -46,23 +46,25 @@ const RecordModal = (props) => {
     <Fragment>
       {showButton && (
         <Button
-          className="recordButton"
+          id=""
+          className="notRec recordButton"
           onClick={() => {
             handleStop();
             Recording();
           }}
           type="submit center"
         >
-          <i class="bi bi-record-circle"></i>
+          <i className="bi bi-record-circle fa-2x "></i>
         </Button>
       )}
       {!showButton && (
         <Button
-          className="recordButton"
+
+          className="Rec recordButton"
           onClick={stopRecording}
           type="submit center"
         >
-          <i class="bi bi-stop-circle-fill"></i>
+          <i className="bi bi-stop-circle-fill fa-2x "></i>
         </Button>
       )}
     </Fragment>
