@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import React from "react";
 import { Dropdown } from "react-bootstrap";
 import UploadModal from "./UploadModal";
-import ChooseFile from "./ChooseFile";
+import ChooseFile from "../../../rightDiv/ChooseFile";
 const UploadPhoto = props => {
     const [modalShow, setModalShow] = React.useState(false);
     const handleClose = () => setModalShow(false);
