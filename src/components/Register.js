@@ -1,12 +1,12 @@
 import { useRef, useState } from 'react';
 import './Connect.css'
 import { users } from '../user_details';
-import { app_data } from './message_components/chat_utils';
+import { app_data } from './app_data'
 import avatar from '../pictures/avatar.png';
-const onPictureUpload = event => {
-    setPicture(event.target.files[0]);
-}
+import { Form } from 'react-bootstrap';
+
 const Register = (props) => {
+    const [picture,setPicture]=useState(null);
     const usernameRef = useRef();
     const displayNameRef = useRef();
     const passwordRef = useRef();
@@ -16,11 +16,15 @@ const Register = (props) => {
     const [passValid, setPassValid] = useState("");
     const [nickFeedback, setNickFeedback] = useState("");
     const [nickValid, setNickValid] = useState("");
+    const onPictureUpload = event => {
+        setPicture(event.target.files[0]);
+    }
     const submitHandler = (event) => {
         event.preventDefault();
         const username = usernameRef.current.value;
         const password = passwordRef.current.value;
         const displayName = displayNameRef.current.value;
+        const userPicture = picture ? URL.createObjectURL(picture) : avatar;
         //first after every click fresh all fields.
         setFeedback("");
         setValid("");

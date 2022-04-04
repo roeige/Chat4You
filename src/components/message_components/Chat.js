@@ -39,11 +39,7 @@ const Chat = (props) => {
       return false;
     }
     if (isInContacts(username, contacts)) {
-<<<<<<< HEAD
       alert("You already have this contact in your contacts list")
-=======
-      alert("You already have this contact in your contacts list");
->>>>>>> Oriel2
       return false;
     }
     const newContact = {
