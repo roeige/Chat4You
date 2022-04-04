@@ -11,7 +11,7 @@ function App() {
   return (
     <Background>
     {/*<Chat user = {user}/>*/}
-    <Register/>
+    <Login/>
     </Background>
   );
 }
