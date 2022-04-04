@@ -98,7 +98,7 @@ const Chat = (props) => {
         <Row className="lower-row">
           <Col className="padding-left-right-0">
             <div className="col grid-background">
-              <ol className="flex-col d-flex list-group contact-list">
+              <ol className="flex-col d-flex list-group contact-list scrollbar scrollbar-primary">
                 {contacts
                   .slice(0)
                   .reverse()
