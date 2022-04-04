@@ -3,10 +3,10 @@ import './Connect.css'
 import { users } from '../user_details';
 import { app_data } from './app_data'
 import avatar from '../pictures/avatar.png';
-import { Form } from 'react-bootstrap';
+import { Form, FloatingLabel, FormControl } from 'react-bootstrap';
 
 const Register = (props) => {
-    const [picture,setPicture]=useState(null);
+    const [picture, setPicture] = useState(null);
     const usernameRef = useRef();
     const displayNameRef = useRef();
     const passwordRef = useRef();
@@ -81,46 +81,55 @@ const Register = (props) => {
             <div className="row mb icon">
                 <p className="text-center fs-3">Register</p>
             </div>
-            <form>
-                <div className="row g-3 align-items-center">
-                    <div className="col padding">
-                        <label for="inputusername" className="col-form-label">User Name</label>
-                    </div>
-                    <div className="col-auto">
-                        <input type="username" className={" form-control is-" + valid} id="inputusername" ref={usernameRef} />
-                        <small className={valid + "-feedback m-0"}>{feedback}</small>
-                    </div>
-                </div>
-                <div className="row g-3 align-items-center">
-                    <div className="col padding">
-                        <label for="inputPassword3" className="col-form-label">Password</label>
-                    </div>
-                    <div className="col-auto">
-                        <input ref={passwordRef} type="password" className={" form-control is-" + passValid} id="inputPassword3" />
-                        <small className={passValid + "-feedback m-0"}>{passFeedback}</small>
-                    </div>
-                </div>
-                <div className="row g-3 align-items-center">
-                    <div className="col padding">
-                        <label for="input-display-name" className="col-form-label">Display name</label>
-                    </div>
-                    <div className="col-auto">
-                        <input ref={displayNameRef} type="display-name" className={" form-control is-" + nickValid} id="display-name" />
-                        <small className={nickValid + "-feedback m-0"}>{nickFeedback}</small>
-                    </div>
-                    <Form.Group controlId="formFile" className="mb-3">
-                        <Form.Label>Upload profile picture</Form.Label>
-                        <Form.Control type="file" onChange={onPictureUpload} />
-                    </Form.Group>
+            <FloatingLabel hasValiditation className={"mb-3 is-" + valid} controlId="username" label="Username">
+                <Form.Control type="username" placeholder="username" ref={usernameRef} isInvalid={valid} />
+                <FormControl.Feedback type={valid}>
+                    {feedback}
+                </FormControl.Feedback>
+            </FloatingLabel>
 
-                </div>
-                <div className="row g-3 align-items-center padding"><button type="submit" className="btn btn-primary" onClick={submitHandler}>Sign up</button></div>
-                <div className="row g-3 align-items-center"><p>&nbsp;&nbsp;Already registered?&nbsp;
-                    <a href="/login" className="link-primary">Click here</a> to login</p></div>
-            </form>
+            <FloatingLabel className="mb-3" controlId="displayName" label="Display name">
+                <Form.Control type="displayName" placeholder="displayName" ref={displayNameRef} isInvalid={nickValid} />
+                <FormControl.Feedback type={nickValid}>
+                    {nickFeedback}
+                </FormControl.Feedback>
+            </FloatingLabel>
+
+
+            <Form.Group controlId="formFile" className="mb-3">
+                <Form.Label>Upload profile picture</Form.Label>
+                <Form.Control type="file" onChange={onPictureUpload} />
+            </Form.Group>
+            <FloatingLabel className="mb-3" controlId="password" label="Password">
+                <Form.Control type="password" placeholder="password" ref={passwordRef} />
+            </FloatingLabel>
+
+            <FloatingLabel className={"mb-3 is-" + valid} controlId="passwordValidation" label="Confirm password">
+                <Form.Control type="password" placeholder="passwordVal" ref={passwordRef} isInvalid={passValid} isValid={passValid}/>
+                <FormControl.Feedback type={passValid}>
+                    {passFeedback}
+                </FormControl.Feedback>
+            </FloatingLabel>
+            <div class="row g-3 align-items-center padding">
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    onClick={submitHandler}
+                >
+                    Sign up
+                </button>
+            </div>
+            <div class="row g-3 align-items-center">
+                <p>
+                    &nbsp;&nbsp;Already registered?&nbsp;
+                    <a href="/login" class="link-primary">
+                        Click here
+                    </a>{" "}
+                    to login
+                </p>
+            </div>
         </div>
     </div>
-
     );
 };
 export default Register;
