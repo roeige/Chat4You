@@ -179,12 +179,24 @@ export const app_data = {
 export const addNewMessage = ({newMessage,user, index,setActiveContactIndex,setContacts}) => {
   app_data[user].contacts[index].messages.push(newMessage);
   const targetContact = app_data[user].contacts[index];
+
+  //move the contact to last on array
   app_data[user].contacts.sort((x, y) => {
     return x == targetContact ? 1 : y == targetContact ? -1 : 0;
   });
-  console.log(app_data[user].contacts);
   const otherUser =
     app_data[user].contacts[app_data[user].contacts.length - 1].username;
+  
+  const chatExistOnTarget = app_data[otherUser].contacts.some(contact => contact.username===user);
+  if(!chatExistOnTarget){
+    const me = {
+      username : user,
+      displayName: app_data[user].displayName,
+      messages: [],
+      picture: app_data[user].picture,
+    };
+    app_data[otherUser].contacts.push(me);
+  }
   app_data[otherUser].contacts.forEach((contact, index) => {
     if (contact.username === user) {
       contact.messages.push({ ...newMessage, from: "you" });
@@ -196,3 +208,7 @@ export const addNewMessage = ({newMessage,user, index,setActiveContactIndex,setC
   setActiveContactIndex(app_data[user].contacts.length - 1);
   setContacts([...app_data[user].contacts]);
 };
+
+export const isInContacts = (username,contacts) => {
+  return contacts.some(contact => contact.username === username);
+}

@@ -6,25 +6,25 @@ import MessagesBox from "./BubbleMessage/MessagesBox";
 import MessageSender from "./BottomPanel/MessageSender";
 import { Fragment, useState } from "react";
 
+
 import TopBarLeft from "./TopBarLeft";
 import TopBarRight from "./TopBarRight";
 import {
-  contacts,
-  defaultPicture,
   getLastMessage,
   getTimeAgo,
-  app_data
+  app_data,
+  isInContacts
 } from "./chat_utils";
 import { useEffect } from "react";
-import avatar from '../../pictures/avatar.png';
+import avatar from "../../pictures/avatar.png";
 
 const Chat = (props) => {
+  console.log(app_data)
   const user = props.user;
   const [messages, setMessages] = useState([]);
   const [contacts, setContacts] = useState(app_data[user].contacts);
   const [activeContactIndex, setActiveContactIndex] = useState(null);
   const showContactChat = activeContactIndex === null ? false : true;
-
 
   useEffect(() => {
     if (activeContactIndex != null) {
@@ -32,28 +32,27 @@ const Chat = (props) => {
     }
   }, [activeContactIndex, contacts]);
 
-
   const handleAddingContact = (username) => {
-    // displayName or username?
-    // if username does not exist?
-    // if trying to add username already on contacts
-    // is adding username to my contacts list means adding my username to his contacts list?
-    if(app_data && !app_data[username]){ alert("There is no user with that user name, please enter a valid username to add"); return false;}
+    console.log(username)
+    if (app_data && !app_data[username]) {
+      alert(
+        "There is no user with that username, please enter a valid username to add"
+      );
+      return false;
+    }
+    if(isInContacts(username,contacts)){
+      alert("You already have this contact in your contacts list")
+      return false;
+    }
     const newContact = {
       username,
-      displayName : app_data[username].displayName,
+      displayName: app_data[username].displayName,
       messages: [],
       picture: avatar,
     };
-    const me = {
-      username: "oriel",
-      displayName: "Oriel Zehavi",
-      picture : avatar,
-      messages: []};
-    app_data[username].contacts.push(me);
     app_data["oriel"].contacts.push(newContact);
     setContacts([...app_data["oriel"].contacts]);
-    setActiveContactIndex(app_data["oriel"].contacts.length-1);
+    setActiveContactIndex(app_data["oriel"].contacts.length - 1);
   };
 
   //refresh contacts (right side) every 30 seconds
@@ -69,19 +68,35 @@ const Chat = (props) => {
     <Fragment>
       <div className="container grid grid-background chat-background">
         <div class="row row-eq-height upper-bar">
-          <Col xs={4} className = "padding-left-right-0">
+          <Col xs={4} className="padding-left-right-0">
             <Row>
-              <TopBarLeft user = {user} picture = {app_data[user].picture} displayName = {app_data[user].displayName} handleAddingContact={handleAddingContact} />
+              <TopBarLeft
+                user={user}
+                picture={app_data[user].picture}
+                displayName={app_data[user].displayName}
+                handleAddingContact={handleAddingContact}
+              />
             </Row>
           </Col>
           <Col xs={8}>
             <Row>
-              <TopBarRight picture = {activeContactIndex!== null ? contacts[activeContactIndex].picture : ""} displayName = {activeContactIndex!==null ? contacts[activeContactIndex].displayName : ""} />
+              <TopBarRight
+                picture={
+                  activeContactIndex !== null
+                    ? contacts[activeContactIndex].picture
+                    : ""
+                }
+                displayName={
+                  activeContactIndex !== null
+                    ? contacts[activeContactIndex].displayName
+                    : ""
+                }
+              />
             </Row>
           </Col>
         </div>
         <Row className="lower-row">
-          <Col className = "padding-left-right-0">
+          <Col className="padding-left-right-0">
             <div className="col grid-background">
               <ol className="flex-col d-flex list-group contact-list">
                 {contacts
@@ -116,7 +131,7 @@ const Chat = (props) => {
                     setContacts={setContacts}
                     index={activeContactIndex}
                     setActiveContactIndex={setActiveContactIndex}
-                    user = {user}
+                    user={user}
                   />
                 </Row>
               </Fragment>
