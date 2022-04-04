@@ -10,12 +10,11 @@ const Register = (props) => {
     const usernameRef = useRef();
     const displayNameRef = useRef();
     const passwordRef = useRef();
-    const [feedback, setFeedback] = useState("");
-    const [valid, setValid] = useState("");
-    const [passFeedback, setPassFeedback] = useState("");
-    const [passValid, setPassValid] = useState("");
-    const [nickFeedback, setNickFeedback] = useState("");
-    const [nickValid, setNickValid] = useState("");
+    const confirmPasswordRef = useRef();
+    const [userValid, setValid] = useState([{ valid: "", validFlag: false, invalidFlag: false, feedback: "" }]);
+    const [passValid, setPassValid] = useState([{ valid: "", validFlag: false, invalidFlag: false, feedback: "" }]);
+    const [passConfValid, setPassConfValid] = useState([{ valid: "", validFlag: false, invalidFlag: false, feedback: "" }]);
+    const [nickValid, setNickValid] = useState([{ valid: "", validFlag: false, invalidFlag: false, feedback: "" }]);
     const onPictureUpload = event => {
         setPicture(event.target.files[0]);
     }
@@ -23,42 +22,42 @@ const Register = (props) => {
         event.preventDefault();
         const username = usernameRef.current.value;
         const password = passwordRef.current.value;
+        const confirmPassword = confirmPasswordRef.current.value;
         const displayName = displayNameRef.current.value;
         const userPicture = picture ? URL.createObjectURL(picture) : avatar;
         //first after every click fresh all fields.
-        setFeedback("");
-        setValid("");
-        setNickFeedback("");
-        setNickValid("");
-        setPassValid("");
-        setPassFeedback("");
+        setValid({valid : ""});
+        setPassValid({valid :""});
+        setNickValid({valid : ""});
         //flag to check if one of the statments fails --> we dont want to send and make new user.
         let flag = true;
         if (!username) {
-            setFeedback("Please choose a username");
-            setValid("invalid");
+            setValid({valid:"invalid",validFlag: false,invalidFlag: true, feedback:"Please choose a username"});
         }
         if (app_data && app_data[username]) {
             flag = false;
             console.log("Username already in use")
-            setFeedback("Username already in use");
-            setValid("invalid");
+            setValid({valid:"invalid", validFlag:false,invalidFlag:true,feedback:"Username already in use"});
         }
         if (!password) {
             flag = false;
-            setPassValid("invalid");
-            setPassFeedback("Please choose a password");
+            setPassValid({valid:"invalid",invalidFlag:true,validFlag:false,feedback:"Please choose a password"});
+        }
+        if (password !== confirmPassword) {
+            flag = false;
+            setPassConfValid({valid:"invalid",invalidFlag:true,validFlag:false,feedback:"Please confrim your password"});
+
         }
         if (!displayName) {
             flag = false;
-            setNickFeedback("Please choose a nickname");
-            setNickValid("invalid");
+            setNickValid({ valid: "invalid", validFlag: false, invalidFlag: true, feedback: "Please choose a nickname" });
         }
         if (flag) {
             //set all fields to be valids.
             setValid("valid");
             setPassValid("valid");
             setNickValid("valid");
+            setPassConfValid("valid");
             app_data[username] = {
                 password,
                 displayName,
@@ -81,17 +80,17 @@ const Register = (props) => {
             <div className="row mb icon">
                 <p className="text-center fs-3">Register</p>
             </div>
-            <FloatingLabel hasValiditation className={"mb-3 is-" + valid} controlId="username" label="Username">
-                <Form.Control type="username" placeholder="username" ref={usernameRef} isInvalid={valid} />
-                <FormControl.Feedback type={valid}>
-                    {feedback}
+            <FloatingLabel hasValiditation className={"mb-3 is-" + userValid} controlId="username" label="Username">
+                <Form.Control type="username" placeholder="username" ref={usernameRef} isInvalid={userValid.invalidFlag} isValid={userValid.validFlag} />
+                <FormControl.Feedback type={userValid.valid}>
+                    {userValid.feedback}
                 </FormControl.Feedback>
             </FloatingLabel>
 
             <FloatingLabel className="mb-3" controlId="displayName" label="Display name">
-                <Form.Control type="displayName" placeholder="displayName" ref={displayNameRef} isInvalid={nickValid} />
-                <FormControl.Feedback type={nickValid}>
-                    {nickFeedback}
+                <Form.Control type="displayName" placeholder="displayName" ref={displayNameRef} isInvalid={nickValid.invalidFlag} isValid={nickValid.validFlag} />
+                <FormControl.Feedback type={nickValid.valid}>
+                    {nickValid.feedback}
                 </FormControl.Feedback>
             </FloatingLabel>
 
@@ -101,13 +100,16 @@ const Register = (props) => {
                 <Form.Control type="file" onChange={onPictureUpload} />
             </Form.Group>
             <FloatingLabel className="mb-3" controlId="password" label="Password">
-                <Form.Control type="password" placeholder="password" ref={passwordRef} />
+                <Form.Control type="password" placeholder="password" ref={passwordRef} isInvalid={passValid.invalidFlag} isValid={passValid.validFlag} />
+                <FormControl.Feedback type={passValid.valid}>
+                    {passValid.feedback}
+                </FormControl.Feedback>
             </FloatingLabel>
 
-            <FloatingLabel className={"mb-3 is-" + valid} controlId="passwordValidation" label="Confirm password">
-                <Form.Control type="password" placeholder="passwordVal" ref={passwordRef} isInvalid={passValid} isValid={passValid}/>
-                <FormControl.Feedback type={passValid}>
-                    {passFeedback}
+            <FloatingLabel className={"mb-3 is-" + passValid} controlId="passwordValidation" label="Confirm password">
+                <Form.Control type="password" placeholder="passwordVal" ref={confirmPasswordRef} isInvalid={passConfValid.invalidFlag} isValid={passConfValid.validFlag} />
+                <FormControl.Feedback type={passConfValid.valid}>
+                    {passConfValid.feedback}
                 </FormControl.Feedback>
             </FloatingLabel>
             <div class="row g-3 align-items-center padding">
