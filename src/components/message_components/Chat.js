@@ -6,20 +6,18 @@ import MessagesBox from "./BubbleMessage/MessagesBox";
 import MessageSender from "./BottomPanel/MessageSender";
 import { Fragment, useState } from "react";
 
-
 import TopBarLeft from "./TopBarLeft";
 import TopBarRight from "./TopBarRight";
 import {
   getLastMessage,
   getTimeAgo,
-  app_data,
-  isInContacts
+  isInContacts,
 } from "./chat_utils";
 import { useEffect } from "react";
-import avatar from "../../pictures/avatar.png";
+import { app_data } from "../app_data";
 
 const Chat = (props) => {
-  console.log(app_data)
+  console.log(app_data);
   const user = props.user;
   const [messages, setMessages] = useState([]);
   const [contacts, setContacts] = useState(app_data[user].contacts);
@@ -33,26 +31,26 @@ const Chat = (props) => {
   }, [activeContactIndex, contacts]);
 
   const handleAddingContact = (username) => {
-    console.log(username)
+    console.log(username);
     if (app_data && !app_data[username]) {
       alert(
         "There is no user with that username, please enter a valid username to add"
       );
       return false;
     }
-    if(isInContacts(username,contacts)){
-      alert("You already have this contact in your contacts list")
+    if (isInContacts(username, contacts)) {
+      alert("You already have this contact in your contacts list");
       return false;
     }
     const newContact = {
       username,
       displayName: app_data[username].displayName,
       messages: [],
-      picture: avatar,
+      picture: app_data[username].picture,
     };
-    app_data["oriel"].contacts.push(newContact);
-    setContacts([...app_data["oriel"].contacts]);
-    setActiveContactIndex(app_data["oriel"].contacts.length - 1);
+    app_data[user].contacts.push(newContact);
+    setContacts([...app_data[user].contacts]);
+    setActiveContactIndex(app_data[user].contacts.length - 1);
   };
 
   //refresh contacts (right side) every 30 seconds

@@ -6,13 +6,20 @@ import {addNewMessage } from '../chat_utils';
 
 const MessageSender = (props) => {
   const [textValue, setValue] = useState("");
+
   const onSubmit = () => {
+    if(textValue==="") return;
     console.log("Value is :" + textValue);
     const date = new Date();
     const newMessage = { type: "text", from: "me", date, content: textValue }
     addNewMessage({newMessage,user : props.user,index : props.index, setActiveContactIndex : props.setActiveContactIndex, setContacts : props.setContacts});
     setValue("");
   }
+
+  const onEnterPress = event => {
+    if(event.which===13) onSubmit();
+  }
+  
   return (
     <InputGroup id="bottomPanel" className="mb-3">
       <MainUploadButton user={props.user} index={props.index} messagesData={props.messagesData} setMessagesData={props.setMessagesData} contacts={props.contacts} setContacts={props.setContacts} setActiveContactIndex={props.setActiveContactIndex} />
@@ -23,6 +30,7 @@ const MessageSender = (props) => {
         aria-describedby="basic-addon2"
         onChange={e => setValue(e.target.value)}
         type="text"
+        onKeyPress = {onEnterPress}
       />
       <Button onClick={() => { onSubmit(); }} variant="outline-secondary" id="button-addon2">
         Send

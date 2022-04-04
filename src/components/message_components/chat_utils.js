@@ -1,34 +1,8 @@
-import waterfall from "../../videos/waterfall.mp4";
-import audio from "../../audio/audio.mp3";
-import france1 from "../../pictures/france1.jpg";
+
 import { Fragment } from "react";
-import avatar from "../../pictures/avatar.png";
 
-export const messages = [
-  { type: "text", from: "you", time: "10:00", content: "Hello" },
-  { type: "text", from: "me", time: "10:01", content: "Hello" },
-  { type: "text", from: "me", time: "10:02", content: "Hellodsadasdasdas" },
-  { type: "image", from: "you", time: "10:03", content: france1 },
-  { type: "voice", from: "you", time: "10:04", content: audio },
-  { type: "video", from: "you", time: "10:05", content: waterfall },
-];
+import { app_data } from "../app_data";
 
-export const defaultPicture = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="25"
-    height="25"
-    fill="currentColor"
-    className="bi bi-person-circle"
-    viewBox="0 0 16 16"
-  >
-    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-    <path
-      fill-rule="evenodd"
-      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-    />
-  </svg>
-);
 
 export const getLastMessage = (data) => {
   if (data.length === 0) return "";
@@ -103,78 +77,6 @@ export const dateToString = (date) => {
   );
 };
 
-export const app_data = {
-  oriel: {
-    password: "orielgg",
-    displayName: "Oriel Zehavi",
-    picture: avatar,
-    contacts: [
-      {
-        username: "roeigh",
-        displayName: "Roei Gehasi",
-        picture: avatar,
-        messages: [
-          {
-            type: "text",
-            from: "you",
-            date: new Date(2022, 2, 4, 5, 50),
-            content: "Bye",
-          },
-          {
-            type: "text",
-            from: "me",
-            date: new Date(2022, 2, 4, 5, 50),
-            content: "Hi",
-          },
-          {
-            type: "text",
-            from: "me",
-            date: new Date(2022, 2, 4, 5, 50),
-            content: "Sup",
-          },
-        ],
-      },
-    ],
-  },
-  roeigh: {
-    password: "roeigg",
-    displayName: "Roei Gehasi",
-    picture: avatar,
-    contacts: [
-      {
-        username: "oriel",
-        displayName: "Oriel Zehavi",
-        picture: avatar,
-        messages: [
-          {
-            type: "text",
-            from: "me",
-            date: new Date(2022, 2, 4, 5, 50),
-            content: "Bye",
-          },
-          {
-            type: "text",
-            from: "you",
-            date: new Date(2022, 2, 4, 5, 50),
-            content: "Hi",
-          },
-          {
-            type: "text",
-            from: "you",
-            date: new Date(2022, 2, 4, 5, 50),
-            content: "Sup",
-          },
-        ],
-      },
-    ],
-  },
-  test: {
-    password: "roeigg",
-    displayName: "Test User",
-    picture: avatar,
-    contacts: [],
-  },
-};
 
 export const addNewMessage = ({newMessage,user, index,setActiveContactIndex,setContacts}) => {
   app_data[user].contacts[index].messages.push(newMessage);

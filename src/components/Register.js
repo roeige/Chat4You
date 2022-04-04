@@ -1,10 +1,9 @@
 import { useRef,useState } from "react";
 import "./Connect.css";
-import { users } from "../user_details";
-import { app_data } from "./message_components/chat_utils";
 import avatar from "../pictures/avatar.png";
 import { Col,Row } from "react-bootstrap";
 import { FloatingLabel,Form } from "react-bootstrap";
+import { app_data } from "./app_data";
 
 const Register = (props) => {
   const usernameRef = useRef();
@@ -18,7 +17,7 @@ const Register = (props) => {
     const username = usernameRef.current.value;
     const password = passwordRef.current.value;
     const displayName = displayNameRef.current.value;
-    const userPicture = picture ? picture : avatar;
+    const userPicture = picture ? URL.createObjectURL(picture) : avatar;
     if (app_data && app_data[username]) {
       alert("Username already in use, please type another username")
     } else {
@@ -26,7 +25,7 @@ const Register = (props) => {
         password,
         displayName,
         picture: userPicture,
-        contacts: {},
+        contacts: [],
       };
       console.log(app_data);
     }

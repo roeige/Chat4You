@@ -10,7 +10,7 @@ function App() {
   const [user, setUser] = useState("oriel");
   return (
     <Background>
-    <Chat user={user} />
+    <Chat user = {user} />
     
     </Background>
   );
