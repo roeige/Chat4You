@@ -40,7 +40,7 @@ const Chat = (props) => {
       );
       return false;
     }
-    if(isInContacts(username,contacts)){
+    if (isInContacts(username, contacts)) {
       alert("You already have this contact in your contacts list")
       return false;
     }
