@@ -13,3 +13,21 @@
   padding: 12px;
   position: relative;
 }
+.form-register{
+  width : 27%;
+  height: auto;
+  padding : 2%;
+}
+.form-login{
+  width : 23%;
+  height: auto;
+  padding : 2%;
+}
+
+.row-padding{
+  padding-bottom : 5%;
+}
+
+.placeholder-padding{
+  padding-left : 5%;
+}

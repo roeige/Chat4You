@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import './Connect.css'
 import { users } from '../user_details';
 import { app_data } from './message_components/chat_utils';
+import { FloatingLabel,Form } from 'react-bootstrap';
 
 const Login = (props) => {
     const usernameRef = useRef();
@@ -16,7 +17,7 @@ const Login = (props) => {
         else console.log("Invalid username or password")
     }
 
-    return (<div class="grid" className='grid'>
+    return (<div class="grid form-login" >
         <div class="col">
             <div class="row justify-content-md-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
@@ -26,27 +27,25 @@ const Login = (props) => {
             <div class="row mb icon">
                 <p class="text-center fs-3">Login</p>
             </div>
-            <form>
-                <div class="row g-3 align-items-center">
-                <div class= "col padding">
-                    <label for="inputusername" class="col-form-label">User Name</label>
-                    </div>
-                    <div class="col-auto">
-                        <input type="username" class=" form-control" id="inputusername" ref={usernameRef} />
-                    </div>
-                </div>
-                <div class="row g-3 align-items-center">
-                <div class= "col padding">
-                    <label for="inputPassword3" class="col-form-label">Password</label>
-                    </div>
-                    <div class="col-auto">
-                        <input ref={passwordRef} type="password" class="form-control" id="inputPassword3" />
-                    </div>
-                </div>
+            
+            <>
+
+
+            
+            <FloatingLabel className = "mb-3"  controlId="username" label="Username">
+          <Form.Control type="username" placeholder="username" ref={usernameRef}/>
+        </FloatingLabel>
+
+
+        <FloatingLabel className = "mb-3"  controlId="passwordValidation" label="Confirm password">
+          <Form.Control type="password" placeholder="passwordVal" ref={passwordRef}/>
+        </FloatingLabel>
+
+            </>
                 <div class="row g-3 align-items-center padding"><button type="submit" class="btn btn-primary" onClick={submitHandler}>Login</button></div>
                 <div class="row g-3 align-items-center"><p>&nbsp;&nbsp;Not registered?&nbsp;
                 <a href="/login" class="link-primary">Click here</a> to register</p></div>
-            </form>
+            
         </div>
     </div>);
 
