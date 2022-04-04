@@ -5,6 +5,7 @@ import VideoMessage from "./VideoMessage";
 import ChatMessage from "../ChatMessage";
 import MessageSender from "../BottomPanel/MessageSender";
 import "../Chat.css";
+import "../../Connect.css"
 import { dateToTime,dateToString } from "../chat_utils"
 import { Fragment } from "react";
 import './MessagesBox.css'
@@ -17,8 +18,8 @@ const MessagesBox = (props) => {
   
 
   return (
-    <div class="col-12 container-end">
-      <div class="col message-scroll ">
+    <div class="col-12 container-end ">
+      <div class="col message-scroll scrollbar scrollbar-primary">
         {props.messages
           .slice(0)
           .reverse()

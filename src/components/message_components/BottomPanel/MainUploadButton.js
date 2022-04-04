@@ -24,7 +24,6 @@ const MainUploadButton = props => {
     }
 
     const changeHandlerAudio = audio =>{
-        console.log("Success file audio")
         setSelectedFile(audio);
     }
 
@@ -53,7 +52,7 @@ const MainUploadButton = props => {
             {/**Enter each modal buttons one by one, using components */}
             <PhotoUpload changeHandler={changeHandler} handleSubmission={handleSubmission} setFileType={setFileType} />
             <VideoUpload changeHandler={changeHandler} handleSubmission={handleSubmission} setFileType={setFileType} />
-            <RecordUpload changeHandler={changeHandlerAudio} handleSubmission={handleSubmission} setFileType={setFileType} />
+            <RecordUpload fileType = {fileType} selectedFile = {selectedFile} changeHandler={changeHandlerAudio} handleSubmission={handleSubmission} setFileType={setFileType} />
             <LocationUpload />
         </DropdownButton>
     );

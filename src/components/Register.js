@@ -3,7 +3,9 @@ import './Connect.css'
 import { users } from '../user_details';
 import { app_data } from './message_components/chat_utils';
 import avatar from '../pictures/avatar.png';
-
+const onPictureUpload = event => {
+    setPicture(event.target.files[0]);
+}
 const Register = (props) => {
     const usernameRef = useRef();
     const displayNameRef = useRef();
@@ -64,8 +66,7 @@ const Register = (props) => {
             console.log(app_data);
         }
     }
-
-    return (<div id="enter" className="grid" >
+    return (<div id="enter" className="grid">
         <div className="col">
             <div className="row justify-content-md-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
@@ -77,7 +78,6 @@ const Register = (props) => {
                 <p className="text-center fs-3">Register</p>
             </div>
             <form>
-
                 <div className="row g-3 align-items-center">
                     <div className="col padding">
                         <label for="inputusername" className="col-form-label">User Name</label>
@@ -104,14 +104,19 @@ const Register = (props) => {
                         <input ref={displayNameRef} type="display-name" className={" form-control is-" + nickValid} id="display-name" />
                         <small className={nickValid + "-feedback m-0"}>{nickFeedback}</small>
                     </div>
+                    <Form.Group controlId="formFile" className="mb-3">
+                        <Form.Label>Upload profile picture</Form.Label>
+                        <Form.Control type="file" onChange={onPictureUpload} />
+                    </Form.Group>
+
                 </div>
                 <div className="row g-3 align-items-center padding"><button type="submit" className="btn btn-primary" onClick={submitHandler}>Sign up</button></div>
                 <div className="row g-3 align-items-center"><p>&nbsp;&nbsp;Already registered?&nbsp;
                     <a href="/login" className="link-primary">Click here</a> to login</p></div>
             </form>
         </div>
-    </div>);
+    </div>
 
-
-}
+    );
+};
 export default Register;

@@ -3,7 +3,6 @@ import { Form } from "react-bootstrap";
 const ChooseFile = props => {
 
     const fileUploadHandler = (event) => {
-        console.log(props.type)
         props.setFileType(props.type);
         props.changeHandler(event);
     }
