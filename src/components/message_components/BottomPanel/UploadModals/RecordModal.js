@@ -1,8 +1,10 @@
 import { Fragment, useState } from "react";
-import {Button } from "react-bootstrap";
+import { Button,Row  } from "react-bootstrap";
 import "./Upload.css";
+import audio from '../../../../audio/audio.mp3'
 const RecordModal = (props) => {
   const [showButton, setShowButton] = useState(true);
+  const [record,setRecord] = useState(null);
   const handleStart = () => setShowButton(true);
   const handleStop = () => setShowButton(false);
   var recorder = null;
@@ -11,7 +13,6 @@ const RecordModal = (props) => {
     console.log(window.recorder);
     window.recorder.stop();
     handleStart();
-    props.handleSubmission();
   };
 
   const Recording = async () => {
@@ -28,8 +29,9 @@ const RecordModal = (props) => {
         if (recorder.state === "inactive") {
           const blob = new Blob(chunks, { type: "audio/webm" });
           props.setFileType("voice");
+          setRecord(blob);
           props.changeHandler(blob);
-          stream.getTracks().forEach(t => t.stop());
+          stream.getTracks().forEach((t) => t.stop());
         }
       };
       recorder.start(1000);
@@ -41,6 +43,18 @@ const RecordModal = (props) => {
       console.log("error getting stream", e);
     }
   };
+
+  console.log(record)
+  const recordPreview = (
+    <Fragment>
+      {props.fileType === "voice" && record && (
+        <Row className = "mb3" style={{"padding-top" : "2%"}}><audio controls className="audio-player">
+          <source src={URL.createObjectURL(record)} type="audio/mpeg" />
+        </audio></Row>
+      )}
+      </Fragment>
+  );
+
   return (
     <Fragment>
       {showButton && (
@@ -49,6 +63,7 @@ const RecordModal = (props) => {
           className="notRec recordButton"
           onClick={() => {
             handleStop();
+            setRecord(null);
             Recording();
           }}
           type="submit center"
@@ -56,9 +71,9 @@ const RecordModal = (props) => {
           <i className="bi bi-record-circle fa-2x "></i>
         </Button>
       )}
+      {recordPreview}
       {!showButton && (
         <Button
-
           className="Rec recordButton"
           onClick={stopRecording}
           type="submit center"
