@@ -23,6 +23,7 @@ const Login = (props) => {
         if ((app_data && app_data[username]) && app_data[username].password === password) {
             console.log("Logged in");
             setValid({ valid: "valid", validFlag: true, inValidflag: false });
+            props.setUser(username)
             return;
         }
         setValid({ valid: "invalid", validFlag: false, inValidflag: true, feedback: "Wrong user name or password" });
