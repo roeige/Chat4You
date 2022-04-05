@@ -4,8 +4,10 @@ import { users } from '../user_details';
 import { app_data } from './app_data'
 import avatar from '../pictures/avatar.png';
 import { Form, FloatingLabel, FormControl } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Register = (props) => {
+    const navigate = useNavigate();
     const [picture, setPicture] = useState(null);
     const usernameRef = useRef();
     const displayNameRef = useRef();
@@ -52,6 +54,14 @@ const Register = (props) => {
             flag = false;
             setNickValid({ valid: "invalid", validFlag: false, invalidFlag: true, feedback: "Please choose a nickname" });
         }
+        if(password.length<6){
+            flag = false;
+            setPassValid({valid:"invalid",invalidFlag:true,validFlag:false,feedback:"Please choose password with at least 6 characters"});
+        }
+        if(password.length>12){
+            flag = false;
+            setPassValid({valid:"invalid",invalidFlag:true,validFlag:false,feedback:"Please choose password with maximum 11 characters"});
+        }
         if (flag) {
             //set all fields to be valids.
             setValid("valid");
@@ -62,11 +72,12 @@ const Register = (props) => {
                 password,
                 displayName,
                 picture: avatar,
-                contacts: {
+                contacts: [
 
-                }
+                ]
             };
             console.log(app_data);
+            navigate("/login")
         }
     }
     return (<div id="enter" className="grid">
