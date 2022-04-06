@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
 import './Connect.css'
-import { users } from '../user_details';
 import { app_data } from './app_data'
 import avatar from '../pictures/avatar.png';
 import { Form, FloatingLabel, FormControl } from 'react-bootstrap';
@@ -71,7 +70,7 @@ const Register = (props) => {
             app_data[username] = {
                 password,
                 displayName,
-                picture: avatar,
+                picture: userPicture,
                 contacts: [
 
                 ]
