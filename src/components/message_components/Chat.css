@@ -104,6 +104,7 @@
 }
 
 .container-relative{
+  background-color:#f7f8f9; 
   position: relative;
   padding-left: 0 !important;
   padding-right: 0 !important;
@@ -121,6 +122,11 @@
   border-color: #f0f2f5 !important;
 }
 
+#outer-div{
+  margin-right:5%;
+  margin-left:5%;
+  margin-top:5%;
+}
 .lower-row{
   height: 80%;
   flex-wrap: nowrap !important;
