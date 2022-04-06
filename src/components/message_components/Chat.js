@@ -1,11 +1,11 @@
-import { Row, Col } from "react-bootstrap";
+import { Row, Col ,Navbar,Container} from "react-bootstrap";
 import "./Chat.css";
 import "../Connect.css";
 import ContactList from "./ContactList";
 import MessagesBox from "./BubbleMessage/MessagesBox";
 import MessageSender from "./BottomPanel/MessageSender";
 import { Fragment, useState } from "react";
-
+import Logo from "../background/Logo";
 import TopBarLeft from "./TopBarLeft";
 import TopBarRight from "./TopBarRight";
 import {
@@ -64,7 +64,7 @@ const Chat = (props) => {
 
   return (
     <Fragment>
-        <div className="row"><p>Hello!</p></div>
+        <Logo/>
         <ul id="outer-div">
         <div class="row row-eq-height upper-bar">
           <Col xs={4} className="padding-left-right-0">
@@ -96,7 +96,7 @@ const Chat = (props) => {
         </div>
         <Row className="lower-row">
           <Col className="padding-left-right-0">
-            <div className="col grid-background">
+            <div  className="col grid-background ">
               <ol className="flex-col d-flex list-group contact-list scrollbar scrollbar-primary">
                 {contacts
                   .slice(0)

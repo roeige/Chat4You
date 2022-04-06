@@ -4,3 +4,7 @@
     height : 100%;
     position : absolute;
 }
+.Logo{
+    padding:3%;
+    background-color: azure;
+}

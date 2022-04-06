@@ -14,7 +14,7 @@ function App() {
 
   
   return (
-    <Background>
+    <Background >
     
     <Router>
     {!user && <Routes>
