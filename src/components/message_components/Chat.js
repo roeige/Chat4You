@@ -120,19 +120,9 @@ const Chat = (props) => {
           </Col>
           <Col xs={8} className="container-relative">
             {showContactChat && (
-              <Fragment className="row">
+              <Fragment className="row ">
                 <MessagesBox messages={messages} />
-                <Row>
-                  <MessageSender
-                    messages={messages}
-                    setMessages={setMessages}
-                    contacts={contacts}
-                    setContacts={setContacts}
-                    index={activeContactIndex}
-                    setActiveContactIndex={setActiveContactIndex}
-                    user={user}
-                  />
-                </Row>
+                
               </Fragment>
             )}
           </Col>

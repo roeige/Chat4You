@@ -18,8 +18,8 @@ const MessagesBox = (props) => {
   
 
   return (
-    <div class="col-12 container-end ">
-      <div class="col message-scroll scrollbar scrollbar-primary">
+   
+      <div class="col-12 container-end message-scroll scrollbar scrollbar-primary">
         {props.messages
           .slice(0)
           .reverse()
@@ -89,7 +89,7 @@ const MessagesBox = (props) => {
             return null;
           })}
       </div>
-    </div>
+    
   );
 };
 
