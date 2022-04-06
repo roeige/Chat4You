@@ -65,7 +65,7 @@ const Chat = (props) => {
   return (
     <Fragment>
         <Logo/>
-        <ul id="outer-div">
+        <div id="outer-div">
         <div class="row row-eq-height upper-bar">
           <Col xs={4} className="padding-left-right-0">
             <Row>
@@ -137,7 +137,7 @@ const Chat = (props) => {
             )}
           </Col>
         </Row>
-        </ul>
+        </div>
     </Fragment>
     
   );

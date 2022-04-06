@@ -125,6 +125,7 @@
 #outer-div{
   margin-right:5%;
   margin-left:5%;
+  height:70%;
   
 }
 .lower-row{
@@ -150,6 +151,7 @@ btn-outline-secondary::after{
 .padding-left-right-0{
   padding-left : 0 !important;
   padding-right : 0 !important;
+  background-color: #f0f2f5;
 }
 
 
