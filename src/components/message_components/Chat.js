@@ -64,7 +64,8 @@ const Chat = (props) => {
 
   return (
     <Fragment>
-      <div className="container grid grid-background chat-background">
+        <div className="row"><p>Hello!</p></div>
+        <ul id="outer-div">
         <div class="row row-eq-height upper-bar">
           <Col xs={4} className="padding-left-right-0">
             <Row>
@@ -119,7 +120,7 @@ const Chat = (props) => {
           </Col>
           <Col xs={8} className="container-relative">
             {showContactChat && (
-              <Fragment>
+              <Fragment className="row">
                 <MessagesBox messages={messages} />
                 <Row>
                   <MessageSender
@@ -136,8 +137,9 @@ const Chat = (props) => {
             )}
           </Col>
         </Row>
-      </div>
+        </ul>
     </Fragment>
+    
   );
 };
 export default Chat;

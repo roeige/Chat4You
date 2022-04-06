@@ -6,7 +6,6 @@
   background-color: #f7f8f9;
 }
 .text {
-  
   position: relative;
   top: 22%;
 }
@@ -77,11 +76,12 @@
 
 .container-end{
     height: 100%;
-    width: auto;
+    width: 100%;
+    padding:0;
     display: flex;
     flex-direction: column-reverse;
     position: absolute;
-    padding-bottom: 7%;
+    
     padding-right : 0;
   }
   
@@ -91,12 +91,10 @@
   }
 .message-scroll{
   background-color: #fceec4;
-
     overflow-y: scroll;
     overflow-x:hidden;
     flex-direction: column-reverse !important;
     display: flex;
-    margin-bottom: 2%;
   }
 .list-group-item:hover{
     background-color: lightgray;
