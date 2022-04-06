@@ -21,7 +21,8 @@ const MessageSender = (props) => {
   }
   
   return (
-    <InputGroup>
+    <div id="bottomPanel">
+    <InputGroup id="bottomInput">
       <MainUploadButton user={props.user} index={props.index} messagesData={props.messagesData} setMessagesData={props.setMessagesData} contacts={props.contacts} setContacts={props.setContacts} setActiveContactIndex={props.setActiveContactIndex} />
       <FormControl
         value={textValue}
@@ -36,6 +37,7 @@ const MessageSender = (props) => {
         Send
       </Button>
     </InputGroup>
+    </div>
 
   );
 };

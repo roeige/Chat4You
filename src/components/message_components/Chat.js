@@ -121,8 +121,18 @@ const Chat = (props) => {
           <Col xs={8} className="container-relative">
             {showContactChat && (
               <Fragment className="row ">
+              <div id="messageBoxWrapper">
                 <MessagesBox messages={messages} />
-                
+                </div>
+                <MessageSender
+                messages={messages}
+                setMessages={setMessages}
+                contacts={contacts}
+                setContacts={setContacts}
+                index={activeContactIndex}
+                setActiveContactIndex={setActiveContactIndex}
+                user={user}
+              />
               </Fragment>
             )}
           </Col>

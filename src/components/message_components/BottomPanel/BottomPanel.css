@@ -1,11 +1,16 @@
 #bottomPanel{
-    position:absolute;
+    position:relative;
     bottom:0;
     margin-bottom: 0!important;
+    background-color: rgba(240,242,245,255);
+    height:10%;
 }
 #uploadPanel{
     display:flexbox!important;
 }
 .dropdown-menu.show{
     display:flex;
+}
+#bottomInput{
+    padding:0.5%;
 }

@@ -80,12 +80,12 @@
     padding:0;
     display: flex;
     flex-direction: column-reverse;
-    position: absolute;
-    bottom:6%;
-    
     padding-right : 0;
   }
-  
+  #messageBoxWrapper{
+    position:relative;
+    height: 90%;
+  }
   .end{
     position: absolute;
     bottom: 0px;
@@ -96,6 +96,7 @@
     overflow-x:hidden;
     flex-direction: column-reverse !important;
     display: flex;
+    position:absolute;
   }
 .list-group-item:hover{
     background-color: lightgray;
