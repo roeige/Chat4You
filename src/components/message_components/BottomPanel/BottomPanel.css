@@ -4,6 +4,7 @@
     margin-bottom: 0!important;
     background-color: #202c33;
     height:10%;
+    border : 1px solid #26343e;
 }
 #uploadPanel{
     display:flexbox!important;

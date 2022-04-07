@@ -1,6 +1,7 @@
 import ChooseFile from "./ChooseFile";
 import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
+import "../../Chat.css";
 
 const UploadModal = props => {
     const handleClick = () =>{
@@ -15,17 +16,17 @@ const UploadModal = props => {
             show={props.show}
             onHide={props.onHide}
         >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
+            <Modal.Header closeButton className="modal-dark modal-header-dark">
+                <Modal.Title id="contained-modal-title-vcenter" className="modal-header-txt-dark">
                     {props.name}
                 </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body className="modal-dark">
                 {/*Here will insert different body for each purpose (photo,record,etc..)---ChooseFile*/}
                 {/*<ChooseFile/>*/}
                 {props.modalContent}
             </Modal.Body>
-            <Modal.Footer>
+            <Modal.Footer className="modal-dark modal-footer-dark">
                 <Button onClick={handleClick}>Upload</Button>
             </Modal.Footer>
         </Modal>

@@ -1,6 +1,6 @@
 
 .grid {
-  background-color: rgb(255, 250, 250);
+  background-color: #1e1e1e;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
@@ -9,6 +9,7 @@
 }
 .icon {
   text-align: center;
+  color : white !important;
 }
 .padding {
   padding: 12px;
@@ -51,3 +52,24 @@
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
     background-color: #c8c4c4; }
+.input-dark-txt{
+  color : #b2bcb2;
+}
+.input-dark-box{
+  background-color: transparent !important;
+  color : white !important;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
