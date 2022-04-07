@@ -9,23 +9,23 @@ export const getLastMessage = (data) => {
   const lastMessage = data[data.length - 1];
   if (lastMessage.type === "image")
     return (
-      <Fragment>
+      <Fragment className = "contact-text">
         <i class="bi bi-image" /> Photo
       </Fragment>
     );
   if (lastMessage.type === "voice")
     return (
-      <Fragment>
+      <Fragment className = "contact-text">
         <i class="bi bi-mic-fill"></i> Voice
       </Fragment>
     );
   if (lastMessage.type === "video")
     return (
-      <Fragment>
+      <div className = "contact-text">
         <i class="bi bi-play-fill"></i> Video
-      </Fragment>
+      </div>
     );
-  if (lastMessage.type === "text") return lastMessage.content;
+  if (lastMessage.type === "text") return <div className = "contact-text">{lastMessage.content}</div>;
 };
 
 export const getTimeAgo = (data) => {

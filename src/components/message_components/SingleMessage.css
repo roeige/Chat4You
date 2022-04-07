@@ -6,9 +6,7 @@ margin-right: 0;
 }
 
 .bubble{
-    background-color: #08fc9c;
     border-radius: 5px;
-    box-shadow: 0 0 6px #08fc9c;
     display: inline-block;
     padding: 10px 18px;
     position: relative;
@@ -17,7 +15,6 @@ margin-right: 0;
 }
 
 .bubble::before {
-    background-color: #08fc9c;
     content: "\00a0";
     display: block;
     height: 16px;
@@ -30,32 +27,40 @@ margin-right: 0;
         -webkit-transform: rotate( 29deg ) skew( -35deg );
     width:  20px;
 }
+.me::before{
+    background-color: #005c4b;
+}
+.you::before{
+    background-color: #202c33;
+}
 
 .me {
+    background-color: #005c4b;
+    box-shadow: 0 0 6px #005c4b;
     float: left;   
     margin: 5px 45px 5px 20px;         
 }
 
 .me::before {
-    box-shadow: -2px 2px 2px 0 rgba( 178, 178, 178, .4 );
-    left: -9px;           
+    left: -10px;           
 }
 
 .you {
+    background-color: #202c33;
+    box-shadow: 0 0 6px #202c33;
      float: right;
     margin: 5px 20px 5px 45px;    
          
 }
 
 .you::before {
-    box-shadow: 2px -2px 2px 0 rgba( 178, 178, 178, .4 );
-    right: -9px;    
+    right: -10px;    
 }
 
 .time{
     display: block;
     position: relative;
-    color : white;
+    color : #a6abad;
     left : 5px;
     margin-right: 20px;
 }
@@ -73,5 +78,8 @@ margin-right: 0;
   .video {
     width: 20%;
     height: auto;
+  }
+  .text-msg{
+      color : white;
   }
 

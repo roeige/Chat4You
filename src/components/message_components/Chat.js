@@ -102,6 +102,7 @@ const Chat = (props) => {
                   .slice(0)
                   .reverse()
                   .map((chat, index) => {
+                    console.log(String(getLastMessage(chat.messages)));
                     return (
                       <ContactList
                         name={chat.displayName}

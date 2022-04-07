@@ -18,12 +18,12 @@ const TopBarLeft = (props) => {
     >
       <div class = "left-contact-img"><img src={props.picture} class="img-fluid rounded-circle"/></div>
       <div className="ms-2 me-auto">
-        <div className="fw-bold"> {props.displayName} </div>
-        {"@" + props.user}
+        <div className="fw-bold contact-text"> {props.displayName} </div>
+        <div className="contact-text">{"@" + props.user}</div>
       </div>
       
       <div className="col-2 ">
-      <Button className = "upper-bar-btn" variant="light" onClick={handleShow}>
+      <Button className = "upper-bar-btn" variant="dark" onClick={handleShow}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"

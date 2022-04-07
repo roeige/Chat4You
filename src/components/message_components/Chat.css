@@ -3,7 +3,8 @@
   height: 80%;
 }
 .grid-background {
-  background-color: #f7f8f9;
+  background-color: #202c33;
+  height: 100%;
 }
 .text {
   position: relative;
@@ -69,9 +70,13 @@
 .contact-list{
   left: 0px;
   left:0px;
-  max-height: 500px;;
+  max-height: 100%;
   overflow-y: scroll;
   overflow-x:hidden;
+  border-radius: 0 !important;
+}
+.contact-itm{
+  border : 1px solid #242b30 !important;
 }
 
 .container-end{
@@ -91,35 +96,44 @@
     bottom: 0px;
   }
 .message-scroll{
-  background-image: url(../../pictures/chat_background.jpg);
+  background-image: url(../../pictures/darkmode.jpg);
     overflow-y: scroll;
     overflow-x:hidden;
     flex-direction: column-reverse !important;
     display: flex;
     position:absolute;
   }
+  .list-group-item{
+    background-color: #111b21 !important;
+  }
 .list-group-item:hover{
-    background-color: lightgray;
+    background-color: #202c33 !important;
     cursor: pointer;
 }
 
+.list-group-item.act{
+  border-color: #2a3942;
+  background-color: #2a3942 !important;
+}
+
+
 .container-relative{
-  background-color:#f7f8f9; 
+  background-color:#202c33; 
   position: relative;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
 .upper-bar{
-  background-color: #f0f2f5;
+  background-color: #202c33;
   padding : 1%;
   padding-bottom: 0;
   padding-top: 0;
 }
 
 .upper-bar-btn{
-  background-color: #f0f2f5 !important;
-  border-color: #f0f2f5 !important;
+  background-color: #202c33 !important;
+  border-color: #202c33 !important;
 }
 
 #outer-div{
@@ -150,11 +164,18 @@ btn-outline-secondary::after{
 .padding-left-right-0{
   padding-left : 0 !important;
   padding-right : 0 !important;
-  background-color: #f0f2f5;
+  background-color: #202c33;
 }
 
 .logo-container{
   margin : 0 !important;
+}
+
+.contact-text{
+  color : white;
+}
+.time-contact-text{
+  
 }
 
 

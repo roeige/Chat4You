@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import './TopBarRight.css'
+import './Chat.css'
 
 
 const TopBarRight = props =>{
@@ -15,7 +16,7 @@ const TopBarRight = props =>{
     >
       <div class = "contact-img"><img src={props.picture} class="img-fluid rounded-circle"/></div>
       <div className="ms-2 me-auto">
-        <div className="fw-bold"> {props.displayName} </div>
+        <div className="fw-bold contact-text"> {props.displayName} </div>
       </div>
       
       

@@ -33,7 +33,7 @@ const MessagesBox = (props) => {
                 reversedArr[index+1].date.getDay())
             )
               divider = (
-                <Row className="badge-row"><span className="badge bg-secondary rounded-pill date-badge">{dateToString(message.date)}</span></Row>
+                <Row className="badge-row"><span className="badge bg-dark rounded-pill date-badge">{dateToString(message.date)}</span></Row>
               );
             if (message.type === "text")
               return (

@@ -10,6 +10,7 @@ import ChooseFile from './UploadModals/ChooseFile';
 import LocationUpload from './UploadModals/LocationUpload';
 import { useState } from 'react';
 import { getLastMessage,app_data, addNewMessage } from '../chat_utils'
+import './BottomPanel.css'
 
 const MainUploadButton = props => {
     const user = props.user;
@@ -47,7 +48,7 @@ const MainUploadButton = props => {
         <DropdownButton 
             title={<i class="bi bi-paperclip"></i>}
             drop="up"
-            variant="outline-secondary" className="col-1 p-0" onClick={() => { console.log("Hi") }}>
+            variant="outline-secondary" className="col-1 p-0" id = "senderButton" onClick={() => { console.log("Hi") }}>
             {/**Need to change display to fles, the dropdown buttons display */}
             {/**Enter each modal buttons one by one, using components */}
             <PhotoUpload changeHandler={changeHandler} handleSubmission={handleSubmission} setFileType={setFileType} />

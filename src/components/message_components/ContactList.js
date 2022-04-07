@@ -4,7 +4,7 @@ const ContactList = (props) => {
   const[activeState,setActiveState] = useState("")
   useEffect(() => {
     if (props.activeContactIndex === props.id) {
-      setActiveState(" active")
+      setActiveState(" act")
     }
     else setActiveState("")
   }, [props.activeContactIndex,props.id]);
@@ -18,14 +18,14 @@ const ContactList = (props) => {
   return (
     <li
       className={
-        "p-2 list-group-item d-flex justify-content-between align-items-start hover-shadow" +
+        "p-2 list-group-item d-flex justify-content-between align-items-start hover-shadow contact-itm" +
         activeState
       }
       onClick={clickHandler}
     >
       <div class = "left-contact-img"><img src={props.picture} class="img-fluid rounded-circle"/></div>
       <div className="ms-2 me-auto">
-        <div className="fw-bold"> {props.name} </div>
+        <div className="fw-bold contact-text"> {props.name} </div>
         {props.lastMessage}
       </div>
       <span className="badge bg-dark rounded-pill">

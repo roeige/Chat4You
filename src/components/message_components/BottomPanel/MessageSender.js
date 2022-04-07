@@ -25,6 +25,7 @@ const MessageSender = (props) => {
     <InputGroup id="bottomInput">
       <MainUploadButton user={props.user} index={props.index} messagesData={props.messagesData} setMessagesData={props.setMessagesData} contacts={props.contacts} setContacts={props.setContacts} setActiveContactIndex={props.setActiveContactIndex} />
       <FormControl
+      id = "bottomPanelText"
         value={textValue}
         placeholder="New message here..."
         aria-label="Recipient's username"
@@ -33,7 +34,7 @@ const MessageSender = (props) => {
         type="text"
         onKeyPress = {onEnterPress}
       />
-      <Button onClick={() => { onSubmit(); }} variant="outline-secondary" id="button-addon2">
+      <Button onClick={() => { onSubmit(); }} variant="outline-secondary" id="senderButton">
         Send
       </Button>
     </InputGroup>
