@@ -1,9 +1,10 @@
 import { Navbar,Container} from "react-bootstrap";
 import pic from './Chat4You_Logo.jpg'
+import '../message_components/Chat.css'
 const Logo = (props)=>{
     return(
         <Navbar bg="dark" variant="dark">
-        <Container>
+        <Container className = "logo-container">
           <Navbar.Brand href="#home">
             <img
               alt=""

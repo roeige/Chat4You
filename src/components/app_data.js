@@ -2,18 +2,26 @@ import avatar from '../pictures/avatar.png'
 import france from '../pictures/france1.jpg'
 import audio from '../audio/audio.mp3'
 import waterfall from '../videos/waterfall.mp4'
+import ChenCohen from '../pictures/ChenCohen.jpg'
+import Hezi from '../pictures/Hezi.jpg'
+import Noam from '../pictures/Noam.jpg'
+import OrielZehavi from '../pictures/OrielZehavi.jpg'
+import Roei from '../pictures/Roei.jpg'
+import Omer from '../pictures/Omer.jpg'
+
+
 
 
 export const app_data = {
     oriel: {
       password: "orielgg",
       displayName: "Oriel Zehavi",
-      picture: avatar,
+      picture: OrielZehavi,
       contacts: [
         {
           username: "roeigh",
           displayName: "Roei Gehasi",
-          picture: avatar,
+          picture: Roei,
           messages: [
             {
               type: "text",
@@ -44,7 +52,7 @@ export const app_data = {
         {
           username: "omer",
           displayName: "Omer Cohen",
-          picture: avatar,
+          picture: Omer,
           messages: [
             {
               type: "text",
@@ -75,7 +83,7 @@ export const app_data = {
         {
           username: "noam",
           displayName: "Noam Cohen",
-          picture: avatar,
+          picture: Noam,
           messages: [
             {
               type: "text",
@@ -106,7 +114,7 @@ export const app_data = {
         {
           username: "chen",
           displayName: "Chen Cohen",
-          picture: avatar,
+          picture: ChenCohen,
           messages: [
             {
               type: "text",
@@ -137,7 +145,7 @@ export const app_data = {
         {
           username: "hezi",
           displayName: "Hezi Coffee",
-          picture: avatar,
+          picture: Hezi,
           messages: [
             {
               type: "text",
@@ -170,12 +178,12 @@ export const app_data = {
     roeigh: {
       password: "roeigg",
       displayName: "Roei Gehasi",
-      picture: avatar,
+      picture : Roei,
       contacts: [
         {
           username: "oriel",
           displayName: "Oriel Zehavi",
-          picture: avatar,
+          picture: OrielZehavi,
           messages: [
             {
               type: "text",
@@ -208,12 +216,12 @@ export const app_data = {
     omer: {
       password: "omer123",
       displayName: "Omer Cohen",
-      picture: avatar,
+      picture: Omer,
       contacts: [
         {
           username: "oriel",
           displayName: "Oriel Zehavi",
-          picture: avatar,
+          picture: OrielZehavi,
           messages: [
             {
               type: "text",
@@ -246,12 +254,12 @@ export const app_data = {
     noam : {
       password : "noam123",
       displayName: "Noam Cohen",
-      picture: avatar,
+      picture: Noam,
       contacts: [
         {
           username: "oriel",
           displayName: "Oriel Zehavi",
-          picture: avatar,
+          picture: OrielZehavi,
           messages: [
             {
               type: "text",
@@ -284,12 +292,12 @@ export const app_data = {
     chen : {
       password : "chen123",
       displayName: "Chen Cohen",
-      picture: avatar,
+      picture: ChenCohen,
       contacts: [
         {
           username: "oriel",
           displayName: "Oriel Zehavi",
-          picture: avatar,
+          picture: OrielZehavi,
           messages: [
             {
               type: "text",
@@ -322,12 +330,12 @@ export const app_data = {
     hezi : {
       password : "hezi123",
       displayName: "Hezi Coffee",
-      picture: avatar,
+      picture: Hezi,
       contacts: [
         {
           username: "oriel",
           displayName: "Oriel Zehavi",
-          picture: avatar,
+          picture: OrielZehavi,
           messages: [
             {
               type: "text",

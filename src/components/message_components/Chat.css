@@ -91,7 +91,7 @@
     bottom: 0px;
   }
 .message-scroll{
-  background-color: #fceec4;
+  background-image: url(../../pictures/chat_background.jpg);
     overflow-y: scroll;
     overflow-x:hidden;
     flex-direction: column-reverse !important;
@@ -123,8 +123,7 @@
 }
 
 #outer-div{
-  margin-right:5%;
-  margin-left:5%;
+  margin : 5%;
   height:70%;
   
 }
@@ -152,6 +151,10 @@ btn-outline-secondary::after{
   padding-left : 0 !important;
   padding-right : 0 !important;
   background-color: #f0f2f5;
+}
+
+.logo-container{
+  margin : 0 !important;
 }
 
 

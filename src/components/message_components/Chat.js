@@ -32,16 +32,16 @@ const Chat = (props) => {
 
   const handleAddingContact = (username) => {
     console.log(username);
-    if (app_data && !app_data[username]) {
-      alert(
-        "There is no user with that username, please enter a valid username to add"
-      );
-      return false;
-    }
-    if (isInContacts(username, contacts)) {
-      alert("You already have this contact in your contacts list")
-      return false;
-    }
+    // if (app_data && !app_data[username]) {
+    //   alert(
+    //     "There is no user with that username, please enter a valid username to add"
+    //   );
+    //   return false;
+    // }
+    // if (isInContacts(username, contacts)) {
+    //   alert("You already have this contact in your contacts list")
+    //   return false;
+    // }
     const newContact = {
       username,
       displayName: app_data[username].displayName,

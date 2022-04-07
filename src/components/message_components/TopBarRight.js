@@ -13,7 +13,7 @@ const TopBarRight = props =>{
       }
       
     >
-      <div class = "contact-img"><img src={props.picture} class="img-fluid rounded"/></div>
+      <div class = "contact-img"><img src={props.picture} class="img-fluid rounded-circle"/></div>
       <div className="ms-2 me-auto">
         <div className="fw-bold"> {props.displayName} </div>
       </div>
