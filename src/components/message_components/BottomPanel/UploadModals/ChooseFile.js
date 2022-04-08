@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
+import "../../../Connect.css"
 const ChooseFile = props => {
 
     const fileUploadHandler = (event) => {
@@ -9,7 +10,7 @@ const ChooseFile = props => {
     
     return (
         <Form.Group controlId="formFile" className="mb-3">
-            <Form.Control type="file" onChange={fileUploadHandler}/>
+            <Form.Control type="file" className="input-dark-box" onChange={fileUploadHandler}/>
         </Form.Group>
     );
 };

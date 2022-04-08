@@ -20,7 +20,9 @@ const AddNewContact = (props) => {
       centered
       show={props.show}
       onHide={props.handleClose}
+      contentClassName = "modal-dark"
     >
+    
       <Modal.Header closeButton className="modal-dark modal-header-dark">
         <Modal.Title className="modal-header-txt-dark">
           Add new contact

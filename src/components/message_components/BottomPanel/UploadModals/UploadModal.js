@@ -15,6 +15,7 @@ const UploadModal = props => {
             centered
             show={props.show}
             onHide={props.onHide}
+            contentClassName = "modal-dark"
         >
             <Modal.Header closeButton className="modal-dark modal-header-dark">
                 <Modal.Title id="contained-modal-title-vcenter" className="modal-header-txt-dark">

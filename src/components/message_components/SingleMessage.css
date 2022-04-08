@@ -83,3 +83,16 @@ margin-right: 0;
       color : white;
   }
 
+  /* audio::-webkit-media-controls-play-button{
+      color : white !important;
+  }
+audio::-webkit-media-controls-panel {
+  background-color: #212529;
+
+} */
+
+.img-msg{
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+

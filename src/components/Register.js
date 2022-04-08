@@ -106,7 +106,7 @@ const Register = (props) => {
 
 
             <Form.Group controlId="formFile" className="mb-3">
-                <Form.Label>Upload profile picture</Form.Label>
+                <Form.Label className = "icon">Upload profile picture</Form.Label>
                 <Form.Control className="input-dark-box" type="file" onChange={onPictureUpload} />
             </Form.Group>
             <FloatingLabel className="mb-3  input-dark-txt" controlId="password" label="Password">
@@ -132,7 +132,7 @@ const Register = (props) => {
                 </button>
             </div>
             <div class="row g-3 align-items-center">
-                <p>
+                <p className = "icon">
                     &nbsp;&nbsp;Already registered?&nbsp;
                     <a href="/login" class="link-primary">
                         Click here

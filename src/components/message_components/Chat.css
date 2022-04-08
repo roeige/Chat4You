@@ -176,7 +176,7 @@ btn-outline-secondary::after{
   color : white;
 }
 .modal-dark{
-  background-color: #202c33;
+  background-color: #202c33 !important; 
 }
 .modal-header-dark{
   border-bottom: 1px solid #2c3b46 !important;

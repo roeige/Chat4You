@@ -59,6 +59,7 @@ const RecordModal = (props) => {
     <Fragment>
       {showButton && (
         <Button
+        variant="dark"
           id=""
           className="notRec recordButton"
           onClick={() => {

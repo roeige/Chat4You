@@ -45,6 +45,10 @@ const Login = (props) => {
     });
   };
 
+  const onEnterPress = event => {
+    if(event.which===13) submitHandler(event);
+  }
+
   return (
     <div id="enter" className="grid">
       <div className="col">
@@ -56,6 +60,7 @@ const Login = (props) => {
         <div className="row mb icon">
           <p className="text-center fs-3">Login</p>
         </div>
+        <form onKeyPress = {onEnterPress}>
         <FloatingLabel
           className="mb-3 input-dark-txt"
           controlId="username"
@@ -109,6 +114,7 @@ const Login = (props) => {
             to register
           </p>
         </div>
+        </form>
       </div>
     </div>
   );
