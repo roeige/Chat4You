@@ -18,8 +18,15 @@
 #bottomPanelText{
     background-color: #2b3942;
     border-color: #2b3942;
-    color : white;
+    color : white;   
+}
+#bottomPanelText:focus{
+    box-shadow: none !important; 
 }
 #senderButton{
     border-color : #2b3942;
+    
+}
+#senderButton:focus{
+    box-shadow: none !important; 
 }

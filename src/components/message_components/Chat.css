@@ -195,6 +195,9 @@ btn-outline-secondary::after{
 .modal-input-dark-txt{
   color : #c1c8cc;
 }
+.no-focus-color:focus{
+  box-shadow: none !important;
+}
 
 
 

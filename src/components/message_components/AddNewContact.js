@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { FloatingLabel, Form } from "react-bootstrap";
 import "./Chat.css";
+import "./AddNewContact.css"
 
 const AddNewContact = (props) => {
   const contactRef = useRef("");
@@ -34,7 +35,7 @@ const AddNewContact = (props) => {
             type="contact"
             placeholder="contact"
             ref={contactRef}
-            className="modal-input-dark"
+            className="modal-input-dark  input-txt"
           />
         </FloatingLabel>
       </Modal.Body>
