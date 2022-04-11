@@ -12,10 +12,10 @@ const ImageMessage = (props) => {
     <React.Fragment>
       <div class={"chat-" + props.from}>
         <div class={"image bubble " + props.from}>
-          <Button className = "img-msg">
+          <Button className = "img-msg no-focus-color">
             <img
               src={props.image}
-              class="img-fluid rounded"
+              class="img-fluid rounded "
               onClick={handleShow}
             />
           </Button>
