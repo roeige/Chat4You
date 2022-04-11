@@ -9,15 +9,15 @@ export const getLastMessage = (data) => {
   const lastMessage = data[data.length - 1];
   if (lastMessage.type === "image")
     return (
-      <Fragment className = "contact-text">
+      <div className = "contact-text">
         <i className="bi bi-image" /> Photo
-      </Fragment>
+      </div>
     );
   if (lastMessage.type === "voice")
     return (
-      <Fragment className = "contact-text">
+      <div className = "contact-text">
         <i className="bi bi-mic-fill"></i> Voice
-      </Fragment>
+      </div>
     );
   if (lastMessage.type === "video")
     return (

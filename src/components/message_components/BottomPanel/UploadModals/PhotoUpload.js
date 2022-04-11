@@ -11,7 +11,7 @@ const UploadPhoto = props => {
         <Fragment>
             <Dropdown.Item onClick={handleShow} eventKey="1" className="col"><i className="bi bi-image"></i>  Picture</Dropdown.Item>
             <UploadModal
-                modalContent={<ChooseFile changeHandler = {props.changeHandler} setFileType = {props.setFileType} type = {"image"}/>}
+                modalContent={<ChooseFile accept = "image/*" changeHandler = {props.changeHandler} setFileType = {props.setFileType} type = {"image"}/>}
                 name={"Upload Photo"}
                 show={modalShow}
                 onHide={handleClose}

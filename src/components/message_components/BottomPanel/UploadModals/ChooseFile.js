@@ -10,7 +10,7 @@ const ChooseFile = props => {
     
     return (
         <Form.Group controlId="formFile" className="mb-3">
-            <Form.Control type="file" className="input-dark-box" onChange={fileUploadHandler}/>
+            <Form.Control accept={props.accept} type="file" className="input-dark-box" onChange={fileUploadHandler}/>
         </Form.Group>
     );
 };

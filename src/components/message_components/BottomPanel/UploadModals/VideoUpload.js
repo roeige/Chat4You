@@ -16,6 +16,7 @@ const VideoUpload = (props) => {
       <PhotoVidModal
         modalContent={
           <ChooseFile
+          accept = "video/*"
             changeHandler={props.changeHandler}
             setFileType={props.setFileType}
             type={"video"}
