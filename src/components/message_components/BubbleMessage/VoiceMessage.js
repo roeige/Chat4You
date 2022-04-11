@@ -3,8 +3,8 @@ import "../SingleMessage.css";
 const VoiceMessage = (props) => {
 
   return (
-      <div class={"chat-" + props.from}>
-        <div class={"bubble " + props.from}>
+      <div className={"chat-" + props.from}>
+        <div className={"bubble " + props.from}>
         <audio controls className="audio-player" >
         <source src={props.audio} type="audio/mpeg" />
       </audio>

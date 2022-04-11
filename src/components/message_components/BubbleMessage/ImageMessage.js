@@ -10,12 +10,12 @@ const ImageMessage = (props) => {
 
   return (
     <React.Fragment>
-      <div class={"chat-" + props.from}>
-        <div class={"image bubble " + props.from}>
+      <div className={"chat-" + props.from}>
+        <div className={"image bubble " + props.from}>
           <Button className = "img-msg no-focus-color">
             <img
               src={props.image}
-              class="img-fluid rounded "
+              className="img-fluid rounded "
               onClick={handleShow}
             />
           </Button>
@@ -31,7 +31,7 @@ const ImageMessage = (props) => {
       >
         <Modal.Header closeButton className="modal-dark modal-header-dark"/>
         <Modal.Body className="modal-dark">
-          <img src={props.image} class="img-fluid " />
+          <img src={props.image} className="img-fluid " />
         </Modal.Body>
       </Modal>
     </React.Fragment>

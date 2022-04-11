@@ -17,7 +17,7 @@ import { useEffect } from "react";
 import { app_data } from "../app_data";
 
 const Chat = (props) => {
-  console.log(app_data);
+
   const user = props.user;
   const [messages, setMessages] = useState([]);
   const [contacts, setContacts] = useState(app_data[user].contacts);
@@ -31,17 +31,16 @@ const Chat = (props) => {
   }, [activeContactIndex, contacts]);
 
   const handleAddingContact = (username) => {
-    console.log(username);
-    // if (app_data && !app_data[username]) {
-    //   alert(
-    //     "There is no user with that username, please enter a valid username to add"
-    //   );
-    //   return false;
-    // }
-    // if (isInContacts(username, contacts)) {
-    //   alert("You already have this contact in your contacts list")
-    //   return false;
-    // }
+    if (app_data && !app_data[username]) {
+      alert(
+        "There is no user with that username, please enter a valid username to add"
+      );
+      return false;
+    }
+    if (isInContacts(username, contacts)) {
+      alert("You already have this contact in your contacts list")
+      return false;
+    }
     const newContact = {
       username,
       displayName: app_data[username].displayName,
@@ -66,7 +65,7 @@ const Chat = (props) => {
     <Fragment>
         <Logo/>
         <div id="outer-div">
-        <div class="row row-eq-height upper-bar">
+        <div className="row row-eq-height upper-bar">
           <Col xs={4} className="padding-left-right-0">
             <Row>
               <TopBarLeft
@@ -102,7 +101,6 @@ const Chat = (props) => {
                   .slice(0)
                   .reverse()
                   .map((chat, index) => {
-                    console.log(String(getLastMessage(chat.messages)));
                     return (
                       <ContactList
                         name={chat.displayName}
@@ -121,7 +119,7 @@ const Chat = (props) => {
           </Col>
           <Col xs={8} className="container-relative">
             {showContactChat && (
-              <Fragment className="row ">
+              <Fragment>
               <div id="messageBoxWrapper">
                 <MessagesBox messages={messages} />
                 </div>

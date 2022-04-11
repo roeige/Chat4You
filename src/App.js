@@ -10,7 +10,6 @@ import { BrowserRouter as Router, Route,Routes,Navigate } from "react-router-dom
 function App() {
   
   const [user, setUser] = useState(null);
-  console.log(user)
 
   
   return (

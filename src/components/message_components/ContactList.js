@@ -23,7 +23,7 @@ const ContactList = (props) => {
       }
       onClick={clickHandler}
     >
-      <div class = "left-contact-img"><img src={props.picture} class="img-fluid rounded-circle"/></div>
+      <div className = "left-contact-img"><img src={props.picture} className="img-fluid rounded-circle"/></div>
       <div className="ms-2 me-auto">
         <div className="fw-bold contact-text"> {props.name} </div>
         {props.lastMessage}

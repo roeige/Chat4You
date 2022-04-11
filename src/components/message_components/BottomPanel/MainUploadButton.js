@@ -17,13 +17,6 @@ const MainUploadButton = props => {
     const [selectedFile, setSelectedFile] = useState();
     const [fileType, setFileType] = useState(null);
 
-    const audioRecord = (event) => {
-        //The event we get is actually an audio file
-        console.log("In Record event");
-        console.log(event);
-        //setSelectedFile(event);
-    }
-
     const changeHandlerAudio = audio =>{
         setSelectedFile(audio);
     }
@@ -46,9 +39,9 @@ const MainUploadButton = props => {
 
     return (
         <DropdownButton 
-            title={<i class="bi bi-paperclip"></i>}
+            title={<i className="bi bi-paperclip"></i>}
             drop="up"
-            variant="outline-secondary" className="col-1 p-0" id = "senderButton" onClick={() => { console.log("Hi") }}>
+            variant="outline-secondary" className="col-1 p-0" id = "senderButton">
             {/**Need to change display to fles, the dropdown buttons display */}
             {/**Enter each modal buttons one by one, using components */}
             <PhotoUpload changeHandler={changeHandler} handleSubmission={handleSubmission} setFileType={setFileType} />

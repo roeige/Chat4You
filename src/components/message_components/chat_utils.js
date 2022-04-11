@@ -10,19 +10,19 @@ export const getLastMessage = (data) => {
   if (lastMessage.type === "image")
     return (
       <Fragment className = "contact-text">
-        <i class="bi bi-image" /> Photo
+        <i className="bi bi-image" /> Photo
       </Fragment>
     );
   if (lastMessage.type === "voice")
     return (
       <Fragment className = "contact-text">
-        <i class="bi bi-mic-fill"></i> Voice
+        <i className="bi bi-mic-fill"></i> Voice
       </Fragment>
     );
   if (lastMessage.type === "video")
     return (
       <div className = "contact-text">
-        <i class="bi bi-play-fill"></i> Video
+        <i className="bi bi-play-fill"></i> Video
       </div>
     );
   if (lastMessage.type === "text") return <div className = "contact-text">{lastMessage.content}</div>;

@@ -1,29 +1,22 @@
-import { Fragment } from 'react';
-import './TopBarRight.css'
-import './Chat.css'
+import { Fragment } from "react";
+import "./TopBarRight.css";
+import "./Chat.css";
 
-
-const TopBarRight = props =>{
-  console.log(props.displayName)
-    return (
-      
-
-      <div
+const TopBarRight = (props) => {
+  return (
+    <div
       className={
         "p-2 d-flex justify-content-between align-items-center hover-shadow"
       }
-      
     >
-      <div class = "contact-img"><img src={props.picture} class="img-fluid rounded-circle"/></div>
+      <div className="contact-img">
+        <img src={props.picture} className="img-fluid rounded-circle" />
+      </div>
       <div className="ms-2 me-auto">
         <div className="fw-bold contact-text"> {props.displayName} </div>
       </div>
-      
-      
-        
-      
     </div>
-    )
+  );
 };
 
 export default TopBarRight;

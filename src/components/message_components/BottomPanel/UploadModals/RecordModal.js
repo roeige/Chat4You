@@ -10,7 +10,6 @@ const RecordModal = (props) => {
   var recorder = null;
 
   const stopRecording = () => {
-    console.log(window.recorder);
     window.recorder.stop();
     handleStart();
   };
@@ -23,7 +22,6 @@ const RecordModal = (props) => {
       let stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       recorder = new MediaRecorder(stream);
       window.recorder = recorder;
-      console.log(recorder);
       recorder.ondataavailable = (e) => {
         chunks.push(e.data);
         if (recorder.state === "inactive") {
@@ -40,11 +38,9 @@ const RecordModal = (props) => {
       //   recorder.stop();
       // }, 2000);
     } catch (e) {
-      console.log("error getting stream", e);
     }
   };
 
-  console.log(record)
   const recordPreview = (
     <Fragment>
       {props.fileType === "voice" && record && (

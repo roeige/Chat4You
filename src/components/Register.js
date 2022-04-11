@@ -37,7 +37,6 @@ const Register = (props) => {
         }
         if (app_data && app_data[username]) {
             flag = false;
-            console.log("Username already in use")
             setValid({valid:"invalid", validFlag:false,invalidFlag:true,feedback:"Username already in use"});
         }
         if (!password) {
@@ -75,7 +74,6 @@ const Register = (props) => {
 
                 ]
             };
-            console.log(app_data);
             navigate("/login")
         }
     }
@@ -122,19 +120,19 @@ const Register = (props) => {
                     {passConfValid.feedback}
                 </FormControl.Feedback>
             </FloatingLabel>
-            <div class="row g-3 align-items-center padding">
+            <div className="row g-3 align-items-center padding">
                 <button
                     type="submit"
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                     onClick={submitHandler}
                 >
                     Sign up
                 </button>
             </div>
-            <div class="row g-3 align-items-center">
+            <div className="row g-3 align-items-center">
                 <p className = "icon">
                     &nbsp;&nbsp;Already registered?&nbsp;
-                    <a href="/login" class="link-primary">
+                    <a href="/login" className="link-primary">
                         Click here
                     </a>{" "}
                     to login

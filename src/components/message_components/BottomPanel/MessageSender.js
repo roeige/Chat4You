@@ -9,7 +9,6 @@ const MessageSender = (props) => {
 
   const onSubmit = () => {
     if(textValue==="") return;
-    console.log("Value is :" + textValue);
     const date = new Date();
     const newMessage = { type: "text", from: "me", date, content: textValue }
     addNewMessage({newMessage,user : props.user,index : props.index, setActiveContactIndex : props.setActiveContactIndex, setContacts : props.setContacts});

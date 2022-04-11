@@ -13,13 +13,12 @@ import { Row } from "react-bootstrap";
 
 const MessagesBox = (props) => {
   const messages = props.messages;
-  console.log(messages)
   const len = messages.length;
   
 
   return (
    
-      <div class="col-12 container-end message-scroll scrollbar scrollbar-primary">
+      <div className="col-12 container-end message-scroll scrollbar scrollbar-primary">
         {props.messages
           .slice(0)
           .reverse()
@@ -37,8 +36,8 @@ const MessagesBox = (props) => {
               );
             if (message.type === "text")
               return (
-                <Fragment>
-                  <div class="row" key={index}>
+                <Fragment key={index}>
+                  <div className="row" key={index}>
                     <TextMessage
                       from={message.from}
                       time={dateToTime(message.date)}
@@ -50,8 +49,8 @@ const MessagesBox = (props) => {
                 </Fragment>
               );
             else if (message.type === "image")
-              return (<Fragment>
-                <div class="row" key={index}>
+              return (<Fragment key={index}>
+                <div className="row" key={index}>
                   <ImageMessage
                     from={message.from}
                     time={dateToTime(message.date)}
@@ -62,8 +61,8 @@ const MessagesBox = (props) => {
                 </Fragment>
               );
             else if (message.type === "video")
-              return (<Fragment>
-                <div class="row" key={index}>
+              return (<Fragment key={index}>
+                <div className="row" key={index}>
                   <VideoMessage
                     from={message.from}
                     time={dateToTime(message.date)}
@@ -75,8 +74,8 @@ const MessagesBox = (props) => {
               );
             else if (message.type === "voice")
               return (
-                  <Fragment>
-                <div class="row" key={index}>
+                  <Fragment key={index}>
+                <div className="row" key={index}>
                   <VoiceMessage
                     from={message.from}
                     time={dateToTime(message.date)}

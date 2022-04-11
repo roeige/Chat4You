@@ -9,7 +9,7 @@ const UploadPhoto = props => {
     const handleShow = () => setModalShow(true);
     return (
         <Fragment>
-            <Dropdown.Item onClick={handleShow} eventKey="1" className="col"><i class="bi bi-image"></i>  Picture</Dropdown.Item>
+            <Dropdown.Item onClick={handleShow} eventKey="1" className="col"><i className="bi bi-image"></i>  Picture</Dropdown.Item>
             <UploadModal
                 modalContent={<ChooseFile changeHandler = {props.changeHandler} setFileType = {props.setFileType} type = {"image"}/>}
                 name={"Upload Photo"}
