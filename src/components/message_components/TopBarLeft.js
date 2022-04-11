@@ -3,6 +3,7 @@ import { Navbar, Container,Button, Col } from "react-bootstrap";
 import { useState } from "react";
 import AddNewContact from "./AddNewContact";
 import './AddNewContact.css';
+import './Chat.css'
 const TopBarLeft = (props) => {
     const [showNewContact, setShowNewContact] = useState(false);
     const handleClose = () => setShowNewContact(false);
@@ -23,7 +24,7 @@ const TopBarLeft = (props) => {
       </div>
       
       <div className="col-2 ">
-      <Button className = "upper-bar-btn" variant="dark" onClick={handleShow}>
+      <Button className = "upper-bar-btn no-focus-color" variant="dark" onClick={handleShow}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"

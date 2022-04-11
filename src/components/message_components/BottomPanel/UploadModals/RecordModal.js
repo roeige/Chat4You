@@ -44,7 +44,7 @@ const RecordModal = (props) => {
   const recordPreview = (
     <Fragment>
       {props.fileType === "voice" && record && (
-        <Row className = "mb3" style={{"padding-top" : "2%"}}><audio controls className="audio-player">
+        <Row className = "mb3" style={{"paddingTop" : "2%"}}><audio controls className="audio-player">
           <source src={URL.createObjectURL(record)} type="audio/mpeg" />
         </audio></Row>
       )}

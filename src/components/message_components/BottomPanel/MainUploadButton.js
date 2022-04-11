@@ -28,6 +28,8 @@ const MainUploadButton = props => {
 
     const handleSubmission = () => {
         createMessage();
+        setFileType(null);
+        setSelectedFile(null);
     };
 
     const createMessage = () => {
