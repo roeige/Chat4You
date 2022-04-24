@@ -40,7 +40,7 @@ it will run the app.
 
 ## Interact
 
-you can use this user to login to the system:
+you can use this user to log into the system:
 
 ```
 username : oriel
