@@ -74,7 +74,7 @@ const Register = (props) => {
 
                 ]
             };
-            navigate("/login")
+            props.setUser(username);
         }
     }
     return (<div id="enter" className="grid">
@@ -105,7 +105,7 @@ const Register = (props) => {
 
             <Form.Group controlId="formFile" className="mb-3">
                 <Form.Label className = "icon">Upload profile picture</Form.Label>
-                <Form.Control className="input-dark-box" type="file" onChange={onPictureUpload} />
+                <Form.Control className="input-dark-box"  accept = "image/*" type="file" onChange={onPictureUpload} />
             </Form.Group>
             <FloatingLabel className="mb-3  input-dark-txt" controlId="password" label="Password">
                 <Form.Control className="input-dark-box" type="password" placeholder="password" ref={passwordRef} isInvalid={passValid.invalidFlag} isValid={passValid.validFlag} />
