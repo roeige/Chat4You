@@ -28,9 +28,10 @@ export const getLastMessage = (data) => {
   if (lastMessage.type === "text") return <div className = "contact-text">{lastMessage.content}</div>;
 };
 
-export const getTimeAgo = (data) => {
-  if (data.length === 0) return "";
-  const date = data[data.length - 1].date;
+export const getTimeAgo = (date) => {
+  // if (data.length === 0) return "";
+  // const date = data[data.length - 1].date;
+  date = new Date(date);
   const now = Math.round(new Date().getTime() / 1000);
   const dateUTC = Math.round(date.getTime() / 1000);
   let diff = now - dateUTC;

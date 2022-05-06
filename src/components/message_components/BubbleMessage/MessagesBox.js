@@ -28,19 +28,20 @@ const MessagesBox = (props) => {
               (
                 index == len - 1) ||
               (index + 1 < len &&
-                message.date.getDay() !==
-                reversedArr[index+1].date.getDay())
+                new Date(message.created).getDay() !==
+                new Date(reversedArr[index+1].created).getDay())
             )
               divider = (
-                <Row className="badge-row"><span className="badge bg-dark rounded-pill date-badge">{dateToString(message.date)}</span></Row>
+                <Row className="badge-row"><span className="badge bg-dark rounded-pill date-badge">{dateToString(new Date(message.created))}</span></Row>
               );
-            if (message.type === "text")
+            // if (message.type === "text")
+            if(true)
               return (
                 <Fragment key={index}>
                   <div className="row" key={index}>
                     <TextMessage
-                      from={message.from}
-                      time={dateToTime(message.date)}
+                      from={message.sent ? "me" : "you"}
+                      time={dateToTime(new Date(message.created))}
                       text={message.content}
                       key={index}
                     />

@@ -15,18 +15,25 @@ import {
 } from "./chat_utils";
 import { useEffect } from "react";
 import { app_data } from "../app_data";
+import axios from "axios";
 
 const Chat = (props) => {
 
   const user = props.user;
   const [messages, setMessages] = useState([]);
-  const [contacts, setContacts] = useState(app_data[user].contacts);
+  const [contacts, setContacts] = useState([]);
+  console.log(contacts);
   const [activeContactIndex, setActiveContactIndex] = useState(null);
   const showContactChat = activeContactIndex === null ? false : true;
 
-  useEffect(() => {
+  useEffect(async () => {
+    axios.get("https://localhost:7019/contacts",{ withCredentials: true }).then((data) => setContacts(data.data)).catch(err => console.log(err));
+  },[])
+
+  useEffect(async () => {
     if (activeContactIndex != null) {
-      setMessages(contacts[activeContactIndex].messages);
+      const id =  contacts[activeContactIndex].id;
+      axios.get(`https://localhost:7019/contacts/${id}/messages`,{ withCredentials: true }).then(data => setMessages(data.data)).catch(err => console.log(err));
     }
   }, [activeContactIndex, contacts]);
 
@@ -103,9 +110,9 @@ const Chat = (props) => {
                   .map((chat, index) => {
                     return (
                       <ContactList
-                        name={chat.displayName}
-                        lastMessage={getLastMessage(chat.messages)}
-                        timeAgo={getTimeAgo(chat.messages)}
+                        name={chat.name}
+                        lastMessage={chat.last}
+                        timeAgo={getTimeAgo(chat.lastdate)}
                         picture={chat.picture}
                         key={index}
                         id={contacts.length - 1 - index}

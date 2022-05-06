@@ -1,4 +1,5 @@
 import { useEffect,useState } from "react";
+import avatar from '../../pictures/avatar.png';
 import './Chat.css'
 const ContactList = (props) => {
   const[activeState,setActiveState] = useState("")
@@ -14,7 +15,7 @@ const ContactList = (props) => {
   };
 
   
-
+console.log(props.lastMessage);
   return (
     <li
       className={
@@ -23,10 +24,10 @@ const ContactList = (props) => {
       }
       onClick={clickHandler}
     >
-      <div className = "left-contact-img"><img src={props.picture} className="img-fluid rounded-circle"/></div>
+      <div className = "left-contact-img"><img src={props.picture ? props.picture : avatar} className="img-fluid rounded-circle"/></div>
       <div className="ms-2 me-auto">
         <div className="fw-bold contact-text"> {props.name} </div>
-        {props.lastMessage}
+        <div className = "contact-text">{props.lastMessage}</div>
       </div>
       <span className="badge bg-dark rounded-pill">
         
