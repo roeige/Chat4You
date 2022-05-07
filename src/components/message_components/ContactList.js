@@ -31,7 +31,7 @@ console.log(props.lastMessage);
       </div>
       <span className="badge bg-dark rounded-pill">
         
-        {props.timeAgo}
+        {props.lastMessage ? props.timeAgo : ""}
       </span>
     </li>
   );

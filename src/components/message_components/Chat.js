@@ -64,6 +64,8 @@ const Chat = (props) => {
       await axios.post("https://localhost:7019/api/invitations",{from : user, to : username, server : "Chat4You"});
       console.log("added 2");
       await getContacts();
+      //console.log(contacts);
+      setActiveContactIndex(contacts.length);
     }
     catch(err){
       console.log(err);
