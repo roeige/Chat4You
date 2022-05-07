@@ -2,6 +2,7 @@
 import { Fragment } from "react";
 
 import { app_data } from "../app_data";
+import axios from "axios";
 
 
 export const getLastMessage = (data) => {
@@ -31,6 +32,7 @@ export const getLastMessage = (data) => {
 export const getTimeAgo = (date) => {
   // if (data.length === 0) return "";
   // const date = data[data.length - 1].date;
+  if(date===null) return "";
   date = new Date(date);
   const now = Math.round(new Date().getTime() / 1000);
   const dateUTC = Math.round(date.getTime() / 1000);
@@ -79,37 +81,59 @@ export const dateToString = (date) => {
 };
 
 
-export const addNewMessage = ({newMessage,user, index,setActiveContactIndex,setContacts}) => {
-  app_data[user].contacts[index].messages.push(newMessage);
-  const targetContact = app_data[user].contacts[index];
+// export const addNewMessage = async ({newMessage,user, index,setActiveContactIndex,setContacts,getContacts}) => {
+//   app_data[user].contacts[index].messages.push(newMessage);
+//   const targetContact = app_data[user].contacts[index];
+//   const contactID = targetContact.username;
 
-  //move the contact to last on array
-  app_data[user].contacts.sort((x, y) => {
-    return x == targetContact ? 1 : y == targetContact ? -1 : 0;
-  });
-  const otherUser =
-    app_data[user].contacts[app_data[user].contacts.length - 1].username;
+//   //move the contact to last on array
+//   // app_data[user].contacts.sort((x, y) => {
+//   //   return x == targetContact ? 1 : y == targetContact ? -1 : 0;
+//   // });
+//   // const otherUser =
+//   //   app_data[user].contacts[app_data[user].contacts.length - 1].username;
   
-  const chatExistOnTarget = app_data[otherUser].contacts.some(contact => contact.username===user);
-  if(!chatExistOnTarget){
-    const me = {
-      username : user,
-      displayName: app_data[user].displayName,
-      messages: [],
-      picture: app_data[user].picture,
-    };
-    app_data[otherUser].contacts.push(me);
+//   // const chatExistOnTarget = app_data[otherUser].contacts.some(contact => contact.username===user);
+//   // if(!chatExistOnTarget){
+//   //   const me = {
+//   //     username : user,
+//   //     displayName: app_data[user].displayName,
+//   //     messages: [],
+//   //     picture: app_data[user].picture,
+//   //   };
+//   //   app_data[otherUser].contacts.push(me);
+//   // }
+//   // app_data[otherUser].contacts.forEach((contact, index) => {
+//   //   if (contact.username === user) {
+//   //     contact.messages.push({ ...newMessage, from: "you" });
+//   //     app_data[otherUser].contacts.sort((x, y) => {
+//   //       return x == contact ? 1 : y == contact ? -1 : 0;
+//   //     });
+//   //   }
+//   // });
+//   // setActiveContactIndex(app_data[user].contacts.length - 1);
+//   // setContacts([...app_data[user].contacts]);
+//   try{
+//     await axios.post(`https://localhost:7019/api/contacts/${contactID}/messages`,{content : newMessage.content},{ withCredentials: true });
+//     await axios.post("https://localhost:7019/api/transfer",{from : user, to : contactID, content : newMessage.content},{ withCredentials: true });
+//     await getContacts();
+//   }
+//   catch (err) {
+//     console.log(err);
+//   }
+// };
+
+export const addNewMessage = async ({newMessage,user, index,setActiveContactIndex,contacts,getContacts}) => {
+  const contactID = contacts[index].id;
+  try{
+    await axios.post(`https://localhost:7019/api/contacts/${contactID}/messages`,{content : newMessage.content, sent : true},{ withCredentials: true });
+    //if(contacts[index].server!=="Chat4You") await axios.post("https://localhost:7019/api/transfer",{from : user, to : contactID, content : newMessage.content},{ withCredentials: true });
+    await getContacts();
+    setActiveContactIndex(contacts.length-1);
   }
-  app_data[otherUser].contacts.forEach((contact, index) => {
-    if (contact.username === user) {
-      contact.messages.push({ ...newMessage, from: "you" });
-      app_data[otherUser].contacts.sort((x, y) => {
-        return x == contact ? 1 : y == contact ? -1 : 0;
-      });
-    }
-  });
-  setActiveContactIndex(app_data[user].contacts.length - 1);
-  setContacts([...app_data[user].contacts]);
+  catch (err) {
+    console.log(err);
+  }
 };
 
 export const isInContacts = (username,contacts) => {

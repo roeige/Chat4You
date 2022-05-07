@@ -7,11 +7,11 @@ import {addNewMessage } from '../chat_utils';
 const MessageSender = (props) => {
   const [textValue, setValue] = useState("");
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     if(textValue==="") return;
     const date = new Date();
     const newMessage = { type: "text", from: "me", date, content: textValue }
-    addNewMessage({newMessage,user : props.user,index : props.index, setActiveContactIndex : props.setActiveContactIndex, setContacts : props.setContacts});
+    addNewMessage({newMessage,user : props.user,index : props.index, setActiveContactIndex : props.setActiveContactIndex, contacts : props.contacts,getContacts : props.getContacts});
     setValue("");
   }
 

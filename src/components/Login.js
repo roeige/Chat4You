@@ -26,16 +26,12 @@ const Login = (props) => {
       });
       return;
     }
-    if (
-      app_data &&
-      app_data[username] &&
-      app_data[username].password === password
-    ) {
+    if(true) {
       setValid({ valid: "valid", validFlag: true, inValidflag: false });
       await axios
         .post(
-          `https://localhost:7019/login?username=${username}&password=${password}`,
-          {},
+          "https://localhost:7019/login",
+          {username ,password},
           { withCredentials: true }
         )
         .then((res) => {

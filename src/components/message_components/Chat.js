@@ -16,47 +16,68 @@ import {
 import { useEffect } from "react";
 import { app_data } from "../app_data";
 import axios from "axios";
+import avatar from "../../pictures/avatar.png"
 
 const Chat = (props) => {
 
   const user = props.user;
   const [messages, setMessages] = useState([]);
   const [contacts, setContacts] = useState([]);
-  console.log(contacts);
+  console.log(messages);
   const [activeContactIndex, setActiveContactIndex] = useState(null);
   const showContactChat = activeContactIndex === null ? false : true;
 
+  const getContacts = async () => {
+    await axios.get("https://localhost:7019/api/contacts",{ withCredentials: true }).then((data) => setContacts(data.data)).catch(err => console.log(err));
+  }
+
+  const getChat = async () => {
+    if (activeContactIndex != null) {
+      const id =  contacts[activeContactIndex].id;
+      await axios.get(`https://localhost:7019/api/contacts/${id}/messages`,{ withCredentials: true }).then(data => setMessages(data.data)).catch(err => console.log(err));
+    }
+  }
+
   useEffect(async () => {
-    axios.get("https://localhost:7019/contacts",{ withCredentials: true }).then((data) => setContacts(data.data)).catch(err => console.log(err));
+    await getContacts();
   },[])
 
   useEffect(async () => {
-    if (activeContactIndex != null) {
-      const id =  contacts[activeContactIndex].id;
-      axios.get(`https://localhost:7019/contacts/${id}/messages`,{ withCredentials: true }).then(data => setMessages(data.data)).catch(err => console.log(err));
-    }
+    await getChat();
   }, [activeContactIndex, contacts]);
 
-  const handleAddingContact = (username) => {
-    if (app_data && !app_data[username]) {
-      alert(
-        "There is no user with that username, please enter a valid username to add"
-      );
-      return false;
+  const handleAddingContact = async (username) => {
+    // need to implement on server side
+    // if (app_data && !app_data[username]) {
+    //   alert(
+    //     "There is no user with that username, please enter a valid username to add"
+    //   );
+    //   return false;
+    // }
+    // if (isInContacts(username, contacts)) {
+    //   alert("You already have this contact in your contacts list")
+    //   return false;
+    // }
+    try{
+      await axios.post("https://localhost:7019/api/contacts",{id : username, name : username, server : "Chat4You"},{ withCredentials: true });
+      console.log("added");
+      await axios.post("https://localhost:7019/api/invitations",{from : user, to : username, server : "Chat4You"});
+      console.log("added 2");
+      await getContacts();
     }
-    if (isInContacts(username, contacts)) {
-      alert("You already have this contact in your contacts list")
-      return false;
+    catch(err){
+      console.log(err);
     }
-    const newContact = {
-      username,
-      displayName: app_data[username].displayName,
-      messages: [],
-      picture: app_data[username].picture,
-    };
-    app_data[user].contacts.push(newContact);
-    setContacts([...app_data[user].contacts]);
-    setActiveContactIndex(app_data[user].contacts.length - 1);
+    
+    // const newContact = {
+    //   username,
+    //   displayName: app_data[username].displayName,
+    //   messages: [],
+    //   picture: app_data[username].picture,
+    // };
+    // app_data[user].contacts.push(newContact);
+    // setContacts([...app_data[user].contacts]);
+    // setActiveContactIndex(app_data[user].contacts.length - 1);
   };
 
   //refresh contacts (right side) every 30 seconds
@@ -77,8 +98,8 @@ const Chat = (props) => {
             <Row>
               <TopBarLeft
                 user={user}
-                picture={app_data[user].picture}
-                displayName={app_data[user].displayName}
+                picture={avatar}
+                displayName={user}
                 handleAddingContact={handleAddingContact}
               />
             </Row>
@@ -88,12 +109,12 @@ const Chat = (props) => {
               <TopBarRight
                 picture={
                   activeContactIndex !== null
-                    ? contacts[activeContactIndex].picture
+                    ? avatar
                     : ""
                 }
                 displayName={
                   activeContactIndex !== null
-                    ? contacts[activeContactIndex].displayName
+                    ? contacts[activeContactIndex].name
                     : ""
                 }
               />
@@ -138,6 +159,7 @@ const Chat = (props) => {
                 index={activeContactIndex}
                 setActiveContactIndex={setActiveContactIndex}
                 user={user}
+                getContacts = {getContacts}
               />
               </Fragment>
             )}
