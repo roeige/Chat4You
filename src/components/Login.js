@@ -37,7 +37,12 @@ const Login = (props) => {
         .then((res) => {
           console.log(res);
           props.setUser(username);
-        }).catch(err => console.log(err));
+        }).catch(err => {
+          
+          if(err && err.response && err.response.status===401) alert("Username or password are incorrect");
+          else if(err && err.response && err.response.data) alert(err.response.data);
+          else alert(err.message);
+        });
       return;
     }
     setValid({

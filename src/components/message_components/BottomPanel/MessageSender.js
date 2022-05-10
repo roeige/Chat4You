@@ -14,7 +14,7 @@ const MessageSender = (props) => {
     await addNewMessage({newMessage,user : props.user,index : props.index, setActiveContactIndex : props.setActiveContactIndex, contacts : props.contacts,getContacts : props.getContacts});
     try {
       console.log("Trying to send signalr")
-      await props.connection.send('SendMessage', newMessage.content);
+      //await props.connection.send('SendMessage', newMessage.content);
   }
   catch(e) {
       console.log(e);

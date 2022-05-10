@@ -9,8 +9,8 @@ const AddNewContact = (props) => {
   const serverRef = useRef("");
   const nameRef = useRef("");
 
-  const handleClick = () => {
-    if (props.handleAddingContact(contactRef.current.value,serverRef.current.value,nameRef.current.value) == false) {
+  const handleClick = async () => {
+    if (await props.handleAddingContact(contactRef.current.value,serverRef.current.value,nameRef.current.value) == false) {
       contactRef.current.value = "";
       return;
     }

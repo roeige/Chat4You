@@ -36,10 +36,6 @@ const Register = (props) => {
         if (!username) {
             setValid({valid:"invalid",validFlag: false,invalidFlag: true, feedback:"Please choose a username"});
         }
-        if (app_data && app_data[username]) {
-            flag = false;
-            setValid({valid:"invalid", validFlag:false,invalidFlag:true,feedback:"Username already in use"});
-        }
         if (!password) {
             flag = false;
             setPassValid({valid:"invalid",invalidFlag:true,validFlag:false,feedback:"Please choose a password"});
@@ -76,7 +72,13 @@ const Register = (props) => {
         .then((res) => {
           console.log(res);
           props.setUser(username);
-        }).catch(err => console.log(err));
+        }).catch(err => {
+            if(err && err.response && err.response.data==="Username already exists"){
+                flag = false;
+            setValid({valid:"invalid", validFlag:false,invalidFlag:true,feedback:"Username already in use"});
+            }
+            else alert(err.message);
+        });
       return;
             // app_data[username] = {
             //     password,

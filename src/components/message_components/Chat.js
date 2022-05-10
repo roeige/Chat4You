@@ -42,9 +42,11 @@ const Chat = (props) => {
 useEffect( async () => {
   if (connection) {
       connection.start()
-          .then(result => {
+          .then(async () => {
               console.log('Connected!');
+              connection.invoke("registerConId",user);
               connection.on('ReceiveMessage', async message => {
+                console.log("Got message from signalR")
                 await getContacts();
               });
           })
@@ -85,16 +87,17 @@ useEffect( async () => {
     // }
     try{
       const ourServer = "localhost:7019";
-      await axios.post("https://localhost:7019/api/contacts",{id : username, name , server},{ withCredentials: true });
-      console.log("added");
       await axios.post(`https://${server}/api/invitations`,{from : user, to : username, server : ourServer});
       console.log("added 2");
+      await axios.post("https://localhost:7019/api/contacts",{id : username, name , server},{ withCredentials: true });
+      console.log("added");
       await getContacts();
       console.log(contacts);
       setActiveContactIndex(contacts.length);
     }
     catch(err){
       console.log(err);
+      alert("Error occured");
     }
     
     // const newContact = {
