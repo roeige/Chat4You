@@ -6,9 +6,11 @@ import "./AddNewContact.css"
 
 const AddNewContact = (props) => {
   const contactRef = useRef("");
+  const serverRef = useRef("");
+  const nameRef = useRef("");
 
   const handleClick = () => {
-    if (props.handleAddingContact(contactRef.current.value) == false) {
+    if (props.handleAddingContact(contactRef.current.value,serverRef.current.value,nameRef.current.value) == false) {
       contactRef.current.value = "";
       return;
     }
@@ -30,11 +32,27 @@ const AddNewContact = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="modal-dark">
-        <FloatingLabel controlId="floatingContact" label="Contact's identifier" className = "modal-input-dark-txt">
+        <FloatingLabel controlId="floatingName" label="Nickname" className = "modal-input-dark-txt" style = {{paddingBottom : "4%"}}>
+          <Form.Control
+            type="name"
+            placeholder="name"
+            ref={nameRef}
+            className="modal-input-dark  input-txt"
+          />
+        </FloatingLabel>
+        <FloatingLabel controlId="floatingContact" label="Contact's identifier" className = "modal-input-dark-txt" style = {{paddingBottom : "4%"}}>
           <Form.Control
             type="contact"
             placeholder="contact"
             ref={contactRef}
+            className="modal-input-dark  input-txt"
+          />
+        </FloatingLabel>
+        <FloatingLabel controlId="floatingServer" label="Server Address" className = "modal-input-dark-txt">
+          <Form.Control
+            type="server"
+            placeholder="server"
+            ref={serverRef}
             className="modal-input-dark  input-txt"
           />
         </FloatingLabel>

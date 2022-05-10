@@ -125,9 +125,11 @@ export const dateToString = (date) => {
 
 export const addNewMessage = async ({newMessage,user, index,setActiveContactIndex,contacts,getContacts}) => {
   const contactID = contacts[index].id;
+  const hisServer = contacts[index].server;
+  const ourServer = "localhost:7019";
   try{
     await axios.post(`https://localhost:7019/api/contacts/${contactID}/messages`,{content : newMessage.content, sent : true},{ withCredentials: true });
-    //if(contacts[index].server!=="Chat4You") await axios.post("https://localhost:7019/api/transfer",{from : user, to : contactID, content : newMessage.content},{ withCredentials: true });
+    await axios.post(`https://${hisServer}/api/transfer`,{from : user, to : contactID, content : newMessage.content},{ withCredentials: true });
     await getContacts();
     setActiveContactIndex(contacts.length-1);
   }

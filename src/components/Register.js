@@ -4,6 +4,7 @@ import { app_data } from './app_data'
 import avatar from '../pictures/avatar.png';
 import { Form, FloatingLabel, FormControl } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Register = (props) => {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Register = (props) => {
     const onPictureUpload = event => {
         setPicture(event.target.files[0]);
     }
-    const submitHandler = (event) => {
+    const submitHandler = async (event) => {
         event.preventDefault();
         const username = usernameRef.current.value;
         const password = passwordRef.current.value;
@@ -66,15 +67,26 @@ const Register = (props) => {
             setPassValid("valid");
             setNickValid("valid");
             setPassConfValid("valid");
-            app_data[username] = {
-                password,
-                displayName,
-                picture: userPicture,
-                contacts: [
+            await axios
+        .post(
+          "https://localhost:7019/api/register",
+          {username ,password,name : displayName},
+          { withCredentials: true }
+        )
+        .then((res) => {
+          console.log(res);
+          props.setUser(username);
+        }).catch(err => console.log(err));
+      return;
+            // app_data[username] = {
+            //     password,
+            //     displayName,
+            //     picture: userPicture,
+            //     contacts: [
 
-                ]
-            };
-            props.setUser(username);
+            //     ]
+            // };
+            // props.setUser(username);
         }
     }
     return (<div id="enter" className="grid">

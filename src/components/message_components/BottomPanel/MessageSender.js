@@ -11,7 +11,14 @@ const MessageSender = (props) => {
     if(textValue==="") return;
     const date = new Date();
     const newMessage = { type: "text", from: "me", date, content: textValue }
-    addNewMessage({newMessage,user : props.user,index : props.index, setActiveContactIndex : props.setActiveContactIndex, contacts : props.contacts,getContacts : props.getContacts});
+    await addNewMessage({newMessage,user : props.user,index : props.index, setActiveContactIndex : props.setActiveContactIndex, contacts : props.contacts,getContacts : props.getContacts});
+    try {
+      console.log("Trying to send signalr")
+      await props.connection.send('SendMessage', newMessage.content);
+  }
+  catch(e) {
+      console.log(e);
+  }
     setValue("");
   }
 

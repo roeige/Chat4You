@@ -8,6 +8,7 @@ import { Fragment, useState } from "react";
 import Logo from "../background/Logo";
 import TopBarLeft from "./TopBarLeft";
 import TopBarRight from "./TopBarRight";
+import { HubConnectionBuilder } from '@microsoft/signalr';
 import {
   getLastMessage,
   getTimeAgo,
@@ -21,11 +22,35 @@ import avatar from "../../pictures/avatar.png"
 const Chat = (props) => {
 
   const user = props.user;
+  const [ connection, setConnection ] = useState(null);
   const [messages, setMessages] = useState([]);
   const [contacts, setContacts] = useState([]);
-  console.log(messages);
+  console.log(contacts);
   const [activeContactIndex, setActiveContactIndex] = useState(null);
   const showContactChat = activeContactIndex === null ? false : true;
+
+  useEffect(() => {
+    const newConnection = new HubConnectionBuilder()
+        .withUrl('https://localhost:7019/chatHub')
+        .withAutomaticReconnect()
+        .build();
+
+    setConnection(newConnection);
+}, []);
+
+
+useEffect( async () => {
+  if (connection) {
+      connection.start()
+          .then(result => {
+              console.log('Connected!');
+              connection.on('ReceiveMessage', async message => {
+                await getContacts();
+              });
+          })
+          .catch(e => console.log('Connection failed: ', e));
+  }
+}, [connection]);
 
   const getContacts = async () => {
     await axios.get("https://localhost:7019/api/contacts",{ withCredentials: true }).then((data) => setContacts(data.data)).catch(err => console.log(err));
@@ -46,7 +71,7 @@ const Chat = (props) => {
     await getChat();
   }, [activeContactIndex, contacts]);
 
-  const handleAddingContact = async (username) => {
+  const handleAddingContact = async (username,server,name) => {
     // need to implement on server side
     // if (app_data && !app_data[username]) {
     //   alert(
@@ -59,12 +84,13 @@ const Chat = (props) => {
     //   return false;
     // }
     try{
-      await axios.post("https://localhost:7019/api/contacts",{id : username, name : username, server : "Chat4You"},{ withCredentials: true });
+      const ourServer = "localhost:7019";
+      await axios.post("https://localhost:7019/api/contacts",{id : username, name , server},{ withCredentials: true });
       console.log("added");
-      await axios.post("https://localhost:7019/api/invitations",{from : user, to : username, server : "Chat4You"});
+      await axios.post(`https://${server}/api/invitations`,{from : user, to : username, server : ourServer});
       console.log("added 2");
       await getContacts();
-      //console.log(contacts);
+      console.log(contacts);
       setActiveContactIndex(contacts.length);
     }
     catch(err){
@@ -154,6 +180,7 @@ const Chat = (props) => {
                 <MessagesBox messages={messages} />
                 </div>
                 <MessageSender
+                connection = {connection}
                 messages={messages}
                 setMessages={setMessages}
                 contacts={contacts}
