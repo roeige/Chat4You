@@ -30,7 +30,7 @@ const Login = (props) => {
       setValid({ valid: "valid", validFlag: true, inValidflag: false });
       await axios
         .post(
-          "https://localhost:7019/api/login",
+          "http://localhost:7019/api/login",
           {username ,password},
           { withCredentials: true }
         )

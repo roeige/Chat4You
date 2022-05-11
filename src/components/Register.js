@@ -65,7 +65,7 @@ const Register = (props) => {
             setPassConfValid("valid");
             await axios
         .post(
-          "https://localhost:7019/api/register",
+          "http://localhost:7019/api/register",
           {username ,password,name : displayName},
           { withCredentials: true }
         )

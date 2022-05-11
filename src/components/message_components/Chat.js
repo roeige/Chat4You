@@ -8,7 +8,7 @@ import { Fragment, useState } from "react";
 import Logo from "../background/Logo";
 import TopBarLeft from "./TopBarLeft";
 import TopBarRight from "./TopBarRight";
-import { HubConnectionBuilder } from '@microsoft/signalr';
+import { HubConnectionBuilder,HttpTransportType } from '@microsoft/signalr';
 import {
   getLastMessage,
   getTimeAgo,
@@ -31,7 +31,7 @@ const Chat = (props) => {
 
   useEffect(() => {
     const newConnection = new HubConnectionBuilder()
-        .withUrl('https://localhost:7019/chatHub')
+        .withUrl('http://localhost:7019/chatHub')
         .withAutomaticReconnect()
         .build();
 
@@ -55,13 +55,13 @@ useEffect( async () => {
 }, [connection]);
 
   const getContacts = async () => {
-    await axios.get("https://localhost:7019/api/contacts",{ withCredentials: true }).then((data) => setContacts(data.data)).catch(err => console.log(err));
+    await axios.get("http://localhost:7019/api/contacts",{ withCredentials: true }).then((data) => setContacts(data.data)).catch(err => console.log(err));
   }
 
   const getChat = async () => {
     if (activeContactIndex != null) {
       const id =  contacts[activeContactIndex].id;
-      await axios.get(`https://localhost:7019/api/contacts/${id}/messages`,{ withCredentials: true }).then(data => setMessages(data.data)).catch(err => console.log(err));
+      await axios.get(`http://localhost:7019/api/contacts/${id}/messages`,{ withCredentials: true }).then(data => setMessages(data.data)).catch(err => console.log(err));
     }
   }
 
@@ -87,9 +87,9 @@ useEffect( async () => {
     // }
     try{
       const ourServer = "localhost:7019";
-      await axios.post(`https://${server}/api/invitations`,{from : user, to : username, server : ourServer});
+      await axios.post(`http://${server}/api/invitations`,{from : user, to : username, server : ourServer});
       console.log("added 2");
-      await axios.post("https://localhost:7019/api/contacts",{id : username, name , server},{ withCredentials: true });
+      await axios.post("http://localhost:7019/api/contacts",{id : username, name , server},{ withCredentials: true });
       console.log("added");
       await getContacts();
       console.log(contacts);

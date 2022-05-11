@@ -128,8 +128,8 @@ export const addNewMessage = async ({newMessage,user, index,setActiveContactInde
   const hisServer = contacts[index].server;
   const ourServer = "localhost:7019";
   try{
-    await axios.post(`https://localhost:7019/api/contacts/${contactID}/messages`,{content : newMessage.content, sent : true},{ withCredentials: true });
-    await axios.post(`https://${hisServer}/api/transfer`,{from : user, to : contactID, content : newMessage.content},{ withCredentials: true });
+    await axios.post(`http://localhost:7019/api/contacts/${contactID}/messages`,{content : newMessage.content, sent : true},{ withCredentials: true });
+    await axios.post(`http://${hisServer}/api/transfer`,{from : user, to : contactID, content : newMessage.content},{ withCredentials: true });
     await getContacts();
     setActiveContactIndex(contacts.length-1);
   }
