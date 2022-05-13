@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Register = (props) => {
-    const navigate = useNavigate();
     const [picture, setPicture] = useState(null);
     const usernameRef = useRef();
     const displayNameRef = useRef();

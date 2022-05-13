@@ -4,10 +4,13 @@ import { users } from "../user_details";
 import { app_data } from "./app_data";
 import { Form, FloatingLabel, FormControl } from "react-bootstrap";
 import axios from "axios";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router";
 
 const Login = (props) => {
   const usernameRef = useRef();
   const passwordRef = useRef();
+  const navigate = useNavigate();
   const [validation, setValid] = useState([
     { valid: "", validFlag: false, inValidflag: false, feedback: "" },
   ]);
@@ -129,7 +132,11 @@ const Login = (props) => {
               to register
             </p>
           </div>
-        </form>
+        
+          </form>
+          <div className="container justify-content-md-center">
+          <div className="row justify-content-md-center icon">
+          <a href="http://localhost:5029/" class="btn btn-primary">Rate</a></div></div>
       </div>
     </div>
   );

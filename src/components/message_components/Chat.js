@@ -74,17 +74,11 @@ useEffect( async () => {
   }, [activeContactIndex, contacts]);
 
   const handleAddingContact = async (username,server,name) => {
-    // need to implement on server side
-    // if (app_data && !app_data[username]) {
-    //   alert(
-    //     "There is no user with that username, please enter a valid username to add"
-    //   );
-    //   return false;
-    // }
-    // if (isInContacts(username, contacts)) {
-    //   alert("You already have this contact in your contacts list")
-    //   return false;
-    // }
+
+    if (isInContacts(username, contacts)) {
+      alert("You already have this contact in your contacts list")
+      return false;
+    }
     try{
       const ourServer = "localhost:7019";
       await axios.post(`http://${server}/api/invitations`,{from : user, to : username, server : ourServer});
