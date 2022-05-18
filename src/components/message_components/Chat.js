@@ -79,6 +79,10 @@ useEffect( async () => {
       alert("You already have this contact in your contacts list")
       return false;
     }
+    if(username==="" || server === "" || name === ""){
+      alert("One or more of the fields are empty");
+      return false;
+    }
     try{
       const ourServer = "localhost:7019";
       await axios.post(`http://${server}/api/invitations`,{from : user, to : username, server : ourServer});
