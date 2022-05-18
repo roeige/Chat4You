@@ -90,8 +90,11 @@ useEffect( async () => {
       setActiveContactIndex(contacts.length);
     }
     catch(err){
-      console.log(err);
-      alert("Error occured");
+      console.log("got in error double contact")
+      console.log(err.response);
+      if(err && err.response && err.response.status===401) alert("One of contact fields is invalid");
+      else if(err && err.response && err.response.data) alert(err.response.data);
+      else alert(err.message);
     }
     
     // const newContact = {
@@ -116,7 +119,6 @@ useEffect( async () => {
 
   return (
     <Fragment>
-        <Logo/>
         <div id="outer-div">
         <div className="row row-eq-height upper-bar">
           <Col xs={4} className="padding-left-right-0">

@@ -2,8 +2,8 @@
 
 import MessageSender from "./BottomPanel/MessageSender";
 const ChatMessage = (props) => {
-    return (<div className="container"
-        className="main-chat-background chats col-8" >
+    return (<div className="container 
+        main-chat-background chats col-8" >
         <div className="row" >
             <div className="col-1 person-icon" >
                 <svg xmlns="http://www.w3.org/2000/svg"

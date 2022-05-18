@@ -79,15 +79,6 @@ const Register = (props) => {
             else alert(err.message);
         });
       return;
-            // app_data[username] = {
-            //     password,
-            //     displayName,
-            //     picture: userPicture,
-            //     contacts: [
-
-            //     ]
-            // };
-            // props.setUser(username);
         }
     }
     return (<div id="enter" className="grid">

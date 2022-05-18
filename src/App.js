@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Chat from './components/message_components/Chat';
 import { useState } from 'react';
 import { BrowserRouter as Router, Route,Routes,Navigate } from "react-router-dom";
+import Logo from './components/background/Logo';
 
 function App() {
   
@@ -14,6 +15,7 @@ function App() {
   
   return (
     <Background >
+    <Logo/>
     
     <Router>
     {!user && <Routes>

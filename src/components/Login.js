@@ -6,6 +6,7 @@ import { Form, FloatingLabel, FormControl } from "react-bootstrap";
 import axios from "axios";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router";
+import Logo from "./background/Logo";
 
 const Login = (props) => {
   const usernameRef = useRef();
@@ -132,11 +133,7 @@ const Login = (props) => {
               to register
             </p>
           </div>
-        
           </form>
-          <div className="container justify-content-md-center">
-          <div className="row justify-content-md-center icon">
-          <a href="http://localhost:5029/" class="btn btn-primary">Rate</a></div></div>
       </div>
     </div>
   );
