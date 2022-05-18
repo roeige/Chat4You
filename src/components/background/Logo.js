@@ -1,5 +1,5 @@
 import { Navbar,Container} from "react-bootstrap";
-import pic from './Chat4You_Logo.jpg'
+import pic from './Chat4You_primaryLogo.png'
 import '../message_components/Chat.css'
 const Logo = (props)=>{
     return(
@@ -9,8 +9,8 @@ const Logo = (props)=>{
             <img
               alt=""
               src={pic}
-              width="40"
-              height="40"
+              width="60"
+              height="50"
               className="d-inline-block align-top"
             />{' '}
           Chat4You

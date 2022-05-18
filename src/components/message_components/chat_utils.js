@@ -125,6 +125,7 @@ export const dateToString = (date) => {
 
 export const addNewMessage = async ({newMessage,user, index,setActiveContactIndex,contacts,getContacts}) => {
   const contactID = contacts[index].id;
+  console.log(contacts);
   const hisServer = contacts[index].server;
   const ourServer = "localhost:7019";
   try{
